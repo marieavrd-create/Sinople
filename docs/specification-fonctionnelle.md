@@ -114,7 +114,7 @@ Trois types, tous avec une **explication** et une **source** affichées après l
 - **Créer un compte** permet d'apparaître dans les ligues et classements, et de retrouver sa partie sur un autre appareil.
   À la création du compte, la progression faite sans compte est reprise.
 - Inscription avec un **pseudo** et une **adresse e-mail** (lien de connexion envoyé par e-mail, sans mot de passe) ;
-  connexion avec Google en option **[à valider]**.
+  connexion avec Google en option.
 - Page **Mon compte** : changer de pseudo, se déconnecter, **supprimer son compte et ses données**.
 
 ## 12. Les écrans
