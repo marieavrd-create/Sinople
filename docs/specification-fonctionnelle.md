@@ -74,7 +74,8 @@ Trois types, tous avec une **explication** et une **source** affichées après l
 ## 7. Les vies
 
 - Le joueur a **5 vies** (des bûches, pour rester dans l'histoire).
-- Une mauvaise réponse en leçon fait perdre une vie. À zéro vie, on ne peut plus commencer de leçon.
+- Une mauvaise réponse en leçon fait perdre une vie : une bûche du feu se consume. À zéro vie, **le feu s'éteint**
+  (les animaux restent dans l'ombre autour des braises) et on ne peut plus commencer de leçon jusqu'à ce qu'une vie revienne.
 - Les vies reviennent avec le temps : **une vie toutes les 30 minutes** **[à valider]**.
 - On regagne aussi une vie en faisant une **révision** (§ 8), ce qui donne une façon de continuer à jouer en apprenant.
 - Le quiz du jour et la révision ne coûtent pas de vie.
