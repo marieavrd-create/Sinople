@@ -1,0 +1,22 @@
+---
+// Le goupil, mascotte de Sinople : le renard aux formes douces (renard.svg),
+// choisi par Marie-Ange le 26/10/2026. Les autres fichiers de public/goupil/
+// (son dessin gueux.svg, chevalier.svg…) restent disponibles via « tenue ».
+interface Props {
+  taille?: number;   // hauteur en pixels
+  tenue?: string;    // nom du fichier dans public/goupil/, sans « .svg »
+  class?: string;
+}
+const { taille = 160, tenue = 'renard', class: classe } = Astro.props;
+// Largeur ÷ hauteur de chaque dessin.
+const proportions: Record<string, number> = { renard: 362 / 188 };
+const ratio = proportions[tenue] ?? 155.35 / 221.05;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<img
+  class={classe}
+  src={`${base}/goupil/${tenue}.svg`}
+  height={taille}
+  width={Math.round(taille * ratio)}
+  alt={tenue === 'renard' ? 'Le goupil, un renard roux à l’œil rusé' : `Le goupil en tenue de ${tenue}`}
+/>

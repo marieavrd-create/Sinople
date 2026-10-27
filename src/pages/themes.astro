@@ -1,0 +1,95 @@
+---
+import Base from '../layouts/Base.astro';
+import Goupil from '../components/Goupil.astro';
+import themes from '../data/themes.json';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const voie = (c: string) => `Voie ${/^[AEÉIOU]/.test(c) ? "de l'" : 'du '}${c.toLowerCase()}`;
+---
+<Base titre="Choisir un quiz">
+  <main class="page">
+    <header class="entete">
+      <div>
+        <p class="salut">Bonjour, gueux !</p>
+        <h1>Quel savoir veux-tu conquérir ?</h1>
+      </div>
+      <Goupil taille={80} class="goupil" />
+    </header>
+
+    <ul class="grille">
+      {themes.map((t) => (
+        <li>
+          {t.pret ? (
+            <a class="theme pret" href={`${base}/theme/${t.id}`}>
+              <span class="nom">{t.nom}</span>
+              <span class="matieres">{t.matieres}</span>
+              <span class="carriere">{voie(t.carriere)}</span>
+              <span class="jouer">Jouer</span>
+            </a>
+          ) : (
+            <a class="theme" href={`${base}/theme/${t.id}`}>
+              <span class="nom">{t.nom}</span>
+              <span class="matieres">{t.matieres}</span>
+              <span class="carriere">{voie(t.carriere)}</span>
+              <span class="bientot">Bientôt</span>
+            </a>
+          )}
+        </li>
+      ))}
+    </ul>
+  </main>
+</Base>
+
+<style>
+  .entete {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .salut { margin: 0 0 6px; color: var(--encre-douce); font-weight: 500; }
+  h1 { font-size: 1.9rem; }
+  .goupil { flex-shrink: 0; }
+
+  .grille {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .theme {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    height: 100%;
+    min-height: 128px;
+    padding: 16px;
+    border-radius: var(--arrondi);
+    background: var(--blanc);
+    text-decoration: none;
+    color: var(--encre);
+  }
+  .theme.pret {
+    grid-column: span 2;
+    background: var(--sinople);
+    color: var(--blanc);
+    box-shadow: 0 var(--epaisseur-ombre) 0 var(--sinople-fonce);
+  }
+  .nom { font-weight: 700; font-size: 1.15rem; }
+  .matieres { font-size: .8rem; line-height: 1.3; }
+  .carriere { font-size: .85rem; opacity: .75; }
+  .jouer, .bientot {
+    margin-top: auto;
+    align-self: flex-start;
+    padding: 6px 14px;
+    border-radius: var(--arrondi-bouton);
+    font-size: .85rem;
+    font-weight: 600;
+  }
+  .jouer { background: var(--blanc); color: var(--sinople-fonce); }
+  .bientot { background: var(--sinople-clair); color: var(--sinople-fonce); }
+  li:first-child { grid-column: span 2; }
+</style>

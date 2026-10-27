@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Goupil chevalier, style rond et trapu façon mascotte d'appli (proposition de Claude d'après le dessin de Marie-Ange). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -36 200 296">
+  <g stroke="#2b2118" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M168 -22c-24-10-44 8-70-4l10 18-14 16c30 8 50-8 72 2z" fill="#3fae68" />
+    <line x1="170" y1="-28" x2="156" y2="236" stroke-width="8" />
+    <line x1="170" y1="-28" x2="156" y2="236" stroke="#7a5230" stroke-width="4" />
+    <circle cx="170" cy="-30" r="7" fill="#e3b448" />
+    <path d="M70 200c-40-4-56 22-50 44 12-8 26-8 36-4-2-14 4-26 22-30z" fill="#e8772e" />
+    <path d="M20 244c2-10 10-16 18-18-2 8 0 14 6 14-8 0-16 2-24 4z" fill="#fff4e3" />
+    <ellipse cx="82" cy="238" rx="15" ry="9" fill="#5a3a22" />
+    <ellipse cx="120" cy="238" rx="15" ry="9" fill="#5a3a22" />
+    <path d="M64 236q-6-50 36-62 42 12 36 62z" fill="#f4c247" />
+    <rect x="62" y="206" width="76" height="11" rx="5" fill="#5a3a22" />
+    <rect x="94" y="203" width="12" height="17" rx="3" fill="#e3b448" />
+    <path d="M70 186q-24-8-34-34" fill="none" stroke-width="18" />
+    <path d="M70 186q-24-8-34-34" fill="none" stroke="#e8772e" stroke-width="10" />
+    <path d="M130 190l26-6" fill="none" stroke-width="18" />
+    <path d="M130 190l26-6" fill="none" stroke="#e8772e" stroke-width="10" />
+    <circle cx="34" cy="146" r="11" fill="#fff4e3" />
+    <circle cx="158" cy="183" r="11" fill="#fff4e3" />
+    <path d="M52 64 40 4q4-10 14-4l34 34z" fill="#e8772e" />
+    <path d="M148 64l12-60q-4-10-14-4l-34 34z" fill="#e8772e" />
+    <path d="M54 46 49 16l20 20z" fill="#5a3a22" stroke="none" />
+    <path d="M146 46l5-30-20 20z" fill="#5a3a22" stroke="none" />
+    <ellipse cx="100" cy="98" rx="62" ry="58" fill="#e8772e" />
+    <path d="M44 112q56-22 112 0-10 40-56 42-46-2-56-42z" fill="#fff4e3" />
+  </g>
+  <ellipse cx="78" cy="92" rx="14" ry="16" fill="#fffdf7" stroke="#2b2118" stroke-width="3" />
+  <ellipse cx="122" cy="92" rx="14" ry="16" fill="#fffdf7" stroke="#2b2118" stroke-width="3" />
+  <circle cx="81" cy="95" r="8" fill="#2b2118" />
+  <circle cx="125" cy="95" r="8" fill="#2b2118" />
+  <circle cx="84" cy="91" r="2.8" fill="#fff" />
+  <circle cx="128" cy="91" r="2.8" fill="#fff" />
+  <path d="M106 72q12-8 28 0" stroke="#5a3a22" stroke-width="5" fill="none" stroke-linecap="round" />
+  <ellipse cx="100" cy="118" rx="9" ry="6.5" fill="#2b2118" />
+  <path d="M86 132q14 10 30-4" fill="none" stroke="#2b2118" stroke-width="4" stroke-linecap="round" />
+</svg>

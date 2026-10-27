@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Goupil chevalier, style minimal : quelques formes pleines, sans contour (proposition de Claude). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -36 200 296">
+  <line x1="160" y1="-26" x2="160" y2="240" stroke="#2b2118" stroke-width="5" stroke-linecap="round" />
+  <path d="M160 -26 112 -8l48 18z" fill="#3fae68" />
+  <path d="M74 196c-44 4-62 34-54 50 18-22 40-26 60-24z" fill="#e8772e" />
+  <rect x="80" y="196" width="14" height="44" rx="7" fill="#2b2118" />
+  <rect x="106" y="196" width="14" height="44" rx="7" fill="#2b2118" />
+  <path d="M74 104h52l14 104H60z" fill="#f4c247" />
+  <rect x="64" y="160" width="72" height="8" fill="#2b2118" />
+  <path d="M78 118 40 64" stroke="#e8772e" stroke-width="14" stroke-linecap="round" />
+  <path d="M124 118l36 20" stroke="#e8772e" stroke-width="14" stroke-linecap="round" />
+  <path d="M56 46 70 0l22 36h16L130 0l14 46-44 74z" fill="#e8772e" />
+  <path d="M74 72h52l-26 48z" fill="#fff4e3" />
+  <circle cx="86" cy="56" r="5.5" fill="#2b2118" />
+  <path d="M108 57h12" stroke="#2b2118" stroke-width="4.5" stroke-linecap="round" />
+  <path d="M95 112h10l-5 8z" fill="#2b2118" />
+</svg>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Goupil chevalier, style géométrique plat (proposition de Claude d'après le dessin de Marie-Ange). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -36 200 296">
+  <polygon points="172,-26 88,-30 102,-8 84,14 168,10" fill="#2f8f55" />
+  <polygon points="172,-26 130,-28 130,12 168,10" fill="#3fae68" />
+  <rect x="160" y="-32" width="6" height="284" rx="3" fill="#3b2a1e" transform="rotate(5 163 110)" />
+  <circle cx="163" cy="-33" r="6" fill="#e3b448" />
+  <polygon points="84,188 18,236 62,226" fill="#e8772e" />
+  <polygon points="18,236 40,220 46,232" fill="#fff4e3" />
+  <rect x="78" y="184" width="12" height="46" fill="#c95f1e" />
+  <rect x="110" y="184" width="12" height="46" fill="#c95f1e" />
+  <path d="M70 238a14 10 0 0 1 28 0z" fill="#3b2a1e" />
+  <path d="M102 238a14 10 0 0 1 28 0z" fill="#3b2a1e" />
+  <polygon points="76,114 124,114 140,192 60,192" fill="#f4c247" />
+  <polygon points="60,192 70,184 80,192 90,184 100,192 110,184 120,192 130,184 140,192" fill="#f4c247" />
+  <rect x="66" y="150" width="68" height="9" fill="#3b2a1e" />
+  <rect x="95" y="148" width="10" height="13" fill="#e3b448" />
+  <polygon points="90,122 110,122 110,134 100,146 90,134" fill="#3fae68" />
+  <rect x="80" y="114" width="64" height="12" rx="6" fill="#e8772e" transform="rotate(-136 80 120)" />
+  <rect x="120" y="120" width="44" height="12" rx="6" fill="#e8772e" transform="rotate(28 120 126)" />
+  <circle cx="34" cy="76" r="8" fill="#fff4e3" />
+  <circle cx="158" cy="146" r="8" fill="#fff4e3" />
+  <polygon points="66,52 70,6 96,40" fill="#e8772e" />
+  <polygon points="134,52 130,6 104,40" fill="#e8772e" />
+  <polygon points="72,42 73,20 86,38" fill="#3b2a1e" />
+  <polygon points="128,42 127,20 114,38" fill="#3b2a1e" />
+  <polygon points="60,46 140,46 100,114" fill="#e8772e" />
+  <polygon points="74,70 126,70 100,114" fill="#fff4e3" />
+  <circle cx="86" cy="60" r="6" fill="#1e1b16" />
+  <circle cx="114" cy="60" r="6" fill="#1e1b16" />
+  <circle cx="88" cy="58" r="1.8" fill="#fff" />
+  <circle cx="116" cy="58" r="1.8" fill="#fff" />
+  <polygon points="94,104 106,104 100,112" fill="#1e1b16" />
+</svg>

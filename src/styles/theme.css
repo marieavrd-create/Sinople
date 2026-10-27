@@ -1,0 +1,43 @@
+/* ==========================================================
+   THÈME DE SINOPLE — le fichier à modifier pour changer le look
+   ----------------------------------------------------------
+   Changez une valeur, enregistrez, et tout le site suit.
+   Les couleurs s'écrivent en code hexadécimal (#RRVVBB),
+   comme dans Photoshop ou Illustrator.
+   ========================================================== */
+
+:root {
+  /* ---------- Couleurs principales ---------- */
+  --sinople:        #3fae68;  /* le vert du site : boutons, barres, accents */
+  --sinople-fonce:  #1f6b3a;  /* vert foncé : ombres des boutons, titres */
+  --sinople-clair:  #d8f0dd;  /* vert très pâle : fonds de cartes */
+  --or:             #e3b448;  /* l'or héraldique : points, couronnes, étoiles */
+  --creme:          #f6f1e3;  /* le fond des pages */
+  --encre:          #1e1b16;  /* la couleur du texte */
+  --encre-douce:    #6b6457;  /* texte secondaire, légendes */
+  --blanc:          #fffdf7;  /* cartes et boutons clairs */
+
+  /* ---------- Réponses ---------- */
+  --juste:          #3fae68;  /* bonne réponse */
+  --faux:           #e0604f;  /* mauvaise réponse */
+
+  /* ---------- Le goupil ---------- */
+  --goupil:         #e07a2e;  /* pelage */
+  --goupil-fonce:   #a24e17;  /* oreilles, ombres */
+  --goupil-blanc:   #fff4e3;  /* joues et museau */
+
+  /* ---------- Écran d'accueil (paysage façon Fantasy Hike) ---------- */
+  --nuit:           #17201f;  /* ciel */
+  --montagne-1:     #5d6663;  /* montagnes du fond (les plus claires) */
+  --montagne-2:     #3b4240;  /* montagnes du milieu */
+  --montagne-3:     #0d0f0e;  /* premier plan, où marche le goupil */
+
+  /* ---------- Formes ---------- */
+  --arrondi:        22px;     /* arrondi des cartes (0px = carré) */
+  --arrondi-bouton: 999px;    /* arrondi des boutons (999px = pilule) */
+  --epaisseur-ombre: 5px;     /* hauteur de l'ombre sous les boutons */
+
+  /* ---------- Polices (Google Fonts) ---------- */
+  --police-texte:   'Fredoka', system-ui, sans-serif;           /* police ronde de l'interface */
+  --police-recit:   'IM Fell English', Georgia, serif;          /* police ancienne du récit */
+}

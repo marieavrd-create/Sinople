@@ -1,0 +1,52 @@
+---
+// Barre de navigation du bas, comme dans la maquette.
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const chemin = Astro.url.pathname.replace(base, '') || '/';
+const liens = [
+  { href: '/', nom: 'Accueil', icone: 'M4 11 12 4l8 7v9h-5v-6H9v6H4z' },
+  { href: '/themes', nom: 'Quiz', icone: 'M5 4h14v4H5zM5 10h14v4H5zM5 16h14v4H5z' },
+  { href: '/classement', nom: 'Classement', icone: 'M3 20V12h5v8zM9.5 20V6h5v14zM16 20v-6h5v6z' },
+];
+---
+<nav class="nav" aria-label="Navigation principale">
+  {liens.map((l) => {
+    const actif = l.href === '/' ? chemin === '/' : chemin.startsWith(l.href);
+    return (
+      <a href={base + l.href} class:list={['lien', { actif }]} aria-current={actif ? 'page' : undefined}>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d={l.icone} /></svg>
+        <span>{l.nom}</span>
+      </a>
+    );
+  })}
+</nav>
+
+<style>
+  .nav {
+    position: fixed;
+    left: 50%;
+    bottom: 16px;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 4px;
+    padding: 6px;
+    background: var(--sinople);
+    border-radius: var(--arrondi-bouton);
+    box-shadow: 0 var(--epaisseur-ombre) 0 var(--sinople-fonce);
+    z-index: 10;
+  }
+  .lien {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    border-radius: var(--arrondi-bouton);
+    color: var(--blanc);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: .9rem;
+  }
+  .lien svg { width: 22px; height: 22px; fill: currentColor; }
+  .lien span { display: none; }
+  .lien.actif { background: var(--blanc); color: var(--sinople-fonce); }
+  .lien.actif span { display: inline; }
+</style>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="14 46 362 188">
+  <!-- Le goupil de Sinople : renard aux formes douces, choisi par Marie-Ange le 26/10/2026 -->
+  <defs>
+    <linearGradient id="poil" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f28a52"/><stop offset=".55" stop-color="#d9583c"/><stop offset="1" stop-color="#a8392f"/></linearGradient>
+    <linearGradient id="queue" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#c94c35"/><stop offset=".5" stop-color="#e46a42"/><stop offset=".82" stop-color="#e46a42"/><stop offset=".86" stop-color="#fff1e2"/></linearGradient>
+    <linearGradient id="patte" x1="0" y1="0" x2="0" y2="1"><stop offset=".45" stop-color="#c94c35"/><stop offset=".7" stop-color="#3a2028"/></linearGradient>
+    <linearGradient id="ombre" x1="0" y1="0" x2="0" y2="1"><stop offset=".45" stop-color="#8f3029"/><stop offset=".7" stop-color="#2b1a22"/></linearGradient>
+  </defs>
+  <!-- pattes de l'autre côté -->
+  <path d="M132 140c8 10 18 12 20 14-4 14-12 26-18 40-2 10-2 20 0 30h-12c-2-10-2-22 0-32 2-14 4-26 0-38z" fill="url(#ombre)"/>
+  <path d="M246 150c6 2 12 4 14 6-2 16-6 34-8 50-1 8-1 14-2 20h-12c1-8 2-14 4-22 2-16 2-34 4-54z" fill="url(#ombre)"/>
+  <!-- queue en panache -->
+  <path d="M138 122C110 96 70 84 34 94c-10 3-16 8-14 14 4 12 18 18 34 22 30 8 60 12 86 10z" fill="url(#queue)"/>
+  <path d="M138 122C112 102 78 94 48 98c24 2 52 12 76 26z" fill="#f6a072" opacity=".6"/>
+  <!-- corps -->
+  <path d="M134 120c20-12 60-16 96-12 14 1 24-2 34-6 10 6 14 18 12 32-2 14-6 24-10 28-14 4-30 4-46 2-24-2-48-4-66-4-12-6-20-22-20-40z" fill="url(#poil)"/>
+  <!-- cuisse et patte arrière -->
+  <path d="M138 128c14-4 30 0 36 10 2 14-4 30-12 44-4 8-4 18 0 26 2 6 2 12 2 18h-14c-2-8-2-16-4-24-2-10 0-18 2-26-6-14-12-30-10-48z" fill="url(#patte)"/>
+  <!-- patte avant qui se lève -->
+  <path d="M256 148c8 0 16 2 18 4 2 14 4 24 10 34 4 8 8 16 10 24l-10 4c-4-8-8-14-12-22-6-12-12-26-16-44z" fill="url(#patte)"/>
+  <!-- cou -->
+  <path d="M254 108c10-12 22-20 34-22 10 6 14 16 12 28-2 12-10 24-22 30-10-8-18-22-24-36z" fill="#de5f3e"/>
+  <!-- plastron -->
+  <path d="M276 124c8 0 16 2 20 6-2 12-10 24-22 30-4-12-2-26 2-36z" fill="#fff1e2"/>
+  <g transform="translate(296 104) scale(1.14) translate(-296 -104)">
+    <!-- oreilles -->
+    <path d="M290 88c0-12 2-22 5-30 5 8 10 16 12 24z" fill="#a8392f"/>
+    <path d="M302 86c4-12 9-24 16-32 3 10 5 22 4 34z" fill="#de5f3e"/>
+    <path d="M307 84c3-8 6-15 10-20 2 7 2 14 2 22z" fill="#7a2a2a"/>
+    <path d="M318 54c-2 3-4 6-5 9h8c0-3-1-6-3-9z" fill="#2b1a22"/>
+    <!-- tête -->
+    <path d="M286 90c6-8 18-12 30-8 10 4 18 10 28 16 8 4 18 8 24 12 2 2 0 6-4 7-8 2-18 4-28 5-12 1-26 2-36-2-10-4-16-14-14-30z" fill="url(#poil)"/>
+    <path d="M300 116c14 4 34 4 50 2 8-1 14-3 18-5-6 6-14 9-24 10-14 2-30 0-44-7z" fill="#fff1e2"/>
+    <path d="M362 108c4 0 8 2 8 4s-4 4-8 4c-3 0-4-2-4-4s1-4 4-4z" fill="#2b1a22"/>
+    <!-- œil rusé, mi-clos -->
+    <path d="M316 98c4-2 10-2 15 1-4 2-10 3-15-1z" fill="#2b1a22"/>
+    <path d="M314 95c6-3 13-3 19 0" fill="none" stroke="#7a2a2a" stroke-width="2" stroke-linecap="round"/>
+  </g>
+</svg>

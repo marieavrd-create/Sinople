@@ -1,0 +1,74 @@
+---
+import Base from '../layouts/Base.astro';
+import Feu from '../components/Feu.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+// Valeurs d'exemple : elles viendront du compte du joueur à l'étape 2 (Supabase).
+const joueur = { jour: 1, points: 0, grade: 'Gueux', recit: 'Le renard rumine seul son complot contre le roi' };
+---
+<Base titre="Accueil" fond="#191826">
+  <main class="accueil">
+    <div class="ciel">
+      <!-- Le feu des conjurés : le renard seul au début, puis un animal par thème joué.
+           La vidéo du goupil conquérant reste dans public/accueil/ si on veut la remettre. -->
+      <Feu accueil />
+    </div>
+
+    <section class="compteurs">
+      <p class="jour">Jour {joueur.jour}</p>
+      <p class="points" id="points">{joueur.points}</p>
+      <p class="unite">points de savoir</p>
+      <p class="grade">{joueur.grade}</p>
+      <p class="recit" id="recit">{joueur.recit}</p>
+      <a class="bouton" href={`${base}/themes`}>Prendre la route</a>
+    </section>
+  </main>
+</Base>
+
+<script>
+  import { lireProgres } from '../scripts/progres';
+  // En attendant les comptes : points et conjurés lus dans le navigateur.
+  const p = Object.values(lireProgres());
+  document.getElementById('points')!.textContent = String(p.reduce((n, t) => n + t.bonnes, 0));
+  const n = p.length;
+  if (n > 0) document.getElementById('recit')!.textContent =
+    n === 1 ? 'Un conjuré écoute le renard au coin du feu' : `${n} conjurés écoutent le renard au coin du feu`;
+</script>
+
+<style>
+  .accueil {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    color: var(--creme);
+    text-align: center;
+  }
+  .ciel { width: 100%; overflow: hidden; }
+  .compteurs {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 16px 120px;
+    max-width: 480px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .compteurs p { margin: 0; }
+  .jour { font: 1.4rem var(--police-recit); color: var(--creme); }
+  .points {
+    font: 4rem/1 var(--police-recit);
+    color: var(--or);
+    margin-top: 4px !important;
+  }
+  .unite { font: 1rem var(--police-recit); color: var(--or); }
+  .grade {
+    margin-top: 18px !important;
+    font-size: .85rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--montagne-1);
+  }
+  .recit { font: italic 1.25rem var(--police-recit); margin-bottom: 28px !important; }
+  .bouton { max-width: 320px; }
+</style>

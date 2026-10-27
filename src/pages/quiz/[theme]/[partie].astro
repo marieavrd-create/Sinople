@@ -1,0 +1,187 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Goupil from '../../../components/Goupil.astro';
+
+// Un quiz par partie, lu dans src/data/quiz/<thème>.json.
+// Pour ajouter des questions, il suffit de modifier ce fichier.
+export function getStaticPaths() {
+  const fichiers = import.meta.glob('../../../data/quiz/*.json', { eager: true }) as Record<string, any>;
+  return Object.entries(fichiers).flatMap(([chemin, f]) => {
+    const theme = chemin.split('/').pop()!.replace('.json', '');
+    const data = f.default ?? f;
+    return data.parties.map((p: any) => ({ params: { theme, partie: p.id }, props: { nomTheme: data.theme, partie: p } }));
+  });
+}
+
+const { nomTheme, partie } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const ordre = { facile: 0, moyen: 1, difficile: 2 } as Record<string, number>;
+const questions = [...partie.questions].sort((a: any, b: any) => ordre[a.niveau] - ordre[b.niveau]);
+---
+<Base titre={`${nomTheme} · ${partie.nom}`} nav={false}>
+  <main class="page quiz" data-questions={JSON.stringify(questions)} data-theme={Astro.params.theme}>
+    <header class="haut">
+      <a class="fermer" href={`${base}/themes`} aria-label="Quitter le quiz">✕</a>
+      <div class="barre" role="progressbar" aria-valuemin="0" aria-valuemax={questions.length} aria-valuenow="0">
+        <div class="remplissage"></div>
+      </div>
+      <span class="compte">1/{questions.length}</span>
+    </header>
+
+    <section class="ecran-question">
+      <p class="theme">{nomTheme} · {partie.nom} · <span class="niveau"></span></p>
+      <h1 class="question"></h1>
+      <div class="goupil"><Goupil taille={90} /></div>
+      <div class="choix" role="radiogroup"></div>
+    </section>
+
+    <section class="ecran-fin" hidden>
+      <Goupil taille={130} />
+      <h1>Bien joué, petit goupil !</h1>
+      <p class="score"></p>
+      <a class="bouton" href={`${base}/`}>Retour au chemin</a>
+    </section>
+
+    <footer class="verdict">
+      <p class="message" aria-live="polite"></p>
+      <p class="explication"></p>
+      <button class="bouton valider" disabled>Valider</button>
+    </footer>
+  </main>
+</Base>
+
+<script>
+  import { noterQuiz } from '../../../scripts/progres';
+  type Q = { q: string; choix: string[]; juste: number; niveau: string; explication: string; source: string };
+  const racine = document.querySelector<HTMLElement>('.quiz')!;
+  const questions: Q[] = JSON.parse(racine.dataset.questions!);
+  const titre = racine.querySelector('.question')!;
+  const zoneChoix = racine.querySelector('.choix')!;
+  const bouton = racine.querySelector<HTMLButtonElement>('.valider')!;
+  const verdict = racine.querySelector<HTMLElement>('.verdict')!;
+  const message = racine.querySelector('.message')!;
+  const barre = racine.querySelector<HTMLElement>('.barre')!;
+  const remplissage = racine.querySelector<HTMLElement>('.remplissage')!;
+  const compte = racine.querySelector('.compte')!;
+  const niveau = racine.querySelector('.niveau')!;
+  const explication = racine.querySelector('.explication')!;
+
+  let i = 0, choisi = -1, corrige = false, bonnes = 0;
+
+  function afficher() {
+    const { q, choix } = questions[i];
+    titre.textContent = q;
+    compte.textContent = `${i + 1}/${questions.length}`;
+    niveau.textContent = questions[i].niveau;
+    zoneChoix.innerHTML = '';
+    choix.forEach((texte, n) => {
+      const b = document.createElement('button');
+      b.className = 'reponse';
+      b.textContent = texte;
+      b.setAttribute('role', 'radio');
+      b.setAttribute('aria-checked', 'false');
+      b.addEventListener('click', () => {
+        if (corrige) return;
+        choisi = n;
+        zoneChoix.querySelectorAll('.reponse').forEach((x, k) => x.setAttribute('aria-checked', String(k === n)));
+        bouton.disabled = false;
+      });
+      zoneChoix.append(b);
+    });
+    choisi = -1; corrige = false;
+    bouton.disabled = true;
+    bouton.textContent = 'Valider';
+    verdict.className = 'verdict';
+    message.textContent = '';
+    explication.textContent = '';
+  }
+
+  bouton.addEventListener('click', () => {
+    if (!corrige) {
+      const { juste, choix } = questions[i];
+      const ok = choisi === juste;
+      if (ok) bonnes++;
+      corrige = true;
+      const boutons = zoneChoix.querySelectorAll('.reponse');
+      boutons[juste].classList.add('juste');
+      if (!ok) boutons[choisi].classList.add('faux');
+      verdict.className = `verdict ${ok ? 'ok' : 'rate'}`;
+      message.textContent = ok ? 'Bravo, rusé goupil !' : `La bonne réponse : ${choix[juste]}`;
+      explication.textContent = `${questions[i].explication} (Source : ${questions[i].source})`;
+      bouton.textContent = 'Continuer';
+      const fait = i + 1;
+      remplissage.style.width = `${(fait / questions.length) * 100}%`;
+      barre.setAttribute('aria-valuenow', String(fait));
+      return;
+    }
+    i++;
+    if (i < questions.length) return afficher();
+    racine.querySelector<HTMLElement>('.ecran-question')!.hidden = true;
+    racine.querySelector<HTMLElement>('.ecran-fin')!.hidden = false;
+    noterQuiz(racine.dataset.theme!, bonnes);
+    racine.querySelector('.score')!.textContent = `${bonnes} bonne${bonnes > 1 ? 's' : ''} réponse${bonnes > 1 ? 's' : ''} sur ${questions.length}`;
+    verdict.hidden = true;
+  });
+
+  afficher();
+</script>
+
+<style>
+  .quiz { padding-bottom: 260px; }
+  .haut { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+  .fermer { text-decoration: none; font-size: 1.3rem; color: var(--encre-douce); }
+  .barre { flex: 1; height: 16px; border-radius: var(--arrondi-bouton); background: var(--sinople-clair); overflow: hidden; }
+  .remplissage { height: 100%; width: 0; background: var(--sinople); border-radius: inherit; transition: width .3s; }
+  .compte { font-weight: 600; color: var(--encre-douce); font-size: .9rem; }
+
+  .theme { margin: 0 0 8px; color: var(--sinople-fonce); font-weight: 600; font-size: .9rem; }
+  .question { font-size: 1.75rem; }
+  .goupil { display: flex; justify-content: center; margin: 12px 0 4px; }
+
+  .choix { display: grid; gap: 10px; }
+  .choix :global(.reponse) {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    border: 3px solid transparent;
+    border-radius: var(--arrondi);
+    background: var(--blanc);
+    font: 500 1.05rem var(--police-texte);
+    color: var(--encre);
+    text-align: left;
+    cursor: pointer;
+  }
+  .choix :global(.reponse)::before {
+    content: '';
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    border: 2px solid var(--encre-douce);
+    flex-shrink: 0;
+  }
+  .choix :global(.reponse[aria-checked='true']) { border-color: var(--sinople); background: var(--sinople-clair); }
+  .choix :global(.reponse[aria-checked='true'])::before { background: var(--sinople); border-color: var(--sinople); }
+  .choix :global(.reponse.juste) { border-color: var(--juste); background: var(--sinople-clair); }
+  .choix :global(.reponse.faux) { border-color: var(--faux); background: color-mix(in srgb, var(--faux) 15%, var(--blanc)); }
+
+  .ecran-fin { text-align: center; display: grid; justify-items: center; gap: 12px; padding-top: 40px; }
+  .ecran-fin[hidden] { display: none; }
+  .score { margin: 0 0 16px; color: var(--encre-douce); font-size: 1.1rem; }
+
+  .verdict {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    padding: 16px 16px 24px;
+    background: var(--creme);
+  }
+  .verdict > * { max-width: 448px; margin-left: auto; margin-right: auto; }
+  .message { margin: 0 auto 6px; font-weight: 700; min-height: 1.4em; }
+  .explication { margin: 0 auto 12px; font-size: .92rem; color: var(--encre); }
+  .explication:empty { display: none; }
+  .verdict.ok { background: var(--sinople-clair); }
+  .verdict.ok .message { color: var(--sinople-fonce); }
+  .verdict.rate { background: color-mix(in srgb, var(--faux) 15%, var(--creme)); }
+  .verdict.rate .message { color: var(--faux); }
+  .verdict.rate .bouton { background: var(--faux); box-shadow: 0 var(--epaisseur-ombre) 0 color-mix(in srgb, var(--faux) 70%, black); }
+  .verdict[hidden] { display: none; }
+</style>

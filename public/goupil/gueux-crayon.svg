@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Le goupil gueux, style crayon : houppelande rapiécée et baluchon (d'après la référence de Marie-Ange). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 260">
+<defs>
+  <filter id="crayon" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency="1.2" numOctaves="2" seed="2" result="grain" />
+    <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -0.55 1.2" result="masque" />
+    <feComposite in="SourceGraphic" in2="masque" operator="in" result="texture" />
+    <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="5" result="onde" />
+    <feDisplacementMap in="texture" in2="onde" scale="5" />
+  </filter>
+  <filter id="trait"><feTurbulence type="fractalNoise" baseFrequency="0.04" seed="8" result="o" /><feDisplacementMap in="SourceGraphic" in2="o" scale="4" /></filter>
+</defs>
+  <ellipse cx="150" cy="232" rx="118" ry="15" fill="#dcd8cf" filter="url(#crayon)" />
+  <g filter="url(#crayon)">
+    <path d="M192 208q70 6 84-56 6-34-20-48 12 20 4 40-4 8 2 16-10-4-14 6 4 10-6 14-8-6-14 2 2 10-10 12-14 2-28 14z" fill="#e8772e" />
+    <path d="M256 104q30 12 20 50-6-8-8-14-2 8-6 10-2-12 0-22-4-14-6-24z" fill="#fff4e3" />
+    <path d="M60 232 46 78" stroke="#8a5a32" stroke-width="7" stroke-linecap="round" />
+    <path d="M48 96q-30 0-30 26 0 22 30 22 30 0 30-22 0-26-30-26z" fill="#c8402f" /><path d="M40 96l8-12 8 12z" fill="#c8402f" />
+    
+    <path d="M86 226q-12-82 40-104 26-10 52 0 50 22 38 104z" fill="#8a6a45" />
+    <rect x="160" y="168" width="26" height="22" rx="4" fill="#b8925e" transform="rotate(10 173 179)" />
+    
+    
+    <path d="M124 124q26 18 52 0l-26 34z" fill="#fff4e3" />
+    <path d="M128 94q-26 6-48 24-8 8 0 12 30 10 62 10z" fill="#e8772e" />
+    <path d="M80 130q30 10 62 10-8 10-28 8-20-4-34-18z" fill="#fff4e3" />
+    <path d="M118 112q-2-48 40-50 42 4 40 46-2 26-30 34-30 4-50-30z" fill="#e8772e" />
+    <path d="M160 112l38 4-12 8 16 8-14 4 6 8-30-4q-14-8-4-28z" fill="#fff4e3" />
+    <path d="M124 80 112 18l38 44zM170 64l22-48 6 62z" fill="#e8772e" />
+    <path d="M126 70 118 32l20 24zM176 62l14-32 3 36z" fill="#fff4e3" />
+    <path d="M112 18l4 20 8-8zM192 16l-6 18 9-4z" fill="#1e1b16" />
+    
+    <path d="M124 80 112 18l38 44zM170 64l22-48 6 62z" fill="#e8772e" />
+    <path d="M126 70 118 32l20 24zM176 62l14-32 3 36z" fill="#fff4e3" />
+    <path d="M112 18l4 20 8-8zM192 16l-6 18 9-4z" fill="#1e1b16" />
+    
+    <path d="M60 170q-22-4-12 20 8 12 24 2z" fill="#2b2118" />
+    <path d="M108 222q-4 18 14 18 16 0 12-18zM166 222q-4 18 14 18 16 0 12-18z" fill="#2b2118" />
+  </g>
+  <g filter="url(#trait)" stroke="#1e1b16" stroke-linecap="round" fill="none" stroke-width="5.5">
+    <path d="M128 92q6-6 12 0-6 5-12 0z" fill="#1e1b16" stroke-width="3" />
+    <path d="M160 90q8-5 16 0M158 80q8-6 18-2" />
+    <ellipse cx="82" cy="122" rx="5" ry="4" fill="#1e1b16" stroke-width="3" />
+    <path d="M88 130q18 6 40 4" stroke-width="3.5" />
+    <path d="M166 172l16 3M164 182l16 3" stroke-width="3" /><path d="M36 112q12 8 24 0" stroke-width="4" />
+    <path d="M118 194q6 12 4 26M196 192q-2 14 2 26" />
+    <path d="M150 140v8" stroke-width="3" />
+  </g>
+  <path d="M104 134q4 8 0 12-5-3 0-12z" fill="#ef8fa2" />
+</svg>

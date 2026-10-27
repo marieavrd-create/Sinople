@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Goupil chevalier, dessin au trait façon livre à colorier, seule la bannière en couleur (proposition de Claude). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -36 200 296">
+  <g stroke="#2b2118" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- bannière de sinople sur sa hampe -->
+    <path d="M172 -24C144-36 120-14 86-28l14 22-18 20c36 10 60-10 86 4z" fill="#3fae68" />
+    <path d="M152 -18c-14 6-28 8-44 4" fill="none" stroke="#e3b448" stroke-width="3" />
+    <line x1="176" y1="-28" x2="148" y2="250" stroke-width="7" />
+    <line x1="176" y1="-28" x2="148" y2="250" stroke="#fffdf7" stroke-width="3.5" />
+    <circle cx="176" cy="-29" r="6" fill="#e3b448" />
+
+    <!-- queue -->
+    <path d="M80 186C42 178 14 206 20 238c14-10 28-10 40-6-4-16 6-32 24-36z" fill="#fffdf7" />
+    <path d="M20 238c2-12 10-20 20-22-4 10 0 16 6 16-10 0-18 2-26 6z" fill="#fffdf7" />
+
+    <!-- jambes et bottes -->
+    <line x1="86" y1="186" x2="81" y2="230" stroke-width="17" />
+    <line x1="114" y1="186" x2="121" y2="230" stroke-width="17" />
+    <line x1="86" y1="186" x2="81" y2="230" stroke="#fffdf7" stroke-width="10" />
+    <line x1="114" y1="186" x2="121" y2="230" stroke="#fffdf7" stroke-width="10" />
+    <ellipse cx="77" cy="236" rx="13" ry="7" fill="#fffdf7" />
+    <ellipse cx="125" cy="236" rx="13" ry="7" fill="#fffdf7" />
+
+    <!-- tunique à pans dentelés -->
+    <path d="M74 118q26-12 52 0l14 68-10 8-10-8-10 8-10-8-10 8-10-8-10 8-10-8z" fill="#fffdf7" />
+    <rect x="66" y="152" width="68" height="10" rx="3" fill="#fffdf7" />
+    <rect x="94" y="149" width="12" height="16" rx="2" fill="#e3b448" />
+    <!-- écu sur la poitrine -->
+    <path d="M91 124h18v10q0 10-9 15-9-5-9-15z" fill="#3fae68" />
+    <path d="M100 128v16M93 134h14" stroke="#e3b448" stroke-width="2.5" />
+
+    <!-- bras : l'un levé en conquérant, l'autre tient la hampe -->
+    <polyline points="78,126 46,102 30,74" fill="none" stroke-width="16" />
+    <polyline points="78,126 46,102 30,74" fill="none" stroke="#fffdf7" stroke-width="9" />
+    <polyline points="122,126 158,140" fill="none" stroke-width="16" />
+    <polyline points="122,126 158,140" fill="none" stroke="#fffdf7" stroke-width="9" />
+    <circle cx="29" cy="70" r="9" fill="#fffdf7" />
+    <circle cx="160" cy="139" r="9" fill="#fffdf7" />
+
+    <!-- tête -->
+    <path d="M72 52 64 16q2-7 9-3l20 27z" fill="#fffdf7" />
+    <path d="M128 52l8-36q-2-7-9-3l-20 27z" fill="#fffdf7" />
+    <path d="M73 44 68 23l13 13z" fill="#fffdf7" stroke="none" />
+    <path d="M127 44l5-21-13 13z" fill="#fffdf7" stroke="none" />
+    <path d="M64 62q0-30 36-30t36 30q0 26-36 48-36-22-36-48z" fill="#fffdf7" />
+    <path d="M72 70q28-10 56 0-8 22-28 38-20-16-28-38z" fill="#fffdf7" />
+  </g>
+
+  <!-- yeux rusés, nez et sourire en coin -->
+  <circle cx="87" cy="60" r="9.5" fill="#fffdf7" stroke="#2b2118" stroke-width="2.5" />
+  <circle cx="113" cy="60" r="9.5" fill="#fffdf7" stroke="#2b2118" stroke-width="2.5" />
+  <circle cx="89" cy="61" r="4" fill="#2b2118" />
+  <circle cx="115" cy="61" r="5" fill="#2b2118" />
+  <circle cx="90.5" cy="59" r="1.6" fill="#fffdf7" />
+  <circle cx="116.5" cy="59" r="1.6" fill="#fffdf7" />
+  <path d="M78 50l17 3M123 44l-17 7" stroke="#fffdf7" stroke-width="4" stroke-linecap="round" />
+  <ellipse cx="100" cy="98" rx="6" ry="4.5" fill="#2b2118" />
+  <path d="M90 84q8 6 20-2" fill="none" stroke="#2b2118" stroke-width="3" stroke-linecap="round" />
+</svg>

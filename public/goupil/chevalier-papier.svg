@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Goupil chevalier, style papier découpé façon collage (proposition de Claude). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -40 210 304">
+  <defs>
+    <filter id="papier" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="2" seed="4" result="bruit" />
+      <feDisplacementMap in="SourceGraphic" in2="bruit" scale="4" result="bords" />
+      <feDropShadow in="bords" dx="3" dy="4" stdDeviation="0.6" flood-color="#2b2118" flood-opacity=".35" />
+    </filter>
+  </defs>
+  <g filter="url(#papier)">
+  <polygon points="172,-26 88,-30 102,-8 84,14 168,10" fill="#3b7f57" />
+  <polygon points="172,-26 130,-28 130,12 168,10" fill="#4a9e6b" />
+  <rect x="160" y="-32" width="6" height="284" rx="3" fill="#3d3530" transform="rotate(5 163 110)" />
+  <circle cx="163" cy="-33" r="6" fill="#e3b448" />
+  <polygon points="84,188 18,236 62,226" fill="#d9733a" />
+  <polygon points="18,236 40,220 46,232" fill="#f7efe0" />
+  <rect x="78" y="184" width="12" height="46" fill="#b85f33" />
+  <rect x="110" y="184" width="12" height="46" fill="#b85f33" />
+  <path d="M70 238a14 10 0 0 1 28 0z" fill="#3d3530" />
+  <path d="M102 238a14 10 0 0 1 28 0z" fill="#3d3530" />
+  <polygon points="76,114 124,114 140,192 60,192" fill="#e9c46a" />
+  <polygon points="60,192 70,184 80,192 90,184 100,192 110,184 120,192 130,184 140,192" fill="#e9c46a" />
+  <rect x="66" y="150" width="68" height="9" fill="#3d3530" />
+  <rect x="95" y="148" width="10" height="13" fill="#e3b448" />
+  <polygon points="90,122 110,122 110,134 100,146 90,134" fill="#4a9e6b" />
+  <rect x="80" y="114" width="64" height="12" rx="6" fill="#d9733a" transform="rotate(-136 80 120)" />
+  <rect x="120" y="120" width="44" height="12" rx="6" fill="#d9733a" transform="rotate(28 120 126)" />
+  <circle cx="34" cy="76" r="8" fill="#f7efe0" />
+  <circle cx="158" cy="146" r="8" fill="#f7efe0" />
+  <polygon points="66,52 70,6 96,40" fill="#d9733a" />
+  <polygon points="134,52 130,6 104,40" fill="#d9733a" />
+  <polygon points="72,42 73,20 86,38" fill="#3d3530" />
+  <polygon points="128,42 127,20 114,38" fill="#3d3530" />
+  <polygon points="60,46 140,46 100,114" fill="#d9733a" />
+  <polygon points="74,70 126,70 100,114" fill="#f7efe0" />
+  <circle cx="86" cy="60" r="6" fill="#2a2522" />
+  <circle cx="114" cy="60" r="6" fill="#2a2522" />
+  <circle cx="88" cy="58" r="1.8" fill="#fff" />
+  <circle cx="116" cy="58" r="1.8" fill="#fff" />
+  <polygon points="94,104 106,104 100,112" fill="#2a2522" />
+</g>
+</svg>

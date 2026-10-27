@@ -1,0 +1,42 @@
+---
+// L'écran juste avant le quiz : le feu des conjurés, où l'animal du thème s'allume.
+import Base from '../../layouts/Base.astro';
+import Feu from '../../components/Feu.astro';
+import themes from '../../data/themes.json';
+
+export function getStaticPaths() {
+  return themes.map((t) => ({ params: { id: t.id }, props: { t } }));
+}
+const { t } = Astro.props as { t: (typeof themes)[number] & { lien?: string; pret?: boolean } };
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const voie = (c: string) => `Voie ${/^[AEÉIOU]/.test(c) ? "de l'" : 'du '}${c.toLowerCase()}`;
+const article = (a: string) => (/^[aeéiou]/i.test(a) ? "l'" : ['pie', 'grenouille'].includes(a) ? 'la ' : 'le ') + a;
+---
+<Base titre={t.nom} fond="#191826">
+  <main class="ecran">
+    <a class="retour" href={`${base}/themes`} aria-label="Revenir au choix des quiz">←</a>
+    <Feu actif={t.animal === 'bélier' ? 'belier' : t.animal} />
+    <section class="texte">
+      <p class="animal">{article(t.animal)} s'approche du feu</p>
+      <h1>{t.nom}</h1>
+      <p class="matieres">{t.matieres}</p>
+      <p class="voie">{voie(t.carriere)}</p>
+      {t.pret
+        ? <a class="bouton" href={`${base}/${t.lien ?? 'quiz/demo'}`}>Commencer le quiz</a>
+        : <p class="bientot">Ce quiz arrive bientôt</p>}
+    </section>
+  </main>
+</Base>
+
+<style>
+  .ecran { min-height: 100dvh; color: var(--creme); text-align: center; position: relative; padding-bottom: 120px; }
+  .retour { position: absolute; top: 12px; left: 16px; z-index: 1; color: var(--creme); text-decoration: none; font-size: 1.5rem; }
+  .texte { max-width: 448px; margin: 0 auto; padding: 8px 16px; display: grid; justify-items: center; gap: 6px; }
+  .texte p { margin: 0; }
+  .animal { font: italic 1.1rem var(--police-recit); color: var(--or); }
+  h1 { font-size: 2rem; margin: 0; }
+  .matieres { opacity: .85; }
+  .voie { font-size: .9rem; color: var(--montagne-1); margin-bottom: 18px !important; }
+  .bouton { max-width: 320px; width: 100%; }
+  .bientot { padding: 14px 20px; border-radius: var(--arrondi-bouton); background: rgb(255 255 255 / .08); }
+</style>

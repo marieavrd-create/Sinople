@@ -1,0 +1,13 @@
+{
+  "name": "Sinople",
+  "short_name": "Sinople",
+  "description": "Le goupil gueux devient noble par la ruse et le savoir.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#1d1f4a",
+  "theme_color": "#1d1f4a",
+  "icons": [
+    { "src": "icones/icone-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icones/icone-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

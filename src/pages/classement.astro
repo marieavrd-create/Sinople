@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import Goupil from '../components/Goupil.astro';
+---
+<Base titre="Classement">
+  <main class="page vide">
+    <Goupil taille={120} />
+    <h1>Le classement arrive bientôt</h1>
+    <p>Il faudra d'abord créer les comptes des joueurs. C'est la prochaine étape.</p>
+  </main>
+</Base>
+
+<style>
+  .vide { text-align: center; display: grid; justify-items: center; gap: 12px; padding-top: 72px; }
+  p { color: var(--encre-douce); margin: 0; max-width: 32ch; }
+</style>
