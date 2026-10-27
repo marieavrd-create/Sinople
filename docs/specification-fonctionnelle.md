@@ -76,7 +76,7 @@ Trois types, tous avec une **explication** et une **source** affichées après l
 - Le joueur a **5 vies** (des bûches, pour rester dans l'histoire).
 - Une mauvaise réponse en leçon fait perdre une vie : une bûche du feu se consume. À zéro vie, **le feu s'éteint**
   (les animaux restent dans l'ombre autour des braises) et on ne peut plus commencer de leçon jusqu'à ce qu'une vie revienne.
-- Les vies reviennent avec le temps : **une vie toutes les 30 minutes** **[à valider]**.
+- Les vies reviennent avec le temps : **une vie toutes les 30 minutes**.
 - On regagne aussi une vie en faisant une **révision** (§ 8), ce qui donne une façon de continuer à jouer en apprenant.
 - Le quiz du jour et la révision ne coûtent pas de vie.
 
@@ -175,7 +175,6 @@ Trois types, tous avec une **explication** et une **source** affichées après l
 ## 16. Questions encore ouvertes
 
 1. Les noms des grades (§ 4), des ligues (§ 9) et des grades de règne (§ 10).
-2. La recharge des vies : une toutes les 30 minutes ?
-3. Le gel de série.
-4. Connexion par e-mail seulement, ou aussi avec Google ?
-5. Un modèle économique un jour (dons, abonnement sans pub), ou gratuit pour toujours ?
+2. Le gel de série.
+3. Connexion par e-mail seulement, ou aussi avec Google ?
+4. Un modèle économique un jour (dons, abonnement sans pub), ou gratuit pour toujours ?
