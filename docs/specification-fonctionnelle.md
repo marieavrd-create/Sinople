@@ -104,8 +104,8 @@ Trois types, tous avec une **explication** et une **source** affichées après l
 
 - Une fois sur le trône, le joueur continue à jouer. Le site ajoute régulièrement du contenu par **mises à jour**,
   à la manière de Candy Crush : nouvelles leçons, nouveaux thèmes ou nouveaux animaux, événements temporaires.
-- Le renard roi continue de monter dans des **grades de règne** aux titres pompeux, du côté de la magie et du savoir
-  **[à valider]** : Roi, Sage, Mage, Archimage, Grand Mage suprême, Esprit universel.
+- Le renard roi continue de monter dans des **grades de règne** aux titres pompeux, du côté de la magie et du savoir :
+  Roi, Sage, Mage, Archimage, Grand Mage suprême, Esprit universel.
 - Les joueurs qui ont fini restent dans les ligues.
 
 ## 11. Compte et partie sans compte
