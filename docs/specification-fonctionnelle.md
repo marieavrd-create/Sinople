@@ -96,7 +96,7 @@ Trois types, tous avec une **explication** et une **source** affichées après l
 - Les points servent à deux choses : le **total** (affiché sur l'accueil) et la **ligue de la semaine**.
 - **Les ligues** : chaque semaine, les joueurs sont répartis en groupes d'environ 30. Le lundi, les meilleurs de chaque
   groupe montent dans la ligue supérieure, les derniers descendent. Les ligues portent les couleurs du blason, de la
-  plus modeste à la plus haute **[à valider]** : Sable, Argent, Or, Gueules, Azur, et enfin **Sinople**.
+  plus modeste à la plus haute : Sable, Argent, Or, Gueules, Azur, et enfin **Sinople**.
 - Seuls les joueurs avec un compte apparaissent dans les ligues et les classements.
 - Les classements affichent le pseudo et l'animal ou le grade le plus élevé, jamais l'adresse e-mail.
 
@@ -175,6 +175,6 @@ Trois types, tous avec une **explication** et une **source** affichées après l
 
 ## 16. Questions encore ouvertes
 
-1. Les noms des grades (§ 4), des ligues (§ 9) et des grades de règne (§ 10).
+1. Les noms des grades (§ 4) et des grades de règne (§ 10).
 2. Connexion par e-mail seulement, ou aussi avec Google ?
 3. Un modèle économique un jour (dons, abonnement sans pub), ou gratuit pour toujours ?
