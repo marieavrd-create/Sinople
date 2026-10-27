@@ -1,6 +1,6 @@
 # Sinople : spécification fonctionnelle
 
-Version 1, 27 octobre 2026. Rédigée à partir des décisions de Marie-Ange.
+Version 1, 27 octobre 2026. Rédigée à partir des décisions de Marie-Ange, et validée par elle le même jour.
 Les points marqués **[à valider]** sont des propositions qui attendent son accord.
 
 ## 1. Le projet en une phrase
@@ -29,8 +29,7 @@ rallie les animaux du royaume autour de son feu pour faire tomber le roi lion.
 
 Neuf thèmes, chacun avec son animal. Le renard porte la culture générale (toutes les matières mélangées).
 
-Chaque animal a **6 grades**. Le dernier grade est sa carrière, déjà décidée. Les noms des grades intermédiaires
-sont des propositions **[à valider]**.
+Chaque animal a **6 grades**. Le dernier grade est sa carrière. Les noms sont modifiables dans `src/data/themes.json`.
 
 | Thème | Animal | Grade 1 | Grade 2 | Grade 3 | Grade 4 | Grade 5 | Grade 6 (carrière) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -176,4 +175,4 @@ Trois types, tous avec une **explication** et une **source** affichées après l
 
 ## 16. Questions encore ouvertes
 
-1. Les noms des grades des animaux (§ 4).
+1. Les décors du feu au-delà des bannières (§ 3), à imaginer avec les dessins.
