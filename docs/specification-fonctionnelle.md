@@ -83,7 +83,8 @@ Trois types, tous avec une **explication** et une **source** affichées après l
 ## 8. Revenir chaque jour
 
 - **La série** : nombre de jours d'affilée où l'on a terminé au moins une leçon. Elle est représentée par la flamme
-  du feu. Une journée manquée la remet à zéro **[à valider : un « gel » de série gagné en jouant, comme sur Duolingo]**.
+  du feu. Une journée manquée la remet à zéro, sauf si l'on a un **gel de série** : il se gagne en jouant
+  (par exemple 7 jours de série d'affilée) et protège une journée manquée, comme sur Duolingo.
 - **Le quiz du jour** : 10 questions, les mêmes pour tout le monde ce jour-là, tous thèmes mélangés.
   Un seul essai par jour. Son score a un petit classement du jour.
 - **La révision** : un paquet de questions que le joueur a ratées, reposées plus tard pour mieux les retenir.
@@ -175,6 +176,5 @@ Trois types, tous avec une **explication** et une **source** affichées après l
 ## 16. Questions encore ouvertes
 
 1. Les noms des grades (§ 4), des ligues (§ 9) et des grades de règne (§ 10).
-2. Le gel de série.
-3. Connexion par e-mail seulement, ou aussi avec Google ?
-4. Un modèle économique un jour (dons, abonnement sans pub), ou gratuit pour toujours ?
+2. Connexion par e-mail seulement, ou aussi avec Google ?
+3. Un modèle économique un jour (dons, abonnement sans pub), ou gratuit pour toujours ?
