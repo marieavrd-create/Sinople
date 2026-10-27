@@ -153,7 +153,8 @@ Trois types, tous avec une **explication** et une **source** affichées après l
   pour éviter la triche.
 - **Vie privée (RGPD)** : on ne collecte que le pseudo, l'e-mail et la progression ; pas de publicité ni de traceurs
   au départ ; suppression du compte possible à tout moment ; page de confidentialité claire.
-- **Gratuit** au départ **[à valider : modèle économique plus tard ?]**.
+- **Gratuit** au départ. Un modèle économique est possible plus tard (dons, abonnement sans publicité…) ;
+  le site doit pouvoir l'accueillir sans tout refaire, mais rien n'est construit pour ça au début.
 
 ## 15. Ce qui vient d'abord : la première version jouable
 
@@ -176,4 +177,3 @@ Trois types, tous avec une **explication** et une **source** affichées après l
 ## 16. Questions encore ouvertes
 
 1. Les noms des grades des animaux (§ 4).
-2. Un modèle économique un jour (dons, abonnement sans pub), ou gratuit pour toujours ?
