@@ -175,6 +175,6 @@ Trois types, tous avec une **explication** et une **source** affichées après l
 
 ## 16. Questions encore ouvertes
 
-1. Les noms des grades (§ 4) et des grades de règne (§ 10).
+1. Les noms des grades des animaux (§ 4).
 2. Connexion par e-mail seulement, ou aussi avec Google ?
 3. Un modèle économique un jour (dons, abonnement sans pub), ou gratuit pour toujours ?
