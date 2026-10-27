@@ -57,7 +57,7 @@ Le roi est le lion.
 - La difficulté monte au fil du chemin : les premières étapes ont surtout des questions faciles, les dernières
   surtout des difficiles (les questions ont déjà un niveau facile, moyen ou difficile).
 - On peut rejouer une leçon déjà réussie pour gagner des points, sans limite.
-- **[à valider]** Un joueur qui connaît déjà bien un thème peut tenter l'épreuve d'une étape pour sauter directement
+- Un joueur qui connaît déjà bien un thème peut tenter l'épreuve d'une étape pour sauter directement
   au grade suivant.
 
 ## 6. Les types de questions
@@ -175,6 +175,6 @@ Trois types, tous avec une **explication** et une **source** affichées après l
 
 1. Les noms des grades (§ 4), des ligues (§ 9) et des grades de règne (§ 10).
 2. Le réglage des vies : 5 vies, une toutes les 30 minutes ?
-3. Le gel de série et le saut d'étape par épreuve.
+3. Le gel de série.
 4. Connexion par e-mail seulement, ou aussi avec Google ?
 5. Un modèle économique un jour (dons, abonnement sans pub), ou gratuit pour toujours ?
