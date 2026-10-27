@@ -73,7 +73,7 @@ Trois types, tous avec une **explication** et une **source** affichées après l
 
 ## 7. Les vies
 
-- Le joueur a **5 vies** (des bûches, pour rester dans l'histoire) **[à valider]**.
+- Le joueur a **5 vies** (des bûches, pour rester dans l'histoire).
 - Une mauvaise réponse en leçon fait perdre une vie. À zéro vie, on ne peut plus commencer de leçon.
 - Les vies reviennent avec le temps : **une vie toutes les 30 minutes** **[à valider]**.
 - On regagne aussi une vie en faisant une **révision** (§ 8), ce qui donne une façon de continuer à jouer en apprenant.
@@ -174,7 +174,7 @@ Trois types, tous avec une **explication** et une **source** affichées après l
 ## 16. Questions encore ouvertes
 
 1. Les noms des grades (§ 4), des ligues (§ 9) et des grades de règne (§ 10).
-2. Le réglage des vies : 5 vies, une toutes les 30 minutes ?
+2. La recharge des vies : une toutes les 30 minutes ?
 3. Le gel de série.
 4. Connexion par e-mail seulement, ou aussi avec Google ?
 5. Un modèle économique un jour (dons, abonnement sans pub), ou gratuit pour toujours ?
