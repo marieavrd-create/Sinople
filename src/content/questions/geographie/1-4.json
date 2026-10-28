@@ -1,0 +1,116 @@
+{
+  "id": "geographie-1-4",
+  "theme": "geographie",
+  "etape": 1,
+  "lecon": 4,
+  "titre": "Les capitales du monde",
+  "intro": "Plus loin que les voisins : les capitales qu'on confond.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "geo-cap-0008",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle est la capitale du Canada ?",
+      "choix": [
+        "Toronto",
+        "Montréal",
+        "Ottawa",
+        "Vancouver"
+      ],
+      "juste": 2,
+      "explication": "Ottawa, en Ontario, est la capitale du Canada ; Toronto est la plus grande ville du pays.",
+      "source": "The World Factbook (CIA), fiche « Canada », rubrique Government › Capital"
+    },
+    {
+      "id": "geo-cap-0009",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle est la capitale de l'Australie ?",
+      "choix": [
+        "Canberra",
+        "Sydney",
+        "Melbourne",
+        "Perth"
+      ],
+      "juste": 0,
+      "explication": "Canberra a été construite pour devenir la capitale, à mi-chemin entre Sydney et Melbourne qui se disputaient ce rôle.",
+      "source": "The World Factbook (CIA), fiche « Australia », rubrique Government › Capital"
+    },
+    {
+      "id": "geo-cap-0010",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle est la capitale du Brésil ?",
+      "choix": [
+        "Rio de Janeiro",
+        "São Paulo",
+        "Salvador",
+        "Brasília"
+      ],
+      "juste": 3,
+      "explication": "Brasília, ville nouvelle inaugurée en 1960, a remplacé Rio de Janeiro comme capitale du Brésil.",
+      "source": "The World Factbook (CIA), fiche « Brazil », rubrique Government › Capital"
+    },
+    {
+      "id": "geo-cap-0011",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle est la capitale des États-Unis ?",
+      "choix": [
+        "New York",
+        "Washington",
+        "Philadelphie",
+        "Los Angeles"
+      ],
+      "juste": 1,
+      "explication": "Washington, dans le district de Columbia, est la capitale fédérale des États-Unis.",
+      "source": "The World Factbook (CIA), fiche « United States », rubrique Government › Capital"
+    },
+    {
+      "id": "geo-cap-0012",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle est la capitale du Maroc ?",
+      "choix": [
+        "Casablanca",
+        "Marrakech",
+        "Rabat",
+        "Fès"
+      ],
+      "juste": 2,
+      "explication": "Rabat est la capitale du Maroc ; Casablanca en est la plus grande ville.",
+      "source": "The World Factbook (CIA), fiche « Morocco », rubrique Government › Capital"
+    },
+    {
+      "id": "geo-cap-0013",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle est la capitale de la Turquie ?",
+      "choix": [
+        "Ankara",
+        "Istanbul",
+        "Izmir",
+        "Antalya"
+      ],
+      "juste": 0,
+      "explication": "Ankara est la capitale de la Turquie depuis 1923 ; Istanbul en est la plus grande ville.",
+      "source": "The World Factbook (CIA), fiche « Turkey (Turkiye) », rubrique Government › Capital"
+    },
+    {
+      "id": "geo-cap-0014",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle est la capitale du Japon ?",
+      "choix": [
+        "Kyoto",
+        "Osaka",
+        "Yokohama",
+        "Tokyo"
+      ],
+      "juste": 3,
+      "explication": "Tokyo est la capitale du Japon ; Kyoto fut la résidence impériale pendant plus de mille ans.",
+      "source": "The World Factbook (CIA), fiche « Japan », rubrique Government › Capital"
+    }
+  ]
+}

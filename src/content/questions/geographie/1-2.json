@@ -1,0 +1,116 @@
+{
+  "id": "geographie-1-2",
+  "theme": "geographie",
+  "etape": 1,
+  "lecon": 2,
+  "titre": "Les fleuves de France",
+  "intro": "Le vagabond suit l'eau : chaque fleuve mène quelque part.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "geo-fle-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel fleuve traverse Paris ?",
+      "choix": [
+        "La Seine",
+        "La Loire",
+        "La Marne",
+        "Le Rhône"
+      ],
+      "juste": 0,
+      "explication": "La Seine traverse Paris d'est en ouest avant de rejoindre la Manche.",
+      "source": "Encyclopédie Larousse, article « Seine »"
+    },
+    {
+      "id": "geo-fle-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel est le plus long fleuve coulant entièrement en France ?",
+      "choix": [
+        "La Seine",
+        "La Garonne",
+        "Le Rhône",
+        "La Loire"
+      ],
+      "juste": 3,
+      "explication": "La Loire, longue de plus de 1 000 km, naît au mont Gerbier-de-Jonc et se jette dans l'Atlantique.",
+      "source": "Encyclopédie Larousse, article « Loire »"
+    },
+    {
+      "id": "geo-fle-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel fleuve traverse Bordeaux ?",
+      "choix": [
+        "La Dordogne",
+        "La Garonne",
+        "La Charente",
+        "La Loire"
+      ],
+      "juste": 1,
+      "explication": "Bordeaux est bâtie sur la Garonne, qui rejoint ensuite la Dordogne pour former l'estuaire de la Gironde.",
+      "source": "Encyclopédie Larousse, article « Garonne »"
+    },
+    {
+      "id": "geo-fle-0004",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Dans quelle mer se jette le Rhône ?",
+      "choix": [
+        "La Manche",
+        "La mer du Nord",
+        "La Méditerranée",
+        "L'océan Atlantique"
+      ],
+      "juste": 2,
+      "explication": "Le Rhône se jette dans la Méditerranée par un delta qui enserre la Camargue.",
+      "source": "Encyclopédie Larousse, article « Rhône »"
+    },
+    {
+      "id": "geo-fle-0005",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "À Lyon, le Rhône reçoit les eaux de quelle rivière ?",
+      "choix": [
+        "La Saône",
+        "L'Isère",
+        "La Durance",
+        "L'Ain"
+      ],
+      "juste": 0,
+      "explication": "La Saône rejoint le Rhône à Lyon, au quartier du Confluent.",
+      "source": "Encyclopédie Larousse, article « Saône »"
+    },
+    {
+      "id": "geo-fle-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Où se jette la Seine ?",
+      "choix": [
+        "Dans l'océan Atlantique",
+        "Dans la mer du Nord",
+        "Dans la Manche",
+        "Dans la Méditerranée"
+      ],
+      "juste": 2,
+      "explication": "La Seine se jette dans la Manche par un estuaire, entre Le Havre et Honfleur.",
+      "source": "Encyclopédie Larousse, article « Seine »"
+    },
+    {
+      "id": "geo-fle-0007",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Sur une partie de son cours, le Rhin sépare la France de quel pays ?",
+      "choix": [
+        "La Belgique",
+        "L'Allemagne",
+        "L'Italie",
+        "L'Espagne"
+      ],
+      "juste": 1,
+      "explication": "En Alsace, le Rhin marque la frontière entre la France et l'Allemagne.",
+      "source": "Encyclopédie Larousse, article « Rhin »"
+    }
+  ]
+}

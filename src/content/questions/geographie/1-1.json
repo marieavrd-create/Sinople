@@ -1,0 +1,116 @@
+{
+  "id": "geographie-1-1",
+  "theme": "geographie",
+  "etape": 1,
+  "lecon": 1,
+  "titre": "Les capitales d'Europe",
+  "intro": "Premiers pas du vagabond : les capitales des voisins.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "geo-cap-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle est la capitale de l'Espagne ?",
+      "choix": [
+        "Barcelone",
+        "Madrid",
+        "Séville",
+        "Valence"
+      ],
+      "juste": 1,
+      "explication": "Madrid est la capitale de l'Espagne et sa plus grande ville.",
+      "source": "The World Factbook (CIA), fiche « Spain », rubrique Government › Capital"
+    },
+    {
+      "id": "geo-cap-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle est la capitale de l'Italie ?",
+      "choix": [
+        "Milan",
+        "Naples",
+        "Rome",
+        "Turin"
+      ],
+      "juste": 2,
+      "explication": "Rome est la capitale de l'Italie depuis 1871.",
+      "source": "The World Factbook (CIA), fiche « Italy », rubrique Government › Capital"
+    },
+    {
+      "id": "geo-cap-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle est la capitale du Portugal ?",
+      "choix": [
+        "Lisbonne",
+        "Porto",
+        "Coimbra",
+        "Faro"
+      ],
+      "juste": 0,
+      "explication": "Lisbonne, à l'embouchure du Tage, est la capitale du Portugal.",
+      "source": "The World Factbook (CIA), fiche « Portugal », rubrique Government › Capital"
+    },
+    {
+      "id": "geo-cap-0004",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle est la capitale de la Belgique ?",
+      "choix": [
+        "Anvers",
+        "Liège",
+        "Gand",
+        "Bruxelles"
+      ],
+      "juste": 3,
+      "explication": "Bruxelles est la capitale de la Belgique ; elle accueille aussi les principales institutions de l'Union européenne.",
+      "source": "The World Factbook (CIA), fiche « Belgium », rubrique Government › Capital"
+    },
+    {
+      "id": "geo-cap-0005",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle est la capitale de la Pologne ?",
+      "choix": [
+        "Cracovie",
+        "Varsovie",
+        "Gdańsk",
+        "Wrocław"
+      ],
+      "juste": 1,
+      "explication": "Varsovie, sur la Vistule, est la capitale de la Pologne ; Cracovie l'était jusqu'à la fin du XVIᵉ siècle.",
+      "source": "The World Factbook (CIA), fiche « Poland », rubrique Government › Capital"
+    },
+    {
+      "id": "geo-cap-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle ville accueille le gouvernement fédéral suisse ?",
+      "choix": [
+        "Genève",
+        "Zurich",
+        "Berne",
+        "Lausanne"
+      ],
+      "juste": 2,
+      "explication": "Berne est la « ville fédérale » : le Conseil fédéral et le Parlement y siègent, même si la Constitution ne désigne pas de capitale.",
+      "source": "The World Factbook (CIA), fiche « Switzerland », rubrique Government › Capital"
+    },
+    {
+      "id": "geo-cap-0007",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle est la capitale de la Slovénie ?",
+      "choix": [
+        "Zagreb",
+        "Bratislava",
+        "Skopje",
+        "Ljubljana"
+      ],
+      "juste": 3,
+      "explication": "Ljubljana est la capitale de la Slovénie. Zagreb est celle de la Croatie, Bratislava celle de la Slovaquie, Skopje celle de la Macédoine du Nord.",
+      "source": "The World Factbook (CIA), fiche « Slovenia », rubrique Government › Capital"
+    }
+  ]
+}
