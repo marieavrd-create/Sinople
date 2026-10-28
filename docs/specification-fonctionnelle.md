@@ -120,7 +120,7 @@ Trois types, tous avec une **explication** et une **source** affichées après l
 
 | Écran | Ce qu'on y voit |
 | --- | --- |
-| Accueil (le feu des conjurés) | Le feu, les animaux ralliés, le château du lion au loin ; points, série, grade du renard ; bouton pour jouer. Existe déjà. |
+| Accueil (le feu des conjurés) | Le feu, les animaux ralliés, le château du lion au loin ; points, série, grade du renard ; bouton pour jouer. **Tient dans un seul écran, sans défilement**, sur téléphone comme sur ordinateur. Existe déjà. |
 | Choix du thème | Les 9 thèmes avec leur animal et leur grade actuel. Existe déjà. |
 | Chemin du thème | Les étapes et leçons, celles faites, la prochaine, l'épreuve de grade. À créer. |
 | Leçon | Une question à la fois, vies, barre d'avancement, réponse, explication et source. Existe pour le QCM. |
