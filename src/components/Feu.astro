@@ -81,19 +81,19 @@ const pierres = Array.from({ length: 14 }, (_, i) => {
     <radialGradient id="feu-lueur"><stop offset="0" stop-color="#ffb04a" stop-opacity=".6" /><stop offset="1" stop-color="#ffb04a" stop-opacity="0" /></radialGradient>
     <radialGradient id="feu-halo"><stop offset="0" stop-color="#ffe2a0" stop-opacity=".55" /><stop offset="1" stop-color="#ffe2a0" stop-opacity="0" /></radialGradient>
   </defs>
-  <rect width="600" height="360" fill="url(#feu-ciel)" />
+  <rect x="-1000" width="2600" height="360" fill="url(#feu-ciel)" />
   <g class="loin">
   <g fill="#fff" opacity=".7"><circle cx="80" cy="115" r="1.2" /><circle cx="200" cy="130" r="1" /><circle cx="520" cy="110" r="1.3" /><circle cx="300" cy="112" r="1" /></g>
   <circle cx="220" cy="135" r="18" fill="#f6edd0" opacity=".9" />
   <!-- le château du roi lion, au loin -->
-  <path d="M0 210 120 160 230 190 340 140 450 170 600 130V360H0Z" fill="#3a2f5e" />
+  <path d="M-1000 190 0 210 120 160 230 190 340 140 450 170 600 130 1600 170V360H-1000Z" fill="#3a2f5e" />
   <g transform="translate(0 50)">
   <g fill="#2a2248"><rect x="430" y="96" width="44" height="50" /><rect x="420" y="80" width="12" height="66" /><rect x="472" y="80" width="12" height="66" /><path d="M420 80l6-12 6 12zM472 80l6-12 6 12zM444 96l8-18 8 18z" /></g>
   <path d="M452 78v-12l12 4-12 4" fill="#e3b448" />
   </g>
   </g>
-  <g class="milieu"><path d="M0 260 150 236 300 250 450 232 600 250V360H0Z" fill="#2a2a44" /></g>
-  <path d="M0 300Q300 280 600 300V360H0Z" fill="#191826" />
+  <g class="milieu"><path d="M-1000 250 0 260 150 236 300 250 450 232 600 250 1600 240V360H-1000Z" fill="#2a2a44" /></g>
+  <path d="M-1000 300H0Q300 280 600 300H1600V360H-1000Z" fill="#191826" />
   <ellipse cx="300" cy="320" rx="260" ry="70" fill="url(#feu-lueur)" />
 
   <g class="bannieres">
@@ -129,6 +129,8 @@ const pierres = Array.from({ length: 14 }, (_, i) => {
 
 <style>
   .feu { display: block; width: 100%; height: auto; }
+  /* accueil sur écran large : le ciel, les montagnes et le sol continuent sur les côtés */
+  .feu.accueil { overflow: visible; }
   /* gros plan sur le renard et l'animal du thème : une hauteur fixe, la scène est recadrée */
   .feu.gros-plan { height: clamp(240px, 44dvh, 440px); max-width: 680px; margin-inline: auto; }
   @media (min-width: 700px) { .feu.gros-plan { border-radius: var(--arrondi); } }

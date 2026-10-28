@@ -17,7 +17,7 @@ body {
 
 a { color: inherit; }
 
-h1, h2, h3 { line-height: 1.1; margin: 0; font-weight: 700; }
+h1, h2, h3 { line-height: 1.1; margin: 0; font-weight: 700; text-wrap: balance; }
 
 .page {
   max-width: 480px;

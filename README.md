@@ -7,6 +7,7 @@ Le site de quiz où un goupil gueux devient noble par la ruse… et le savoir.
 Tout se règle dans un seul fichier : **`src/styles/theme.css`**.
 
 - Les couleurs s'écrivent en code hexadécimal, comme dans Photoshop (`#3fae68`).
+- Le texte blanc doit rester lisible sur `--sinople` : si vous changez ce vert, gardez-le assez foncé (contraste d'au moins 4,5 avec le blanc, à vérifier sur un site comme webaim.org/resources/contrastchecker).
 - `--arrondi` règle l'arrondi des cartes (`0px` = coins carrés).
 - `--arrondi-bouton` règle l'arrondi des boutons (`999px` = pilule).
 - Les polices viennent de Google Fonts. Pour en changer, il faut aussi modifier le lien dans `src/layouts/Base.astro`.
@@ -23,6 +24,7 @@ Pour déplacer des blocs ou changer la mise en page, demandez à Claude.
 | Une leçon (adresse `quiz/<thème>/<étape>-<leçon>`) | `src/pages/quiz/[theme]/[lecon].astro` |
 | Quiz d'exemple de géographie | `src/pages/quiz/demo.astro` |
 | Classement (bientôt) | `src/pages/classement.astro` |
+| Page introuvable (404) | `src/pages/404.astro` |
 
 - Thèmes, animaux et carrières : `src/data/themes.json`.
 - Questions : une leçon par fichier dans `src/content/questions/<thème>/<étape>-<leçon>.json` (par exemple `religion/1-1.json`), avec le niveau, l'explication et la source de chaque question. Le format est décrit dans `src/lib/contenu/schema.ts`. Chaque question garde son `id` pour toujours (il sert à la révision).
