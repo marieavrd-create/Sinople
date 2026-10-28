@@ -111,6 +111,23 @@
       "juste": 3,
       "explication": "Malte est un archipel situé au sud de la Sicile ; Chypre est bien plus à l'est.",
       "source": "The World Factbook (CIA), fiche « Malta », rubrique Geography › Location"
+    },
+    {
+      "id": "geo-fro-0008",
+      "type": "saisie",
+      "niveau": "facile",
+      "q": "Cite les deux pays qui ont une frontière terrestre avec les États-Unis.",
+      "reponses": [
+        [
+          "Canada"
+        ],
+        [
+          "Mexique"
+        ]
+      ],
+      "duree_s": 30,
+      "explication": "Les États-Unis touchent le Canada au nord (Alaska compris) et le Mexique au sud.",
+      "source": "The World Factbook (CIA), fiche « United States », rubrique Geography › Land boundaries"
     }
   ]
 }

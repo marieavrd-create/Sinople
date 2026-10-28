@@ -10,13 +10,15 @@ export function enregistrerFin(fin: {
   etape: number;
   epreuve: boolean;
   reponses: Record<string, boolean>;
+  /** Points gagnés par question (une liste à taper rapporte au prorata) ; à défaut, les points d'un QCM. */
+  points?: Record<string, number>;
   /** Faux pour le quiz d'exemple, dont les questions n'entrent pas en révision. */
   reviser?: boolean;
 }): { bilan: Bilan; gradeAvant: number; gradeApres: number } {
   const maintenant = Date.now();
   const stockage = stockageNavigateur();
   const etat = lireEtat(stockage, maintenant);
-  const resultats = Object.values(fin.reponses).map((juste) => ({ juste, points: pointsQcm(juste) }));
+  const resultats = Object.entries(fin.reponses).map(([id, juste]) => ({ juste, points: fin.points?.[id] ?? pointsQcm(juste) }));
   const bilan = bilanLecon(resultats, { epreuve: fin.epreuve, joursSerie: serieDuJour(etat.profil.serie, maintenant) });
   const score = bilan.total ? Math.round((bilan.bonnes / bilan.total) * 100) : 0;
   const apres = terminerLecon(

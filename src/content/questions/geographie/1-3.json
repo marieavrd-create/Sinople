@@ -111,6 +111,40 @@
       "juste": 1,
       "explication": "Ouvert en 1869, le canal de Suez relie la Méditerranée à la mer Rouge à travers l'isthme de Suez, en Égypte.",
       "source": "Encyclopædia Britannica, article « Suez Canal »"
+    },
+    {
+      "id": "geo-mon-0008",
+      "type": "saisie",
+      "niveau": "moyen",
+      "q": "Cite les cinq océans.",
+      "reponses": [
+        [
+          "Pacifique",
+          "océan Pacifique"
+        ],
+        [
+          "Atlantique",
+          "océan Atlantique"
+        ],
+        [
+          "Indien",
+          "océan Indien"
+        ],
+        [
+          "Arctique",
+          "océan Arctique",
+          "Glacial Arctique"
+        ],
+        [
+          "Austral",
+          "océan Austral",
+          "Antarctique",
+          "océan Antarctique"
+        ]
+      ],
+      "duree_s": 60,
+      "explication": "L'océan mondial est découpé en cinq : Pacifique, Atlantique, Indien, Arctique et Austral (ou Antarctique), qui entoure l'Antarctique.",
+      "source": "NOAA (oceanservice.noaa.gov), page « How many oceans are there? »"
     }
   ]
 }

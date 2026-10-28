@@ -80,3 +80,26 @@
   .feu-eteint .fumee { animation: fumee 3s ease-in-out infinite; }
   @keyframes fumee { 50% { opacity: .3; transform: translateY(-4px); } }
 }
+
+/* Réponse à taper : un champ, et pour une liste le chrono, le compte et les cases à remplir. */
+.lecteur .saisie { display: grid; gap: 10px; }
+.lecteur .compteur { display: flex; justify-content: space-between; margin: 0; font-weight: 600; color: var(--encre-douce); font-variant-numeric: tabular-nums; }
+.lecteur .chrono { color: var(--sinople-fonce); }
+.lecteur .chrono.presse { color: var(--faux-fonce); }
+.lecteur .champ {
+  width: 100%; min-height: 56px; padding: 14px 18px; box-sizing: border-box;
+  border: 3px solid var(--sinople-clair); border-radius: var(--arrondi); background: var(--blanc);
+  font: 500 1.1rem var(--police-texte); color: var(--encre);
+}
+.lecteur .champ:focus { outline: none; border-color: var(--sinople); }
+.lecteur .champ.juste { border-color: var(--juste); background: var(--sinople-clair); }
+.lecteur .champ.faux { border-color: var(--faux); background: color-mix(in srgb, var(--faux) 15%, var(--blanc)); }
+.lecteur .astuce { margin: 0; min-height: 1.3em; font-size: .9rem; color: var(--encre-douce); }
+.lecteur .cases { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; counter-reset: case; }
+.lecteur .cases li {
+  counter-increment: case; display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 12px;
+  border-radius: 14px; background: var(--blanc); border: 2px dashed color-mix(in srgb, var(--encre) 18%, transparent); font-weight: 500;
+}
+.lecteur .cases li::before { content: counter(case); font-size: .8rem; color: var(--encre-douce); min-width: 1.2em; }
+.lecteur .cases li.trouvee { border: 2px solid var(--juste); background: var(--sinople-clair); }
+.lecteur .cases li.manquee { border: 2px solid var(--faux); background: color-mix(in srgb, var(--faux) 12%, var(--blanc)); color: var(--faux-fonce); }

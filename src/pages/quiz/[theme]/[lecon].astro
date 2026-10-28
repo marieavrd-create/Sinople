@@ -1,6 +1,6 @@
 ---
 import Base from '../../../layouts/Base.astro';
-import LecteurLecon, { type QuestionQcm } from '../../../islands/LecteurLecon';
+import LecteurLecon, { type QuestionJeu } from '../../../islands/LecteurLecon';
 import { getCollection } from 'astro:content';
 import themes from '../../../data/themes.json';
 import '../../../styles/lecteur.css';
@@ -22,9 +22,9 @@ const infosTheme = themes.find((t) => t.id === lecon.theme)!;
 const article = (a: string) => (/^[aeéiou]/i.test(a) ? "l'" : ['pie', 'grenouille'].includes(a) ? 'la ' : 'le ') + a;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const ordre = { facile: 0, moyen: 1, difficile: 2 } as Record<string, number>;
-// Les QCM seulement pour l'instant (la carte et la saisie arrivent en version 3), du plus facile au plus difficile.
-const questions: QuestionQcm[] = partie.questions
-  .flatMap((q) => (q.type === 'qcm' ? [q] : []))
+// QCM et réponses à taper (la carte arrive à l'étape 3.2), du plus facile au plus difficile.
+const questions: QuestionJeu[] = partie.questions
+  .flatMap((q) => (q.type === 'carte' ? [] : [q]))
   .sort((a, b) => ordre[a.niveau] - ordre[b.niveau]);
 ---
 <Base titre={`${nomTheme} · ${partie.nom}`} nav={false}>

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { normaliser, levenshtein, estAcceptee, trouverReponse } from '../src/lib/jeu/reponses';
+import { normaliser, levenshtein, estAcceptee, trouverReponse, trouverExacte, saisieJuste } from '../src/lib/jeu/reponses';
 import { pointsQcm, pointsCarte, pointsSaisie, distanceKm, bilanLecon } from '../src/lib/jeu/points';
 import { viesDeDepart, viesActuelles, perdreVie, viesApresRevision, prochaineVieDans } from '../src/lib/jeu/vies';
 import { jourParis, joursEntre, apresLecon, serieDuJour, serieDeDepart } from '../src/lib/jeu/serie';
@@ -34,6 +34,30 @@ describe('réponses tapées', () => {
     expect(trouverReponse('etats-unis', reponses)).toBe(2);
     expect(trouverReponse('Inde', reponses, new Set([0]))).toBe(-1);
     expect(trouverReponse('Brésil', reponses)).toBe(-1);
+  });
+
+  it('« etats unis », « États-Unis » et « USA » sont acceptés quand prévus', () => {
+    const formes = ['États-Unis', 'USA', 'Etats Unis'];
+    for (const s of ['etats unis', 'États-Unis', 'USA', 'usa', 'Etats-Unis', ' les États-Unis ']) expect(estAcceptee(s, formes)).toBe(true);
+    expect(estAcceptee('Unis', formes)).toBe(false);
+  });
+
+  it('pendant la frappe, seule une saisie exacte trouve une réponse', () => {
+    const reponses = [['Mexique'], ['Inde'], ['États-Unis', 'USA']];
+    expect(trouverExacte('Mexiqe', reponses)).toBe(-1); // une faute de frappe : pas encore trouvée pendant la frappe
+    expect(trouverReponse('Mexiqe', reponses)).toBe(0); // à la validation, la faute est tolérée
+    expect(trouverExacte('mexique', reponses)).toBe(0);
+    expect(trouverExacte('etats unis', reponses)).toBe(2);
+    expect(trouverExacte('', reponses)).toBe(-1);
+  });
+
+  it('une liste est juste à partir de 70 % des réponses, une réponse seule doit être trouvée', () => {
+    expect(saisieJuste(1, 1)).toBe(true);
+    expect(saisieJuste(0, 1)).toBe(false);
+    expect(saisieJuste(4, 5)).toBe(true);
+    expect(saisieJuste(3, 5)).toBe(false);
+    expect(saisieJuste(2, 3)).toBe(false);
+    expect(saisieJuste(3, 3)).toBe(true);
   });
 });
 

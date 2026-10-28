@@ -111,6 +111,42 @@
       "juste": 3,
       "explication": "Le Soleil est une étoile ; la suivante, Proxima du Centaure, est à plus de 4 années-lumière.",
       "source": "NASA, Science › Solar System, page « Sun »"
+    },
+    {
+      "id": "gen-cie-0008",
+      "type": "saisie",
+      "niveau": "moyen",
+      "q": "Cite les huit planètes du système solaire.",
+      "reponses": [
+        [
+          "Mercure"
+        ],
+        [
+          "Vénus"
+        ],
+        [
+          "Terre",
+          "la Terre"
+        ],
+        [
+          "Mars"
+        ],
+        [
+          "Jupiter"
+        ],
+        [
+          "Saturne"
+        ],
+        [
+          "Uranus"
+        ],
+        [
+          "Neptune"
+        ]
+      ],
+      "duree_s": 90,
+      "explication": "Dans l'ordre depuis le Soleil : Mercure, Vénus, la Terre, Mars, Jupiter, Saturne, Uranus et Neptune.",
+      "source": "NASA, Science › Solar System, page « Planets »"
     }
   ]
 }

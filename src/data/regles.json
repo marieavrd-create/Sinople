@@ -32,7 +32,8 @@
   "saisie": {
     "fautes_tolerees": 1,
     "lettres_min_pour_tolerance": 5,
-    "articles_ignores": ["le", "la", "les", "l'"]
+    "articles_ignores": ["le", "la", "les", "l'"],
+    "part_pour_juste": 0.7
   },
   "garde_fous": {
     "secondes_min_par_question": 1.5,
