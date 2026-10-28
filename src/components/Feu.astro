@@ -138,11 +138,11 @@ const pierres = Array.from({ length: 14 }, (_, i) => {
 </style>
 
 <script>
-  import { lireProgres } from '../scripts/progres';
+  import { lireEtat, stockageNavigateur } from '../lib/stockage/local';
   // Accueil : fait venir les animaux des thèmes joués et fait grandir le feu.
   for (const feu of document.querySelectorAll<SVGSVGElement>('.feu.accueil')) {
     const animaux: Record<string, string> = JSON.parse(feu.dataset.animaux!);
-    const joues = Object.keys(lireProgres()).map((t) => animaux[t]).filter((a) => a && a !== 'renard');
+    const joues = lireEtat(stockageNavigateur()).conjures.map((t) => animaux[t]).filter((a) => a && a !== 'renard');
     for (const a of joues) feu.querySelector(`[data-animal="${a}"]`)?.classList.remove('absent');
     feu.dataset.stade = joues.length >= 6 ? '3' : joues.length >= 3 ? '2' : '1';
   }
