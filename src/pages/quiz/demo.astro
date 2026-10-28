@@ -4,7 +4,8 @@ import Goupil from '../../components/Goupil.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
-// Trois questions d'exemple pour tester l'écran. Les vrais quiz de géographie,
+// Trois questions d'exemple pour tester l'écran. Elles ne comptent pas dans la progression
+// (le hibou ne vient pas au feu pour un essai). Les vrais quiz de géographie,
 // avec sources et niveaux, arrivent à l'étape 3.
 const questions = [
   { q: "Quelle est la capitale de l'Australie ?", choix: ['Sydney', 'Canberra', 'Melbourne', 'Perth'], juste: 1 },
@@ -49,7 +50,6 @@ const questions = [
 </Base>
 
 <script>
-  import { noterQuiz } from '../../scripts/progres';
   type Q = { q: string; choix: string[]; juste: number };
   const racine = document.querySelector<HTMLElement>('.quiz')!;
   const questions: Q[] = JSON.parse(racine.dataset.questions!);
@@ -142,7 +142,6 @@ const questions = [
     if (i < questions.length) return afficher();
     racine.querySelector<HTMLElement>('.ecran-question')!.hidden = true;
     racine.querySelector<HTMLElement>('.ecran-fin')!.hidden = false;
-    noterQuiz('geographie', bonnes);
     racine.querySelector('.score')!.textContent = `${bonnes} bonne${bonnes > 1 ? 's' : ''} réponse${bonnes > 1 ? 's' : ''} sur ${questions.length}`;
     verdict.hidden = true;
   });
