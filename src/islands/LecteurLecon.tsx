@@ -14,6 +14,9 @@ type Props = {
   base: string;
   nomTheme: string;
   lecon: { id: string; theme: string; etape: number; titre: string; epreuve: boolean };
+  /** Pour la scène de passage de grade : « le bélier », et les noms des 6 grades du thème. */
+  animal: string;
+  grades: string[];
   questions: QuestionQcm[];
   chemin: LeconDuChemin[];
 };
@@ -52,7 +55,7 @@ function formatDuree(ms: number) {
   return min >= 60 ? `${Math.floor(min / 60)} h ${String(min % 60).padStart(2, '0')}` : `${min} min`;
 }
 
-export default function LecteurLecon({ base, nomTheme, lecon, questions, chemin }: Props) {
+export default function LecteurLecon({ base, nomTheme, lecon, questions, chemin, animal, grades }: Props) {
   const retour = `${base}/theme/${lecon.theme}`;
   const [vies, setVies] = useState(MAX);
   const [ecran, setEcran] = useState<Ecran>('question');
@@ -61,6 +64,7 @@ export default function LecteurLecon({ base, nomTheme, lecon, questions, chemin 
   const [corrige, setCorrige] = useState(false);
   const [reponses, setReponses] = useState<Record<string, boolean>>({});
   const [bilan, setBilan] = useState<Bilan | null>(null);
+  const [promu, setPromu] = useState(0);
   const [attente, setAttente] = useState(0);
 
   // Au chargement : leçon verrouillée → retour au chemin ; plus de vie → feu éteint.
@@ -109,7 +113,9 @@ export default function LecteurLecon({ base, nomTheme, lecon, questions, chemin 
       setCorrige(false);
       return;
     }
-    setBilan(enregistrerFin({ theme: lecon.theme, leconId: lecon.id, etape: lecon.etape, epreuve: lecon.epreuve, reponses }));
+    const fin = enregistrerFin({ theme: lecon.theme, leconId: lecon.id, etape: lecon.etape, epreuve: lecon.epreuve, reponses });
+    setBilan(fin.bilan);
+    if (fin.gradeApres > fin.gradeAvant) setPromu(fin.gradeApres);
     setEcran('fin');
   }
 
@@ -140,7 +146,14 @@ export default function LecteurLecon({ base, nomTheme, lecon, questions, chemin 
           {bilan.bonusSerie > 0 && <div><dt>Série</dt><dd>+{bilan.bonusSerie}</dd></div>}
           <div class="total"><dt>Points de savoir</dt><dd>+{bilan.totalPoints}</dd></div>
         </dl>
-        <a class="bouton" href={retour}>Continuer</a>
+        {promu > 0 ? (
+          <>
+            <p class="promotion">{animal.charAt(0).toUpperCase() + animal.slice(1)} devient <strong>{grades[promu - 1]}</strong> !</p>
+            <a class="bouton" href={`${retour}?promu=${promu}`}>Voir la scène au feu</a>
+          </>
+        ) : (
+          <a class="bouton" href={retour}>Continuer</a>
+        )}
       </section>
     );
   }
