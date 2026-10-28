@@ -1,7 +1,7 @@
 // Progression du joueur gardée sur l'appareil (spécification technique § 9), en attendant les comptes.
 // La forme suit les futures tables Supabase (profil, grades, lecons_faites, revision) et porte un numéro de version :
 // quand elle change, on ajoute une étape à `migrer` au lieu de perdre la progression des joueurs.
-import { viesDeDepart, type EtatVies } from '../jeu/vies';
+import { viesDeDepart, viesApresRevision, type EtatVies } from '../jeu/vies';
 import { serieDeDepart, apresLecon, jourParis, type EtatSerie } from '../jeu/serie';
 import { apresReponse, type Fiche } from '../jeu/revision';
 import { gradeApresEpreuve, GRADE_DE_DEPART } from '../jeu/grades';
@@ -138,4 +138,16 @@ export function terminerLecon(etat: Etat, fin: FinDeLecon, maintenant: number): 
       : etat.leconsFaites,
     revision,
   };
+}
+
+/** Révision terminée : chaque fiche avance ou retourne en boîte 1 ; 5 questions ou plus rendent une bûche. */
+export function terminerRevision(etat: Etat, reponses: Record<string, boolean>, maintenant: number): Etat {
+  const jour = jourParis(maintenant);
+  const revision = { ...etat.revision };
+  for (const [id, juste] of Object.entries(reponses)) {
+    const fiche = apresReponse(revision[id] ?? null, juste, jour);
+    if (fiche) revision[id] = fiche;
+  }
+  const vies = viesApresRevision(etat.profil.vies, Object.keys(reponses).length, maintenant);
+  return { ...etat, profil: { ...etat.profil, vies }, revision };
 }

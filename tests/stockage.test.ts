@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { lireEtat, ecrireEtat, terminerLecon, etatVide, CLE, ANCIENNE_CLE, VERSION, type Stockage } from '../src/lib/stockage/local';
+import { lireEtat, ecrireEtat, terminerLecon, terminerRevision, etatVide, CLE, ANCIENNE_CLE, VERSION, type Stockage } from '../src/lib/stockage/local';
 
 function faux(initial: Record<string, string> = {}): Stockage & { donnees: Record<string, string> } {
   const donnees = { ...initial };
@@ -57,5 +57,24 @@ describe('stockage local', () => {
       theme: 'religion', leconId: 'religion-1-6', etape: 1, epreuve: true, reussie: true, points: 100, score: 90, reponses: {},
     }, t0);
     expect(epreuve.grades).toEqual({ religion: 2 });
+  });
+});
+
+describe('révision', () => {
+  const base = {
+    ...etatVide(t0),
+    profil: { ...etatVide(t0).profil, vies: { vies: 2, maj: t0 } },
+    revision: Object.fromEntries(['a', 'b', 'c', 'd', 'e'].map((id) => [id, { boite: 1, aRevoirLe: '2026-11-02' }])),
+  };
+
+  it('fait avancer les fiches et rend une bûche après 5 questions', () => {
+    const etat = terminerRevision(base, { a: true, b: true, c: false, d: true, e: true }, t0);
+    expect(etat.revision.a).toEqual({ boite: 2, aRevoirLe: '2026-11-04' });
+    expect(etat.revision.c).toEqual({ boite: 1, aRevoirLe: '2026-11-03' });
+    expect(etat.profil.vies.vies).toBe(3);
+  });
+
+  it('ne rend pas de bûche en dessous de 5 questions', () => {
+    expect(terminerRevision(base, { a: true, b: true }, t0).profil.vies.vies).toBe(2);
   });
 });

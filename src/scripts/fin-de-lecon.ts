@@ -1,7 +1,8 @@
 // Fin d'une leçon jouée dans le navigateur : calcule le bilan et l'enregistre sur l'appareil.
 import { bilanLecon, pointsQcm, type Bilan } from '../lib/jeu/points';
 import { serieDuJour } from '../lib/jeu/serie';
-import { lireEtat, ecrireEtat, stockageNavigateur, terminerLecon } from '../lib/stockage/local';
+import { lireEtat, ecrireEtat, stockageNavigateur, terminerLecon, terminerRevision } from '../lib/stockage/local';
+import { viesActuelles } from '../lib/jeu/vies';
 
 export function enregistrerFin(fin: {
   theme: string;
@@ -25,4 +26,14 @@ export function enregistrerFin(fin: {
   );
   ecrireEtat(stockage, apres);
   return { bilan, gradeAvant: etat.grades[fin.theme] ?? 1, gradeApres: apres.grades[fin.theme] ?? 1 };
+}
+
+/** Fin d'une révision : met à jour les fiches et rend une bûche si assez de questions ont été revues. */
+export function enregistrerRevision(reponses: Record<string, boolean>): { viesAvant: number; viesApres: number } {
+  const maintenant = Date.now();
+  const stockage = stockageNavigateur();
+  const etat = lireEtat(stockage, maintenant);
+  const apres = terminerRevision(etat, reponses, maintenant);
+  ecrireEtat(stockage, apres);
+  return { viesAvant: viesActuelles(etat.profil.vies, maintenant).vies, viesApres: apres.profil.vies.vies };
 }

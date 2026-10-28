@@ -14,7 +14,7 @@ export interface Regles {
   };
   reussite: { lecon: number; epreuve: number };
   serie: { fuseau: string; jours_par_gel: number; gels_max: number };
-  revision: { delais_jours: number[] };
+  revision: { delais_jours: number[]; questions_par_seance: number };
   grades: { max: number };
   saisie: { fautes_tolerees: number; lettres_min_pour_tolerance: number; articles_ignores: string[] };
   garde_fous: { secondes_min_par_question: number; parties_max_par_heure: number };

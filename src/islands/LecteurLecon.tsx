@@ -6,7 +6,7 @@ import { viesActuelles, perdreVie, prochaineVieDans } from '../lib/jeu/vies';
 import { construireChemin, leconAccessible, type LeconDuChemin } from '../lib/jeu/chemin';
 import { regles } from '../lib/jeu/regles';
 import type { Bilan } from '../lib/jeu/points';
-import { enregistrerFin } from '../scripts/fin-de-lecon';
+import { enregistrerFin, enregistrerRevision } from '../scripts/fin-de-lecon';
 
 export type QuestionQcm = { id: string; q: string; choix: string[]; juste: number; niveau: string; explication: string; source: string };
 
@@ -19,9 +19,11 @@ type Props = {
   grades: string[];
   questions: QuestionQcm[];
   chemin: LeconDuChemin[];
+  /** Mode révision : pas de bûche perdue, pas de verrou ; la fin rend une bûche (5 questions minimum). */
+  revision?: boolean;
 };
 
-type Ecran = 'question' | 'eteint' | 'fin';
+type Ecran = 'question' | 'eteint' | 'fin' | 'fin-revision';
 
 const MAX = regles.vies.max;
 
@@ -55,8 +57,8 @@ function formatDuree(ms: number) {
   return min >= 60 ? `${Math.floor(min / 60)} h ${String(min % 60).padStart(2, '0')}` : `${min} min`;
 }
 
-export default function LecteurLecon({ base, nomTheme, lecon, questions, chemin, animal, grades }: Props) {
-  const retour = `${base}/theme/${lecon.theme}`;
+export default function LecteurLecon({ base, nomTheme, lecon, questions, chemin, animal, grades, revision = false }: Props) {
+  const retour = revision ? `${base}/` : `${base}/theme/${lecon.theme}`;
   const [vies, setVies] = useState(MAX);
   const [ecran, setEcran] = useState<Ecran>('question');
   const [i, setI] = useState(0);
@@ -65,6 +67,7 @@ export default function LecteurLecon({ base, nomTheme, lecon, questions, chemin,
   const [reponses, setReponses] = useState<Record<string, boolean>>({});
   const [bilan, setBilan] = useState<Bilan | null>(null);
   const [promu, setPromu] = useState(0);
+  const [rendue, setRendue] = useState(false);
   const [attente, setAttente] = useState(0);
 
   // Au chargement : leçon verrouillée → retour au chemin ; plus de vie → feu éteint.
@@ -72,13 +75,13 @@ export default function LecteurLecon({ base, nomTheme, lecon, questions, chemin,
     const maintenant = Date.now();
     const etat = lireEtat(stockageNavigateur(), maintenant);
     const c = construireChemin(chemin, new Set(Object.keys(etat.leconsFaites)), etat.grades[lecon.theme] ?? 1);
-    if (!leconAccessible(c, lecon.id)) {
+    if (!revision && !leconAccessible(c, lecon.id)) {
       location.replace(retour);
       return;
     }
     const v = viesActuelles(etat.profil.vies, maintenant);
     setVies(v.vies);
-    if (v.vies === 0) {
+    if (v.vies === 0 && !revision) {
       setAttente(prochaineVieDans(etat.profil.vies, maintenant));
       setEcran('eteint');
     }
@@ -93,7 +96,7 @@ export default function LecteurLecon({ base, nomTheme, lecon, questions, chemin,
     if (choisi < 0) return;
     setCorrige(true);
     setReponses((r) => ({ ...r, [q.id]: ok }));
-    if (!ok) {
+    if (!ok && !revision) {
       // La bûche brûle tout de suite : quitter la leçon ne la rend pas.
       const maintenant = Date.now();
       const stockage = stockageNavigateur();
@@ -106,11 +109,18 @@ export default function LecteurLecon({ base, nomTheme, lecon, questions, chemin,
   }
 
   function continuer() {
-    if (vies === 0) return setEcran('eteint');
+    if (vies === 0 && !revision) return setEcran('eteint');
     if (i + 1 < questions.length) {
       setI(i + 1);
       setChoisi(-1);
       setCorrige(false);
+      return;
+    }
+    if (revision) {
+      const r = enregistrerRevision(reponses);
+      setVies(r.viesApres);
+      setRendue(r.viesApres > r.viesAvant);
+      setEcran('fin-revision');
       return;
     }
     const fin = enregistrerFin({ theme: lecon.theme, leconId: lecon.id, etape: lecon.etape, epreuve: lecon.epreuve, reponses });
@@ -125,7 +135,27 @@ export default function LecteurLecon({ base, nomTheme, lecon, questions, chemin,
         <FeuEteint />
         <h1>Le feu s'est éteint</h1>
         <p class="sous-titre">Plus une bûche pour l'entretenir. Une nouvelle bûche arrive dans {formatDuree(attente)}.</p>
-        <a class="bouton" href={retour}>Retour au chemin</a>
+        <a class="bouton" href={`${base}/revision`}>Réviser pour regagner une bûche</a>
+        <a class="bouton clair" href={retour}>Retour au chemin</a>
+      </section>
+    );
+  }
+
+  if (ecran === 'fin-revision') {
+    const min = regles.vies.questions_min_revision;
+    return (
+      <section class="lecteur ecran-centre">
+        <Buches vies={vies} />
+        <h1>Révision terminée</h1>
+        <p class="sous-titre">
+          {Object.values(reponses).filter(Boolean).length} bonne(s) réponse(s) sur {questions.length}.{' '}
+          {rendue
+            ? 'Une bûche revient au feu.'
+            : questions.length < min
+              ? `Il faut revoir au moins ${min} questions pour regagner une bûche.`
+              : 'Le feu a déjà toutes ses bûches.'}
+        </p>
+        <a class="bouton" href={retour}>Retour au feu</a>
       </section>
     );
   }
