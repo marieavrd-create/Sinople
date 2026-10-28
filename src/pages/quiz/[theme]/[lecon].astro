@@ -1,16 +1,17 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import Goupil from '../../../components/Goupil.astro';
+import { getCollection } from 'astro:content';
+import themes from '../../../data/themes.json';
 
-// Un quiz par partie, lu dans src/data/quiz/<thème>.json.
-// Pour ajouter des questions, il suffit de modifier ce fichier.
-export function getStaticPaths() {
-  const fichiers = import.meta.glob('../../../data/quiz/*.json', { eager: true }) as Record<string, any>;
-  return Object.entries(fichiers).flatMap(([chemin, f]) => {
-    const theme = chemin.split('/').pop()!.replace('.json', '');
-    const data = f.default ?? f;
-    return data.parties.map((p: any) => ({ params: { theme, partie: p.id }, props: { nomTheme: data.theme, partie: p } }));
-  });
+// Une page par leçon, lue dans src/content/questions/<thème>/<étape>-<leçon>.json.
+// Pour ajouter des questions, il suffit de modifier ou d'ajouter un de ces fichiers.
+export async function getStaticPaths() {
+  const lecons = await getCollection('questions');
+  return lecons.map(({ data }) => ({
+    params: { theme: data.theme, lecon: `${data.etape}-${data.lecon}` },
+    props: { nomTheme: themes.find((t) => t.id === data.theme)?.nom ?? data.theme, partie: { nom: data.titre, questions: data.questions } },
+  }));
 }
 
 const { nomTheme, partie } = Astro.props;
