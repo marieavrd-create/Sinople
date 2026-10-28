@@ -1,0 +1,191 @@
+{
+  "id": "generale-1-6",
+  "theme": "generale",
+  "etape": 1,
+  "lecon": 6,
+  "titre": "Épreuve du Gueux",
+  "intro": "Douze questions pour devenir Braconnier.",
+  "epreuve": true,
+  "questions": [
+    {
+      "id": "gen-ep1-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Combien de côtés a un hexagone ?",
+      "choix": [
+        "Cinq",
+        "Six",
+        "Sept",
+        "Huit"
+      ],
+      "juste": 1,
+      "explication": "Hexa veut dire six en grec ; on surnomme la France l'Hexagone à cause de sa forme.",
+      "source": "Dictionnaire Larousse, entrée « hexagone »"
+    },
+    {
+      "id": "gen-ep1-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quels organes nous permettent de respirer ?",
+      "choix": [
+        "Le foie",
+        "Les poumons",
+        "Les reins",
+        "L'estomac"
+      ],
+      "juste": 1,
+      "explication": "Les poumons font passer l'oxygène de l'air dans le sang.",
+      "source": "Encyclopædia Britannica, article « lung »"
+    },
+    {
+      "id": "gen-ep1-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Comment appelle-t-on une personne qui parle deux langues ?",
+      "choix": [
+        "Bilingue",
+        "Bipède",
+        "Bilatéral",
+        "Bivalent"
+      ],
+      "juste": 0,
+      "explication": "Bi- veut dire deux, et lingua veut dire langue en latin.",
+      "source": "Dictionnaire Larousse, entrée « bilingue »"
+    },
+    {
+      "id": "gen-ep1-0004",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel savant aurait compris la gravitation en voyant tomber une pomme ?",
+      "choix": [
+        "Galilée",
+        "Albert Einstein",
+        "Copernic",
+        "Isaac Newton"
+      ],
+      "juste": 3,
+      "explication": "L'anecdote de la pomme, rapportée par ses proches, illustre la loi de la gravitation de Newton.",
+      "source": "Encyclopædia Britannica, article « Isaac Newton »"
+    },
+    {
+      "id": "gen-ep1-0005",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Combien de joueurs une équipe de football a-t-elle sur le terrain ?",
+      "choix": [
+        "Dix",
+        "Douze",
+        "Onze",
+        "Quinze"
+      ],
+      "juste": 2,
+      "explication": "Chaque équipe aligne onze joueurs, dont un gardien.",
+      "source": "IFAB, Lois du jeu, loi 3 « Les joueurs »"
+    },
+    {
+      "id": "gen-ep1-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Comment s'appelle le petit du lapin ?",
+      "choix": [
+        "Le levraut",
+        "Le faon",
+        "Le lapereau",
+        "Le chevreau"
+      ],
+      "juste": 2,
+      "explication": "Le lapereau est le petit du lapin ; le levraut est celui du lièvre.",
+      "source": "Dictionnaire Larousse, entrée « lapereau »"
+    },
+    {
+      "id": "gen-ep1-0007",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle planète est la plus éloignée du Soleil ?",
+      "choix": [
+        "Uranus",
+        "Neptune",
+        "Saturne",
+        "Pluton"
+      ],
+      "juste": 1,
+      "explication": "Neptune est la huitième et dernière planète ; Pluton n'est plus qu'une planète naine.",
+      "source": "NASA, Science › Solar System, page « Neptune »"
+    },
+    {
+      "id": "gen-ep1-0008",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel mammifère marin est surnommé la « licorne des mers » ?",
+      "choix": [
+        "Le narval",
+        "Le dauphin",
+        "Le morse",
+        "Le béluga"
+      ],
+      "juste": 0,
+      "explication": "La longue « corne » du narval est en fait une dent qui peut dépasser deux mètres.",
+      "source": "Encyclopædia Britannica, article « narwhal »"
+    },
+    {
+      "id": "gen-ep1-0009",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel métal est liquide à température ambiante ?",
+      "choix": [
+        "Le plomb",
+        "L'étain",
+        "Le zinc",
+        "Le mercure"
+      ],
+      "juste": 3,
+      "explication": "Le mercure est le seul métal liquide à température ambiante.",
+      "source": "Encyclopædia Britannica, article « mercury »"
+    },
+    {
+      "id": "gen-ep1-0010",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Combien de temps la lumière du Soleil met-elle pour atteindre la Terre ?",
+      "choix": [
+        "Environ 8 secondes",
+        "Environ 1 heure",
+        "Environ 1 jour",
+        "Environ 8 minutes"
+      ],
+      "juste": 3,
+      "explication": "La lumière parcourt les 150 millions de kilomètres qui nous séparent du Soleil en un peu plus de 8 minutes.",
+      "source": "NASA, Science › Solar System, page « Sun »"
+    },
+    {
+      "id": "gen-ep1-0011",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Combien de cordes a un violon ?",
+      "choix": [
+        "Trois",
+        "Cinq",
+        "Quatre",
+        "Six"
+      ],
+      "juste": 2,
+      "explication": "Le violon a quatre cordes, accordées sol, ré, la, mi.",
+      "source": "Encyclopædia Britannica, article « violin »"
+    },
+    {
+      "id": "gen-ep1-0012",
+      "type": "qcm",
+      "niveau": "difficile",
+      "q": "Quelle ville est célèbre pour ses « bêtises », des bonbons à la menthe ?",
+      "choix": [
+        "Vichy",
+        "Cambrai",
+        "Montélimar",
+        "Nancy"
+      ],
+      "juste": 1,
+      "explication": "Les bêtises viennent de Cambrai ; Vichy a ses pastilles, Montélimar son nougat.",
+      "source": "Dictionnaire Larousse, entrée « bêtise »"
+    }
+  ]
+}

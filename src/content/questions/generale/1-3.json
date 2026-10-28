@@ -1,0 +1,116 @@
+{
+  "id": "generale-1-3",
+  "theme": "generale",
+  "etape": 1,
+  "lecon": 3,
+  "titre": "La langue française",
+  "intro": "Le gueux apprend à bien parler pour mieux ruser.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "gen-lan-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Combien de lettres compte l'alphabet français ?",
+      "choix": [
+        "24",
+        "26",
+        "28",
+        "30"
+      ],
+      "juste": 1,
+      "explication": "L'alphabet français compte 26 lettres, de A à Z.",
+      "source": "Dictionnaire Larousse, entrée « alphabet »"
+    },
+    {
+      "id": "gen-lan-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel est le féminin de « loup » ?",
+      "choix": [
+        "Louve",
+        "Loupe",
+        "Louvette",
+        "Loupiotte"
+      ],
+      "juste": 0,
+      "explication": "On dit un loup et une louve ; leurs petits sont des louveteaux.",
+      "source": "Dictionnaire Larousse, entrée « loup »"
+    },
+    {
+      "id": "gen-lan-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Comment s'appelle le petit signe sous le c de « garçon » ?",
+      "choix": [
+        "La cédille",
+        "Le tréma",
+        "L'accent circonflexe",
+        "L'apostrophe"
+      ],
+      "juste": 0,
+      "explication": "La cédille fait prononcer le c comme un s devant a, o et u.",
+      "source": "Dictionnaire Larousse, entrée « cédille »"
+    },
+    {
+      "id": "gen-lan-0004",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Que veut dire « poser un lapin » ?",
+      "choix": [
+        "Partir sans payer",
+        "Raconter un mensonge",
+        "Se moquer de quelqu'un",
+        "Ne pas venir à un rendez-vous"
+      ],
+      "juste": 3,
+      "explication": "Poser un lapin, c'est faire attendre quelqu'un en ne venant pas au rendez-vous.",
+      "source": "Dictionnaire Larousse, entrée « lapin », expressions"
+    },
+    {
+      "id": "gen-lan-0005",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Comment appelle-t-on un mot qui se lit de la même façon dans les deux sens, comme « kayak » ?",
+      "choix": [
+        "Une anagramme",
+        "Un homonyme",
+        "Un palindrome",
+        "Un acronyme"
+      ],
+      "juste": 2,
+      "explication": "« Radar » et « ressasser » sont d'autres palindromes.",
+      "source": "Dictionnaire Larousse, entrée « palindrome »"
+    },
+    {
+      "id": "gen-lan-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Lequel de ces mots prend un x au pluriel ?",
+      "choix": [
+        "Clou",
+        "Caillou",
+        "Trou",
+        "Fou"
+      ],
+      "juste": 1,
+      "explication": "Bijou, caillou, chou, genou, hibou, joujou et pou prennent un x au pluriel ; les autres mots en -ou prennent un s.",
+      "source": "Larousse, grammaire : le pluriel des noms en -ou"
+    },
+    {
+      "id": "gen-lan-0007",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Qui a fondé l'Académie française en 1635 ?",
+      "choix": [
+        "Le cardinal Mazarin",
+        "Le cardinal de Richelieu",
+        "Louis XIV",
+        "Colbert"
+      ],
+      "juste": 1,
+      "explication": "Richelieu, ministre de Louis XIII, a fondé l'Académie pour veiller sur la langue.",
+      "source": "Académie française (academie-francaise.fr), page « L'histoire »"
+    }
+  ]
+}

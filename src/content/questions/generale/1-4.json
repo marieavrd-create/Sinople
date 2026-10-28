@@ -1,0 +1,116 @@
+{
+  "id": "generale-1-4",
+  "theme": "generale",
+  "etape": 1,
+  "lecon": 4,
+  "titre": "Le ciel et les planètes",
+  "intro": "La nuit, au coin du feu, le gueux regarde les étoiles.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "gen-cie-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle planète est la plus proche du Soleil ?",
+      "choix": [
+        "Mercure",
+        "Vénus",
+        "Mars",
+        "La Terre"
+      ],
+      "juste": 0,
+      "explication": "Mercure, la plus petite planète, fait le tour du Soleil en 88 jours.",
+      "source": "NASA, Science › Solar System, page « Mercury »"
+    },
+    {
+      "id": "gen-cie-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle est la plus grande planète du système solaire ?",
+      "choix": [
+        "Saturne",
+        "Neptune",
+        "Uranus",
+        "Jupiter"
+      ],
+      "juste": 3,
+      "explication": "Jupiter est une géante gazeuse : on pourrait y loger plus de 1 000 Terres.",
+      "source": "NASA, Science › Solar System, page « Jupiter »"
+    },
+    {
+      "id": "gen-cie-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle planète est surnommée la planète rouge ?",
+      "choix": [
+        "Vénus",
+        "Jupiter",
+        "Mars",
+        "Mercure"
+      ],
+      "juste": 2,
+      "explication": "Mars doit sa couleur à l'oxyde de fer, la rouille, qui couvre son sol.",
+      "source": "NASA, Science › Solar System, page « Mars »"
+    },
+    {
+      "id": "gen-cie-0004",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Combien de planètes compte le système solaire ?",
+      "choix": [
+        "Sept",
+        "Neuf",
+        "Huit",
+        "Dix"
+      ],
+      "juste": 2,
+      "explication": "Depuis 2006, Pluton est classée planète naine : il reste huit planètes.",
+      "source": "NASA, Science › Solar System, page « Planets »"
+    },
+    {
+      "id": "gen-cie-0005",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Qui a été le premier homme à marcher sur la Lune ?",
+      "choix": [
+        "Buzz Aldrin",
+        "Neil Armstrong",
+        "Youri Gagarine",
+        "John Glenn"
+      ],
+      "juste": 1,
+      "explication": "Neil Armstrong a posé le pied sur la Lune le premier, suivi de Buzz Aldrin.",
+      "source": "NASA, page « Apollo 11 Mission Overview »"
+    },
+    {
+      "id": "gen-cie-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "En quelle année l'homme a-t-il marché sur la Lune pour la première fois ?",
+      "choix": [
+        "1969",
+        "1965",
+        "1972",
+        "1975"
+      ],
+      "juste": 0,
+      "explication": "La mission Apollo 11 s'est posée sur la Lune en juillet 1969.",
+      "source": "NASA, page « Apollo 11 Mission Overview »"
+    },
+    {
+      "id": "gen-cie-0007",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle est l'étoile la plus proche de la Terre ?",
+      "choix": [
+        "Proxima du Centaure",
+        "Sirius",
+        "L'étoile Polaire",
+        "Le Soleil"
+      ],
+      "juste": 3,
+      "explication": "Le Soleil est une étoile ; la suivante, Proxima du Centaure, est à plus de 4 années-lumière.",
+      "source": "NASA, Science › Solar System, page « Sun »"
+    }
+  ]
+}

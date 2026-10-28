@@ -1,0 +1,116 @@
+{
+  "id": "generale-2-5",
+  "theme": "generale",
+  "etape": 2,
+  "lecon": 5,
+  "titre": "La musique",
+  "intro": "Au coin du feu, on chante et on joue.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "gen-mus-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel compositeur a continué à composer alors qu'il était devenu sourd ?",
+      "choix": [
+        "Wolfgang Amadeus Mozart",
+        "Jean-Sébastien Bach",
+        "Frédéric Chopin",
+        "Ludwig van Beethoven"
+      ],
+      "juste": 3,
+      "explication": "Beethoven était presque entièrement sourd quand il composa sa Neuvième Symphonie.",
+      "source": "Encyclopædia Britannica, article « Ludwig van Beethoven »"
+    },
+    {
+      "id": "gen-mus-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel compositeur autrichien, enfant prodige, a écrit La Flûte enchantée ?",
+      "choix": [
+        "Joseph Haydn",
+        "Franz Schubert",
+        "Ludwig van Beethoven",
+        "Wolfgang Amadeus Mozart"
+      ],
+      "juste": 3,
+      "explication": "Mozart composait dès l'âge de cinq ans ; La Flûte enchantée date de 1791, l'année de sa mort.",
+      "source": "Encyclopædia Britannica, article « Wolfgang Amadeus Mozart »"
+    },
+    {
+      "id": "gen-mus-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Qui a composé Les Quatre Saisons ?",
+      "choix": [
+        "Jean-Sébastien Bach",
+        "Georg Friedrich Haendel",
+        "Antonio Vivaldi",
+        "Wolfgang Amadeus Mozart"
+      ],
+      "juste": 2,
+      "explication": "Vivaldi, prêtre vénitien surnommé le Prêtre roux, a écrit ces quatre concertos pour violon.",
+      "source": "Encyclopædia Britannica, article « Antonio Vivaldi »"
+    },
+    {
+      "id": "gen-mus-0004",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel est l'hymne national de la France ?",
+      "choix": [
+        "Le Chant du départ",
+        "La Marseillaise",
+        "L'Internationale",
+        "Le Temps des cerises"
+      ],
+      "juste": 1,
+      "explication": "La Constitution de 1958 désigne La Marseillaise comme hymne national.",
+      "source": "Constitution du 4 octobre 1958, article 2"
+    },
+    {
+      "id": "gen-mus-0005",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel compositeur polonais, mort à Paris, a surtout écrit pour le piano ?",
+      "choix": [
+        "Frédéric Chopin",
+        "Franz Liszt",
+        "Robert Schumann",
+        "Claude Debussy"
+      ],
+      "juste": 0,
+      "explication": "Chopin est enterré au cimetière du Père-Lachaise.",
+      "source": "Encyclopædia Britannica, article « Frédéric Chopin »"
+    },
+    {
+      "id": "gen-mus-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel compositeur a écrit le Boléro ?",
+      "choix": [
+        "Maurice Ravel",
+        "Claude Debussy",
+        "Erik Satie",
+        "Georges Bizet"
+      ],
+      "juste": 0,
+      "explication": "Le Boléro de Ravel, créé en 1928, répète le même thème en grossissant peu à peu.",
+      "source": "Encyclopædia Britannica, article « Boléro »"
+    },
+    {
+      "id": "gen-mus-0007",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel opéra de Bizet met en scène une cigarière de Séville ?",
+      "choix": [
+        "Tosca",
+        "Aida",
+        "La Traviata",
+        "Carmen"
+      ],
+      "juste": 3,
+      "explication": "Carmen, créé à Paris en 1875, est l'un des opéras les plus joués au monde.",
+      "source": "Encyclopædia Britannica, article « Carmen »"
+    }
+  ]
+}

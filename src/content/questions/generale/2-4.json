@@ -1,0 +1,116 @@
+{
+  "id": "generale-2-4",
+  "theme": "generale",
+  "etape": 2,
+  "lecon": 4,
+  "titre": "Les sciences",
+  "intro": "Le braconnier observe, compare, déduit.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "gen-sci-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle est la formule chimique de l'eau ?",
+      "choix": [
+        "CO₂",
+        "H₂O",
+        "O₂",
+        "NaCl"
+      ],
+      "juste": 1,
+      "explication": "Une molécule d'eau est faite de deux atomes d'hydrogène et d'un atome d'oxygène.",
+      "source": "Encyclopædia Britannica, article « water »"
+    },
+    {
+      "id": "gen-sci-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "À quelle température l'eau bout-elle au niveau de la mer ?",
+      "choix": [
+        "100 °C",
+        "80 °C",
+        "90 °C",
+        "120 °C"
+      ],
+      "juste": 0,
+      "explication": "Au niveau de la mer, l'eau pure bout à 100 °C ; en montagne, elle bout plus tôt.",
+      "source": "Encyclopædia Britannica, article « boiling point »"
+    },
+    {
+      "id": "gen-sci-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Qui a formulé la théorie de la relativité ?",
+      "choix": [
+        "Isaac Newton",
+        "Niels Bohr",
+        "Max Planck",
+        "Albert Einstein"
+      ],
+      "juste": 3,
+      "explication": "Einstein a publié la relativité restreinte en 1905 et la relativité générale en 1915.",
+      "source": "Encyclopædia Britannica, article « Albert Einstein »"
+    },
+    {
+      "id": "gen-sci-0004",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel gaz les plantes absorbent-elles pour la photosynthèse ?",
+      "choix": [
+        "L'oxygène",
+        "L'azote",
+        "Le dioxyde de carbone",
+        "L'hélium"
+      ],
+      "juste": 2,
+      "explication": "Les plantes captent le dioxyde de carbone et rejettent de l'oxygène.",
+      "source": "Encyclopædia Britannica, article « photosynthesis »"
+    },
+    {
+      "id": "gen-sci-0005",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle savante a reçu deux prix Nobel, en physique puis en chimie ?",
+      "choix": [
+        "Irène Joliot-Curie",
+        "Lise Meitner",
+        "Marie Curie",
+        "Rosalind Franklin"
+      ],
+      "juste": 2,
+      "explication": "Marie Curie a reçu le Nobel de physique en 1903 et celui de chimie en 1911.",
+      "source": "Fondation Nobel (nobelprize.org), page « Marie Curie – Facts »"
+    },
+    {
+      "id": "gen-sci-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel est le symbole chimique de l'or ?",
+      "choix": [
+        "Or",
+        "Au",
+        "Ag",
+        "Go"
+      ],
+      "juste": 1,
+      "explication": "Au vient du latin aurum ; Ag est le symbole de l'argent.",
+      "source": "Encyclopædia Britannica, article « gold »"
+    },
+    {
+      "id": "gen-sci-0007",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel savant anglais a proposé la théorie de l'évolution par la sélection naturelle ?",
+      "choix": [
+        "Charles Darwin",
+        "Jean-Baptiste de Lamarck",
+        "Gregor Mendel",
+        "Buffon"
+      ],
+      "juste": 0,
+      "explication": "Darwin a publié L'Origine des espèces en 1859.",
+      "source": "Encyclopædia Britannica, article « Charles Darwin »"
+    }
+  ]
+}

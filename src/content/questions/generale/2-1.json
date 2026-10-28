@@ -1,0 +1,116 @@
+{
+  "id": "generale-2-1",
+  "theme": "generale",
+  "etape": 2,
+  "lecon": 1,
+  "titre": "Les inventions",
+  "intro": "Le braconnier aime les pièges ingénieux… et les inventeurs.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "gen-inv-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel Français a inventé l'écriture en relief pour les aveugles ?",
+      "choix": [
+        "Louis Braille",
+        "Valentin Haüy",
+        "Louis Pasteur",
+        "Louis Daguerre"
+      ],
+      "juste": 0,
+      "explication": "Aveugle depuis l'enfance, Louis Braille a mis au point son alphabet de points en relief vers 1829.",
+      "source": "Encyclopædia Britannica, article « Louis Braille »"
+    },
+    {
+      "id": "gen-inv-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Qui a mis au point l'imprimerie à caractères mobiles en Europe, vers 1450 ?",
+      "choix": [
+        "Gutenberg",
+        "Léonard de Vinci",
+        "Galilée",
+        "Érasme"
+      ],
+      "juste": 0,
+      "explication": "Johannes Gutenberg imprima à Mayence la célèbre Bible à 42 lignes.",
+      "source": "Encyclopædia Britannica, article « Johannes Gutenberg »"
+    },
+    {
+      "id": "gen-inv-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quels frères français ont fait voler la première montgolfière, en 1783 ?",
+      "choix": [
+        "Les frères Lumière",
+        "Les frères Wright",
+        "Les frères Renault",
+        "Les frères Montgolfier"
+      ],
+      "juste": 3,
+      "explication": "Joseph et Étienne de Montgolfier ont donné leur nom au ballon à air chaud.",
+      "source": "Encyclopædia Britannica, article « Montgolfier brothers »"
+    },
+    {
+      "id": "gen-inv-0004",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quels frères ont présenté le cinématographe en 1895 ?",
+      "choix": [
+        "Les frères Pathé",
+        "Les frères Montgolfier",
+        "Les frères Lumière",
+        "Les frères Wright"
+      ],
+      "juste": 2,
+      "explication": "Auguste et Louis Lumière ont organisé à Paris l'une des premières projections publiques payantes.",
+      "source": "Encyclopædia Britannica, article « Lumière brothers »"
+    },
+    {
+      "id": "gen-inv-0005",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Qui a mis au point le premier vaccin contre la rage ?",
+      "choix": [
+        "Marie Curie",
+        "Louis Pasteur",
+        "Robert Koch",
+        "Claude Bernard"
+      ],
+      "juste": 1,
+      "explication": "En 1885, Pasteur vaccina avec succès le jeune Joseph Meister, mordu par un chien enragé.",
+      "source": "Institut Pasteur (pasteur.fr), page « Louis Pasteur »"
+    },
+    {
+      "id": "gen-inv-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Qui a inventé la dynamite ?",
+      "choix": [
+        "Thomas Edison",
+        "Alfred Nobel",
+        "Nikola Tesla",
+        "Alessandro Volta"
+      ],
+      "juste": 1,
+      "explication": "Alfred Nobel a légué sa fortune pour créer les prix qui portent son nom.",
+      "source": "Encyclopædia Britannica, article « Alfred Nobel »"
+    },
+    {
+      "id": "gen-inv-0007",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle unité porte le nom de l'inventeur de la pile électrique ?",
+      "choix": [
+        "Le volt",
+        "L'ampère",
+        "Le watt",
+        "L'ohm"
+      ],
+      "juste": 0,
+      "explication": "Alessandro Volta a inventé la pile en 1800 ; le volt mesure la tension électrique.",
+      "source": "Encyclopædia Britannica, article « Alessandro Volta »"
+    }
+  ]
+}

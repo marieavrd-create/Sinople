@@ -1,0 +1,116 @@
+{
+  "id": "generale-1-2",
+  "theme": "generale",
+  "etape": 1,
+  "lecon": 2,
+  "titre": "Le corps humain",
+  "intro": "Connais-toi toi-même, disait le vieux sage.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "gen-cor-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel organe pompe le sang dans tout le corps ?",
+      "choix": [
+        "Le foie",
+        "Les poumons",
+        "Le cœur",
+        "Les reins"
+      ],
+      "juste": 2,
+      "explication": "Le cœur bat environ 100 000 fois par jour pour faire circuler le sang.",
+      "source": "Encyclopædia Britannica, article « heart »"
+    },
+    {
+      "id": "gen-cor-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Combien de dents a un adulte, dents de sagesse comprises ?",
+      "choix": [
+        "28",
+        "30",
+        "32",
+        "36"
+      ],
+      "juste": 2,
+      "explication": "Un adulte a 32 dents, dont 4 dents de sagesse qui ne poussent pas toujours.",
+      "source": "Encyclopædia Britannica, article « tooth »"
+    },
+    {
+      "id": "gen-cor-0003",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel est l'os le plus long du corps humain ?",
+      "choix": [
+        "Le tibia",
+        "Le fémur",
+        "L'humérus",
+        "Le péroné"
+      ],
+      "juste": 1,
+      "explication": "Le fémur, l'os de la cuisse, est aussi le plus solide du squelette.",
+      "source": "Encyclopædia Britannica, article « femur »"
+    },
+    {
+      "id": "gen-cor-0004",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel est le plus grand organe du corps humain ?",
+      "choix": [
+        "La peau",
+        "Le foie",
+        "L'intestin",
+        "Les poumons"
+      ],
+      "juste": 0,
+      "explication": "La peau couvre environ deux mètres carrés chez un adulte.",
+      "source": "Encyclopædia Britannica, article « skin »"
+    },
+    {
+      "id": "gen-cor-0005",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Combien d'os compte le squelette d'un adulte ?",
+      "choix": [
+        "186",
+        "226",
+        "306",
+        "206"
+      ],
+      "juste": 3,
+      "explication": "Un adulte compte 206 os ; un nouveau-né en a davantage, qui se soudent en grandissant.",
+      "source": "Encyclopædia Britannica, article « human skeleton »"
+    },
+    {
+      "id": "gen-cor-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel groupe sanguin peut être donné à tout le monde (globules rouges) ?",
+      "choix": [
+        "AB positif",
+        "A négatif",
+        "B positif",
+        "O négatif"
+      ],
+      "juste": 3,
+      "explication": "Les globules rouges O négatif sont compatibles avec tous les groupes : on parle de donneur universel.",
+      "source": "Établissement français du sang (efs.sante.fr), page sur les groupes sanguins"
+    },
+    {
+      "id": "gen-cor-0007",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Où se trouve l'étrier, le plus petit os du corps humain ?",
+      "choix": [
+        "Dans le nez",
+        "Dans la main",
+        "Dans l'oreille",
+        "Dans le pied"
+      ],
+      "juste": 2,
+      "explication": "L'étrier, logé dans l'oreille moyenne, mesure environ 3 millimètres.",
+      "source": "Encyclopædia Britannica, article « stapes »"
+    }
+  ]
+}

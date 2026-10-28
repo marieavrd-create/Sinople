@@ -1,0 +1,116 @@
+{
+  "id": "generale-2-3",
+  "theme": "generale",
+  "etape": 2,
+  "lecon": 3,
+  "titre": "Les écrivains",
+  "intro": "Le renard de La Fontaine n'était pas le seul héros des livres.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "gen-ecr-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Qui a écrit Les Misérables ?",
+      "choix": [
+        "Émile Zola",
+        "Honoré de Balzac",
+        "Victor Hugo",
+        "Alexandre Dumas"
+      ],
+      "juste": 2,
+      "explication": "Victor Hugo a publié Les Misérables en 1862, pendant son exil.",
+      "source": "Encyclopædia Britannica, article « Les Misérables »"
+    },
+    {
+      "id": "gen-ecr-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Qui a écrit Le Petit Prince ?",
+      "choix": [
+        "Jules Verne",
+        "Antoine de Saint-Exupéry",
+        "Marcel Pagnol",
+        "Albert Camus"
+      ],
+      "juste": 1,
+      "explication": "Saint-Exupéry, aviateur, a aussi dessiné les illustrations du livre.",
+      "source": "Encyclopædia Britannica, article « The Little Prince »"
+    },
+    {
+      "id": "gen-ecr-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Qui a écrit la fable « Le Corbeau et le Renard » ?",
+      "choix": [
+        "Jean de La Fontaine",
+        "Charles Perrault",
+        "Molière",
+        "Jean Racine"
+      ],
+      "juste": 0,
+      "explication": "Elle ouvre le premier recueil des Fables de La Fontaine, paru en 1668.",
+      "source": "Encyclopædia Britannica, article « Jean de La Fontaine »"
+    },
+    {
+      "id": "gen-ecr-0004",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Qui a écrit Les Trois Mousquetaires ?",
+      "choix": [
+        "Alexandre Dumas",
+        "Victor Hugo",
+        "Honoré de Balzac",
+        "Gustave Flaubert"
+      ],
+      "juste": 0,
+      "explication": "D'Artagnan, Athos, Porthos et Aramis sont nés sous la plume de Dumas en 1844.",
+      "source": "Encyclopædia Britannica, article « The Three Musketeers »"
+    },
+    {
+      "id": "gen-ecr-0005",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel auteur a imaginé le capitaine Nemo et son sous-marin, le Nautilus ?",
+      "choix": [
+        "H. G. Wells",
+        "Victor Hugo",
+        "Alexandre Dumas",
+        "Jules Verne"
+      ],
+      "juste": 3,
+      "explication": "Le capitaine Nemo est le héros de Vingt Mille Lieues sous les mers.",
+      "source": "Encyclopædia Britannica, article « Twenty Thousand Leagues Under the Sea »"
+    },
+    {
+      "id": "gen-ecr-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Qui a écrit Le Malade imaginaire ?",
+      "choix": [
+        "Jean Racine",
+        "Pierre Corneille",
+        "Molière",
+        "Marivaux"
+      ],
+      "juste": 2,
+      "explication": "Molière jouait le rôle principal ; il mourut après la quatrième représentation, en 1673.",
+      "source": "Encyclopædia Britannica, article « Molière »"
+    },
+    {
+      "id": "gen-ecr-0007",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Qui a écrit Madame Bovary ?",
+      "choix": [
+        "Stendhal",
+        "Gustave Flaubert",
+        "Guy de Maupassant",
+        "Émile Zola"
+      ],
+      "juste": 1,
+      "explication": "Le roman de Flaubert, paru en 1857, lui valut un procès pour atteinte aux bonnes mœurs.",
+      "source": "Encyclopædia Britannica, article « Madame Bovary »"
+    }
+  ]
+}
