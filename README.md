@@ -20,12 +20,13 @@ Pour déplacer des blocs ou changer la mise en page, demandez à Claude.
 | Accueil : le feu des conjurés, qui grandit avec les thèmes joués | `src/pages/index.astro` |
 | Choix du quiz | `src/pages/themes.astro` |
 | Écran avant un quiz (l'animal du thème s'allume) | `src/pages/theme/[id].astro` |
-| Un quiz (une partie d'un thème) | `src/pages/quiz/[theme]/[partie].astro` |
+| Une leçon (adresse `quiz/<thème>/<étape>-<leçon>`) | `src/pages/quiz/[theme]/[lecon].astro` |
 | Quiz d'exemple de géographie | `src/pages/quiz/demo.astro` |
 | Classement (bientôt) | `src/pages/classement.astro` |
 
 - Thèmes, animaux et carrières : `src/data/themes.json`.
-- Questions : un fichier par thème dans `src/data/quiz/` (par exemple `religion.json`), avec le niveau, l'explication et la source de chaque question.
+- Questions : une leçon par fichier dans `src/content/questions/<thème>/<étape>-<leçon>.json` (par exemple `religion/1-1.json`), avec le niveau, l'explication et la source de chaque question. Le format est décrit dans `src/lib/contenu/schema.ts`. Chaque question garde son `id` pour toujours (il sert à la révision).
+- Une question mal formée (QCM sans 4 choix, source vide, id déjà pris…) fait échouer la vérification avec un message qui nomme le fichier et la question.
 - Le feu et ses animaux : `src/components/Feu.astro`.
 - Le renard mascotte : `public/goupil/renard.svg` (les autres dessins du goupil sont rangés dans le même dossier).
 - En attendant les comptes, la progression est gardée dans le navigateur : `src/scripts/progres.ts`.

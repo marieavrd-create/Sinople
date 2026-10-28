@@ -3,7 +3,7 @@
   { "id": "geographie", "animal": "hibou", "nom": "Géographie",          "matieres": "Pays, capitales, fleuves, reliefs",                 "carriere": "Ambassadeur",           "pret": true },
   { "id": "histoire", "animal": "cerf",   "nom": "Histoire",            "matieres": "Histoire, monarchie",                               "carriere": "Chroniqueur du roi" },
   { "id": "culture", "animal": "paon",    "nom": "Culture",             "matieres": "Art, histoire de l'art, musique, pop culture, tech", "carriere": "Mécène" },
-  { "id": "religion", "animal": "bélier",   "nom": "Mythes et croyances", "matieres": "Religions, mythologies, croyances",                               "carriere": "Évêque",                "pret": true, "lien": "quiz/religion/edifices" },
+  { "id": "religion", "animal": "bélier",   "nom": "Mythes et croyances", "matieres": "Religions, mythologies, croyances",                               "carriere": "Évêque",                "pret": true, "lien": "quiz/religion/1-1" },
   { "id": "politique", "animal": "pie",  "nom": "Politique et économie", "matieres": "Politique, éthique, économie, finance",         "carriere": "Ministre" },
   { "id": "savoir-vivre", "animal": "lapin","nom": "Savoir-vivre",       "matieres": "Étiquette, art de la table, usages",                "carriere": "Maître des cérémonies" },
   { "id": "sport", "animal": "sanglier",      "nom": "Sport",               "matieres": "Sports, champions, grandes compétitions",           "carriere": "Chevalier" },
