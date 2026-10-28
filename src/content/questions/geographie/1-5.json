@@ -1,0 +1,116 @@
+{
+  "id": "geographie-1-5",
+  "theme": "geographie",
+  "etape": 1,
+  "lecon": 5,
+  "titre": "Montagnes et sommets",
+  "intro": "Le vagabond grimpe : chaque sommet a son nom.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "geo-som-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel est le plus haut sommet du monde ?",
+      "choix": [
+        "Le K2",
+        "L'Everest",
+        "Le Kangchenjunga",
+        "Le mont Blanc"
+      ],
+      "juste": 1,
+      "explication": "L'Everest, à la frontière entre le Népal et la Chine, dépasse 8 800 mètres.",
+      "source": "Encyclopædia Britannica, article « Mount Everest »"
+    },
+    {
+      "id": "geo-som-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Dans quelle chaîne de montagnes se trouve le mont Blanc ?",
+      "choix": [
+        "Les Pyrénées",
+        "Le Jura",
+        "Les Alpes",
+        "Le Massif central"
+      ],
+      "juste": 2,
+      "explication": "Le mont Blanc, entre la France et l'Italie, est le plus haut sommet des Alpes.",
+      "source": "Encyclopédie Larousse, article « mont Blanc »"
+    },
+    {
+      "id": "geo-som-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle chaîne de montagnes sépare la France de l'Espagne ?",
+      "choix": [
+        "Les Pyrénées",
+        "Les Alpes",
+        "Les Vosges",
+        "Le Jura"
+      ],
+      "juste": 0,
+      "explication": "Les Pyrénées s'étendent de l'Atlantique à la Méditerranée, entre la France et l'Espagne.",
+      "source": "Encyclopédie Larousse, article « Pyrénées »"
+    },
+    {
+      "id": "geo-som-0004",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Dans quelle chaîne de montagnes se trouve l'Everest ?",
+      "choix": [
+        "Les Andes",
+        "Les Rocheuses",
+        "Les Alpes",
+        "L'Himalaya"
+      ],
+      "juste": 3,
+      "explication": "L'Everest appartient à l'Himalaya, la chaîne qui compte les plus hauts sommets du monde.",
+      "source": "Encyclopædia Britannica, article « Himalayas »"
+    },
+    {
+      "id": "geo-som-0005",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Sur quel continent se trouve la cordillère des Andes ?",
+      "choix": [
+        "L'Amérique du Nord",
+        "L'Amérique du Sud",
+        "L'Afrique",
+        "L'Asie"
+      ],
+      "juste": 1,
+      "explication": "Les Andes longent toute la côte ouest de l'Amérique du Sud, du Venezuela à la Terre de Feu.",
+      "source": "Encyclopædia Britannica, article « Andes Mountains »"
+    },
+    {
+      "id": "geo-som-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel est le plus haut sommet d'Afrique ?",
+      "choix": [
+        "Le mont Kenya",
+        "Le Toubkal",
+        "Le Kilimandjaro",
+        "Le mont Cameroun"
+      ],
+      "juste": 2,
+      "explication": "Le Kilimandjaro, en Tanzanie, est un volcan qui dépasse 5 800 mètres.",
+      "source": "Encyclopædia Britannica, article « Kilimanjaro »"
+    },
+    {
+      "id": "geo-som-0007",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Le puy de Dôme est un volcan de quel massif ?",
+      "choix": [
+        "Le Massif central",
+        "Les Alpes",
+        "Les Pyrénées",
+        "Les Vosges"
+      ],
+      "juste": 0,
+      "explication": "Le puy de Dôme fait partie de la chaîne des Puys, en Auvergne, dans le Massif central.",
+      "source": "Encyclopédie Larousse, article « puy de Dôme »"
+    }
+  ]
+}

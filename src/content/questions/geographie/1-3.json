@@ -1,0 +1,116 @@
+{
+  "id": "geographie-1-3",
+  "theme": "geographie",
+  "etape": 1,
+  "lecon": 3,
+  "titre": "Continents et océans",
+  "intro": "Le vagabond lève les yeux vers la carte du monde.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "geo-mon-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel est le plus grand océan du monde ?",
+      "choix": [
+        "L'océan Atlantique",
+        "L'océan Indien",
+        "L'océan Arctique",
+        "L'océan Pacifique"
+      ],
+      "juste": 3,
+      "explication": "Le Pacifique couvre à lui seul près d'un tiers de la surface de la Terre.",
+      "source": "Encyclopædia Britannica, article « Pacific Ocean »"
+    },
+    {
+      "id": "geo-mon-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel est le plus grand continent par sa superficie ?",
+      "choix": [
+        "L'Asie",
+        "L'Afrique",
+        "L'Amérique",
+        "L'Antarctique"
+      ],
+      "juste": 0,
+      "explication": "L'Asie est le plus vaste des continents, et aussi le plus peuplé.",
+      "source": "Encyclopædia Britannica, article « Asia »"
+    },
+    {
+      "id": "geo-mon-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel océan sépare l'Europe de l'Amérique du Nord ?",
+      "choix": [
+        "L'océan Pacifique",
+        "L'océan Atlantique",
+        "L'océan Indien",
+        "L'océan Arctique"
+      ],
+      "juste": 1,
+      "explication": "L'Atlantique s'étend entre l'Europe et l'Afrique d'un côté, les Amériques de l'autre.",
+      "source": "Encyclopædia Britannica, article « Atlantic Ocean »"
+    },
+    {
+      "id": "geo-mon-0004",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Sur quel continent se trouve le Kenya ?",
+      "choix": [
+        "L'Asie",
+        "L'Océanie",
+        "L'Afrique",
+        "L'Amérique du Sud"
+      ],
+      "juste": 2,
+      "explication": "Le Kenya est un pays d'Afrique de l'Est, traversé par l'équateur.",
+      "source": "The World Factbook (CIA), fiche « Kenya », rubrique Geography › Location"
+    },
+    {
+      "id": "geo-mon-0005",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel est le plus petit des océans ?",
+      "choix": [
+        "L'océan Indien",
+        "L'océan Austral",
+        "L'océan Atlantique",
+        "L'océan Arctique"
+      ],
+      "juste": 3,
+      "explication": "L'océan Arctique, autour du pôle Nord, est le plus petit et le moins profond des océans.",
+      "source": "Encyclopædia Britannica, article « Arctic Ocean »"
+    },
+    {
+      "id": "geo-mon-0006",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Sur quel continent se trouve le pôle Sud ?",
+      "choix": [
+        "L'Antarctique",
+        "L'Arctique",
+        "L'Océanie",
+        "L'Amérique du Sud"
+      ],
+      "juste": 0,
+      "explication": "Le pôle Sud géographique se trouve sur le continent antarctique ; l'Arctique, au nord, est un océan entouré de terres.",
+      "source": "Encyclopædia Britannica, article « South Pole »"
+    },
+    {
+      "id": "geo-mon-0007",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Le canal de Suez relie la mer Méditerranée à quelle mer ?",
+      "choix": [
+        "La mer Noire",
+        "La mer Rouge",
+        "La mer Caspienne",
+        "Le golfe Persique"
+      ],
+      "juste": 1,
+      "explication": "Ouvert en 1869, le canal de Suez relie la Méditerranée à la mer Rouge à travers l'isthme de Suez, en Égypte.",
+      "source": "Encyclopædia Britannica, article « Suez Canal »"
+    }
+  ]
+}

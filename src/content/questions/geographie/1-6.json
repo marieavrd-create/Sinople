@@ -1,0 +1,191 @@
+{
+  "id": "geographie-1-6",
+  "theme": "geographie",
+  "etape": 1,
+  "lecon": 6,
+  "titre": "Épreuve du Vagabond",
+  "intro": "Douze questions pour devenir Messager.",
+  "epreuve": true,
+  "questions": [
+    {
+      "id": "geo-ep1-0001",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle est la capitale de la Nouvelle-Zélande ?",
+      "choix": [
+        "Auckland",
+        "Christchurch",
+        "Wellington",
+        "Queenstown"
+      ],
+      "juste": 2,
+      "explication": "Wellington, au sud de l'île du Nord, est la capitale ; Auckland est la plus grande ville du pays.",
+      "source": "The World Factbook (CIA), fiche « New Zealand », rubrique Government › Capital"
+    },
+    {
+      "id": "geo-ep1-0002",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle est la capitale de la Hongrie ?",
+      "choix": [
+        "Budapest",
+        "Debrecen",
+        "Szeged",
+        "Pécs"
+      ],
+      "juste": 0,
+      "explication": "Budapest est née en 1873 de la réunion de Buda, Óbuda et Pest, de part et d'autre du Danube.",
+      "source": "The World Factbook (CIA), fiche « Hungary », rubrique Government › Capital"
+    },
+    {
+      "id": "geo-ep1-0003",
+      "type": "qcm",
+      "niveau": "difficile",
+      "q": "Quelle est la capitale du Kazakhstan ?",
+      "choix": [
+        "Almaty",
+        "Chymkent",
+        "Karaganda",
+        "Astana"
+      ],
+      "juste": 3,
+      "explication": "Astana est la capitale depuis 1997, à la place d'Almaty ; elle s'est appelée Nour-Soultan de 2019 à 2022.",
+      "source": "The World Factbook (CIA), fiche « Kazakhstan », rubrique Government › Capital"
+    },
+    {
+      "id": "geo-ep1-0004",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel fleuve traverse Vienne, Budapest et Belgrade ?",
+      "choix": [
+        "Le Rhin",
+        "Le Danube",
+        "L'Elbe",
+        "La Vistule"
+      ],
+      "juste": 1,
+      "explication": "Le Danube traverse dix pays et quatre capitales : Vienne, Bratislava, Budapest et Belgrade.",
+      "source": "Encyclopædia Britannica, article « Danube River »"
+    },
+    {
+      "id": "geo-ep1-0005",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel est le plus long fleuve d'Afrique ?",
+      "choix": [
+        "Le Congo",
+        "Le Niger",
+        "Le Nil",
+        "Le Zambèze"
+      ],
+      "juste": 2,
+      "explication": "Le Nil, qui se jette dans la Méditerranée en Égypte, est le plus long fleuve d'Afrique.",
+      "source": "Encyclopædia Britannica, article « Nile River »"
+    },
+    {
+      "id": "geo-ep1-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel détroit sépare l'Europe de l'Afrique ?",
+      "choix": [
+        "Le détroit de Gibraltar",
+        "Le Bosphore",
+        "Le détroit de Messine",
+        "Le détroit d'Ormuz"
+      ],
+      "juste": 0,
+      "explication": "Le détroit de Gibraltar relie l'Atlantique à la Méditerranée, entre l'Espagne et le Maroc.",
+      "source": "Encyclopædia Britannica, article « Strait of Gibraltar »"
+    },
+    {
+      "id": "geo-ep1-0007",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel est le plus grand désert chaud du monde ?",
+      "choix": [
+        "Le Kalahari",
+        "Le désert de Gobi",
+        "Le désert d'Arabie",
+        "Le Sahara"
+      ],
+      "juste": 3,
+      "explication": "Le Sahara couvre une grande partie de l'Afrique du Nord ; seuls les déserts froids des pôles sont plus vastes.",
+      "source": "Encyclopædia Britannica, article « Sahara »"
+    },
+    {
+      "id": "geo-ep1-0008",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle est la capitale du Pérou ?",
+      "choix": [
+        "Cuzco",
+        "Lima",
+        "Arequipa",
+        "Quito"
+      ],
+      "juste": 1,
+      "explication": "Lima, fondée en 1535 sur la côte du Pacifique, est la capitale du Pérou ; Quito est celle de l'Équateur.",
+      "source": "The World Factbook (CIA), fiche « Peru », rubrique Government › Capital"
+    },
+    {
+      "id": "geo-ep1-0009",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel est le plus grand pays du monde par sa superficie ?",
+      "choix": [
+        "Le Canada",
+        "La Chine",
+        "La Russie",
+        "Les États-Unis"
+      ],
+      "juste": 2,
+      "explication": "La Russie s'étend sur plus de 17 millions de km², de l'Europe de l'Est au Pacifique.",
+      "source": "The World Factbook (CIA), fiche « Russia », rubrique Geography › Area"
+    },
+    {
+      "id": "geo-ep1-0010",
+      "type": "qcm",
+      "niveau": "difficile",
+      "q": "Quelle est la plus grande étendue d'eau fermée du monde ?",
+      "choix": [
+        "La mer Caspienne",
+        "Le lac Supérieur",
+        "Le lac Victoria",
+        "Le lac Baïkal"
+      ],
+      "juste": 0,
+      "explication": "La mer Caspienne, entre l'Europe et l'Asie, est la plus vaste étendue d'eau entourée de terres.",
+      "source": "Encyclopædia Britannica, article « Caspian Sea »"
+    },
+    {
+      "id": "geo-ep1-0011",
+      "type": "qcm",
+      "niveau": "difficile",
+      "q": "Dans quel pays la Garonne prend-elle sa source ?",
+      "choix": [
+        "En France",
+        "En Andorre",
+        "Au Portugal",
+        "En Espagne"
+      ],
+      "juste": 3,
+      "explication": "La Garonne naît en Espagne, dans le val d'Aran, avant d'entrer en France.",
+      "source": "Encyclopédie Larousse, article « Garonne »"
+    },
+    {
+      "id": "geo-ep1-0012",
+      "type": "qcm",
+      "niveau": "difficile",
+      "q": "Quel est le plus haut sommet d'Amérique du Sud ?",
+      "choix": [
+        "Le Chimborazo",
+        "L'Aconcagua",
+        "Le Huascarán",
+        "L'Illimani"
+      ],
+      "juste": 1,
+      "explication": "L'Aconcagua, dans les Andes argentines, est le plus haut sommet des Amériques.",
+      "source": "Encyclopædia Britannica, article « Aconcagua »"
+    }
+  ]
+}
