@@ -1,7 +1,8 @@
 /* Le lecteur de leçon (src/islands/LecteurLecon.tsx). */
-.lecteur { padding-bottom: 260px; }
+/* La page prend tout l'écran ; le bandeau de réponse reste en bas sans jamais cacher les réponses. */
+.lecteur:not(.ecran-centre) { min-height: calc(100dvh - 48px); display: flex; flex-direction: column; }
 .lecteur .haut { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
-.lecteur .fermer { text-decoration: none; font-size: 1.3rem; color: var(--encre-douce); }
+.lecteur .fermer { margin-left: -10px; color: var(--encre-douce); }
 .lecteur .barre { flex: 1; height: 16px; border-radius: var(--arrondi-bouton); background: var(--sinople-clair); overflow: hidden; }
 .lecteur .remplissage { height: 100%; background: var(--sinople); border-radius: inherit; transition: width .3s; }
 
@@ -28,21 +29,43 @@
 .lecteur .reponse[aria-checked='true']::before { background: var(--sinople); border-color: var(--sinople); }
 .lecteur .reponse.juste { border-color: var(--juste); background: var(--sinople-clair); }
 .lecteur .reponse.faux { border-color: var(--faux); background: color-mix(in srgb, var(--faux) 15%, var(--blanc)); }
+.lecteur .reponse.faux::before { background: var(--faux); border-color: var(--faux); }
+/* Une coche ou une croix en plus de la couleur */
+.lecteur .reponse.juste::after, .lecteur .reponse.faux::after {
+  content: ''; width: 22px; height: 22px; margin-left: auto; flex-shrink: 0;
+  mask: var(--marque) center / contain no-repeat;
+}
+.lecteur .reponse.juste::after {
+  background: var(--juste);
+  --marque: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7'/%3E%3C/svg%3E");
+}
+.lecteur .reponse.faux::after {
+  background: var(--faux);
+  --marque: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6 6 18'/%3E%3C/svg%3E");
+}
 
-.lecteur .verdict { position: fixed; left: 0; right: 0; bottom: 0; padding: 16px 16px 24px; background: var(--creme); }
+.lecteur .ecran-question { padding-bottom: 16px; }
+.lecteur .verdict {
+  position: sticky; bottom: 0; margin-top: auto; padding: 16px 0 24px;
+  background: var(--fond-verdict, var(--creme));
+  /* le fond déborde sur toute la largeur de l'écran */
+  box-shadow: 0 0 0 100vmax var(--fond-verdict, var(--creme));
+  clip-path: inset(0 -100vmax);
+}
 .lecteur .verdict > * { max-width: 448px; margin-left: auto; margin-right: auto; }
 .lecteur .message { margin: 0 auto 6px; font-weight: 700; min-height: 1.4em; }
 .lecteur .explication { margin: 0 auto 12px; font-size: .92rem; color: var(--encre); }
 .lecteur .source { color: var(--encre-douce); }
 .lecteur .verdict .bouton { width: 100%; }
-.lecteur .verdict.ok { background: var(--sinople-clair); }
+.lecteur .verdict.ok { --fond-verdict: var(--sinople-clair); }
 .lecteur .verdict.ok .message { color: var(--sinople-fonce); }
-.lecteur .verdict.rate { background: color-mix(in srgb, var(--faux) 15%, var(--creme)); }
-.lecteur .verdict.rate .message { color: var(--faux); }
+.lecteur .verdict.rate { --fond-verdict: color-mix(in srgb, var(--faux) 15%, var(--creme)); }
+.lecteur .verdict.rate .message { color: var(--faux-fonce); }
 .lecteur .verdict.rate .bouton { background: var(--faux); box-shadow: 0 var(--epaisseur-ombre) 0 color-mix(in srgb, var(--faux) 70%, black); }
 
 .lecteur.ecran-centre { text-align: center; display: grid; justify-items: center; gap: 12px; padding-top: 40px; }
 .ecran-centre h1 { margin: 0; }
+.ecran-centre h1:focus { outline: none; }
 .ecran-centre .sous-titre { margin: 0 0 8px; color: var(--encre-douce); font-size: 1.05rem; max-width: 34ch; }
 .ecran-centre .bouton { width: 100%; max-width: 320px; }
 .gains { margin: 0 0 16px; width: 100%; max-width: 320px; display: grid; gap: 6px; }

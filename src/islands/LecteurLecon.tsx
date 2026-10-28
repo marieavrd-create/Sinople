@@ -1,6 +1,6 @@
 // Lecteur de leçon (QCM) : une question à la fois, les vies en bûches, la barre d'avancement,
 // l'explication et la source après chaque réponse, puis le bilan. À zéro vie, le feu s'éteint et la leçon s'arrête.
-import { useEffect, useMemo, useState } from 'preact/hooks';
+import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import { lireEtat, ecrireEtat, stockageNavigateur } from '../lib/stockage/local';
 import { viesActuelles, perdreVie, prochaineVieDans } from '../lib/jeu/vies';
 import { construireChemin, leconAccessible, type LeconDuChemin } from '../lib/jeu/chemin';
@@ -52,6 +52,9 @@ function FeuEteint() {
   );
 }
 
+/** Typographie française : espace fine insécable avant ? ! : ; (le signe ne part plus seul à la ligne). */
+const typo = (t: string) => t.replace(/\s+([?!:;])/g, '\u202f$1');
+
 function formatDuree(ms: number) {
   const min = Math.ceil(ms / 60_000);
   return min >= 60 ? `${Math.floor(min / 60)} h ${String(min % 60).padStart(2, '0')}` : `${min} min`;
@@ -68,6 +71,8 @@ export default function LecteurLecon({ base, nomTheme, lecon, questions, chemin,
   const [bilan, setBilan] = useState<Bilan | null>(null);
   const [promu, setPromu] = useState(0);
   const [rendue, setRendue] = useState(false);
+  // Un court temps avant « Continuer » : un double toucher ne saute plus l'explication.
+  const verrou = useRef(false);
   const [attente, setAttente] = useState(0);
 
   // Au chargement : leçon verrouillée → retour au chemin ; plus de vie → feu éteint.
@@ -87,6 +92,24 @@ export default function LecteurLecon({ base, nomTheme, lecon, questions, chemin,
     }
   }, []);
 
+  // Clavier : les touches 1 à 4 choisissent, les flèches passent d'une réponse à l'autre.
+  useEffect(() => {
+    if (ecran !== 'question' || corrige) return;
+    const auClavier = (e: KeyboardEvent) => {
+      const n = questions[i]?.choix.length ?? 0;
+      let k = -1;
+      if (/^[1-9]$/.test(e.key)) k = Number(e.key) - 1;
+      else if (e.key === 'ArrowDown' || e.key === 'ArrowRight') k = (choisi + 1) % n;
+      else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') k = (Math.max(choisi, 0) - 1 + n) % n;
+      if (k < 0 || k >= n) return;
+      e.preventDefault();
+      setChoisi(k);
+      document.querySelectorAll<HTMLButtonElement>('.lecteur .reponse')[k]?.focus();
+    };
+    addEventListener('keydown', auClavier);
+    return () => removeEventListener('keydown', auClavier);
+  }, [ecran, corrige, choisi, i]);
+
   const q = questions[i];
   const ok = choisi === q?.juste;
   const fait = i + (corrige ? 1 : 0);
@@ -95,6 +118,8 @@ export default function LecteurLecon({ base, nomTheme, lecon, questions, chemin,
   function valider() {
     if (choisi < 0) return;
     setCorrige(true);
+    verrou.current = true;
+    setTimeout(() => (verrou.current = false), 400);
     setReponses((r) => ({ ...r, [q.id]: ok }));
     if (!ok && !revision) {
       // La bûche brûle tout de suite : quitter la leçon ne la rend pas.
@@ -109,6 +134,7 @@ export default function LecteurLecon({ base, nomTheme, lecon, questions, chemin,
   }
 
   function continuer() {
+    if (verrou.current) return;
     if (vies === 0 && !revision) return setEcran('eteint');
     if (i + 1 < questions.length) {
       setI(i + 1);
@@ -133,7 +159,7 @@ export default function LecteurLecon({ base, nomTheme, lecon, questions, chemin,
     return (
       <section class="lecteur ecran-centre">
         <FeuEteint />
-        <h1>Le feu s'est éteint</h1>
+        <h1 tabIndex={-1} ref={(h) => h?.focus()}>Le feu s'est éteint</h1>
         <p class="sous-titre">Plus une bûche pour l'entretenir. Une nouvelle bûche arrive dans {formatDuree(attente)}.</p>
         <a class="bouton" href={`${base}/revision`}>Réviser pour regagner une bûche</a>
         <a class="bouton clair" href={retour}>Retour au chemin</a>
@@ -165,7 +191,15 @@ export default function LecteurLecon({ base, nomTheme, lecon, questions, chemin,
     return (
       <section class="lecteur ecran-centre">
         <p class="theme">{nomTheme} · {lecon.titre}</p>
-        <h1>{bilan.reussie ? (lecon.epreuve ? 'Épreuve réussie !' : 'Leçon réussie !') : 'Presque, petit goupil'}</h1>
+        <h1 tabIndex={-1} ref={(h) => h?.focus()}>
+          {typo(
+            bilan.total > 0 && bilan.bonnes === bilan.total
+              ? 'Sans faute, goupil !'
+              : bilan.reussie
+                ? lecon.epreuve ? 'Épreuve réussie !' : 'Leçon réussie !'
+                : bilan.bonnes / Math.max(1, bilan.total) >= 0.4 ? 'Pas mal, petit goupil' : 'Le chemin sera long',
+          )}
+        </h1>
         <p class="sous-titre">
           {bilan.bonnes} bonne{bilan.bonnes > 1 ? 's' : ''} réponse{bilan.bonnes > 1 ? 's' : ''} sur {bilan.total}
           {!bilan.reussie && ` : il en faut ${seuil} % pour ${lecon.epreuve ? 'réussir l’épreuve' : 'valider la leçon'}.`}
@@ -191,7 +225,16 @@ export default function LecteurLecon({ base, nomTheme, lecon, questions, chemin,
   return (
     <div class="lecteur">
       <header class="haut">
-        <a class="fermer" href={retour} aria-label="Quitter la leçon">✕</a>
+        <a
+          class="fermer icone-bouton"
+          href={retour}
+          aria-label="Quitter la leçon"
+          onClick={(e) => {
+            if ((i > 0 || corrige) && !confirm('Quitter la leçon ? Les réponses de cette partie ne seront pas gardées.')) e.preventDefault();
+          }}
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
+        </a>
         <div class="barre" role="progressbar" aria-label="Avancement" aria-valuemin={0} aria-valuemax={questions.length} aria-valuenow={fait}>
           <div class="remplissage" style={{ width: `${pourcent}%` }} />
         </div>
@@ -200,8 +243,8 @@ export default function LecteurLecon({ base, nomTheme, lecon, questions, chemin,
 
       <section class="ecran-question">
         <p class="theme">{nomTheme} · {lecon.titre} · {q.niveau}</p>
-        <h1 class="question">{q.q}</h1>
-        <div class="choix" role="radiogroup" aria-label="Réponses">
+        <h1 class="question" id="question">{typo(q.q)}</h1>
+        <div class="choix" role="radiogroup" aria-labelledby="question">
           {q.choix.map((c, k) => (
             <button
               type="button"
@@ -212,6 +255,8 @@ export default function LecteurLecon({ base, nomTheme, lecon, questions, chemin,
               onClick={() => setChoisi(k)}
             >
               {c}
+              {corrige && k === q.juste && <span class="invisible"> (bonne réponse)</span>}
+              {corrige && k === choisi && !ok && <span class="invisible"> (votre réponse, fausse)</span>}
             </button>
           ))}
         </div>
@@ -219,11 +264,11 @@ export default function LecteurLecon({ base, nomTheme, lecon, questions, chemin,
 
       <footer class={`verdict${corrige ? (ok ? ' ok' : ' rate') : ''}`}>
         <p class="message" aria-live="polite">
-          {corrige && (ok ? 'Bravo, rusé goupil !' : `La bonne réponse : ${q.choix[q.juste]}`)}
+          {corrige && typo(ok ? 'Bravo, rusé goupil !' : `La bonne réponse : ${q.choix[q.juste]}`)}
         </p>
         {corrige && (
           <p class="explication">
-            {q.explication} <span class="source">(Source : {q.source})</span>
+            {typo(q.explication)} <span class="source">({typo(`Source : ${q.source}`)})</span>
           </p>
         )}
         <button type="button" class="bouton valider" disabled={!corrige && choisi < 0} onClick={corrige ? continuer : valider}>
