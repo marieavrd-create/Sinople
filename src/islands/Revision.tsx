@@ -1,13 +1,13 @@
 // Séance de révision : les questions dont la date de rappel est arrivée (système de Leitner),
 // chargées leçon par leçon, puis jouées dans le lecteur en mode révision.
 import { useEffect, useState } from 'preact/hooks';
-import LecteurLecon, { type QuestionQcm } from './LecteurLecon';
+import LecteurLecon, { type QuestionJeu } from './LecteurLecon';
 import { lireEtat, stockageNavigateur } from '../lib/stockage/local';
 import { aReviser } from '../lib/jeu/revision';
 import { jourParis } from '../lib/jeu/serie';
 import { regles } from '../lib/jeu/regles';
 
-type Chargement = { etat: 'charge' } | { etat: 'vide'; prochaine: string | null } | { etat: 'erreur' } | { etat: 'pret'; questions: QuestionQcm[] };
+type Chargement = { etat: 'charge' } | { etat: 'vide'; prochaine: string | null } | { etat: 'erreur' } | { etat: 'pret'; questions: QuestionJeu[] };
 
 export default function Revision({ base }: { base: string }) {
   const [c, setC] = useState<Chargement>({ etat: 'charge' });
@@ -24,11 +24,13 @@ export default function Revision({ base }: { base: string }) {
       const index: Record<string, string> = await (await fetch(`${base}/lecons.json`)).json();
       const lecons = [...new Set(ids.map((id) => index[id]).filter(Boolean))];
       const contenus = await Promise.all(lecons.map(async (l) => (await fetch(`${base}/lecons/${l}.json`)).json()));
-      const parId = new Map<string, QuestionQcm>(
-        contenus.flatMap((l: { questions: (QuestionQcm & { type: string })[] }) => l.questions.filter((q) => q.type === 'qcm').map((q) => [q.id, q] as const)),
+      const parId = new Map<string, QuestionJeu>(
+        contenus.flatMap((l: { questions: (QuestionJeu | { type: 'carte'; id: string })[] }) =>
+          l.questions.flatMap((q) => (q.type === 'carte' ? [] : [[q.id, q] as const])),
+        ),
       );
       // Une question retirée du contenu est simplement ignorée.
-      const questions = ids.map((id) => parId.get(id)).filter((q): q is QuestionQcm => !!q);
+      const questions = ids.map((id) => parId.get(id)).filter((q): q is QuestionJeu => !!q);
       setC(questions.length ? { etat: 'pret', questions } : { etat: 'vide', prochaine: null });
     })().catch(() => setC({ etat: 'erreur' }));
   }, []);

@@ -1,7 +1,7 @@
 // Réponses tapées : normalisation et tolérance d'une faute de frappe (spécification technique § 5).
 import { regles } from './regles';
 
-const { fautes_tolerees, lettres_min_pour_tolerance, articles_ignores } = regles.saisie;
+const { fautes_tolerees, lettres_min_pour_tolerance, articles_ignores, part_pour_juste } = regles.saisie;
 
 /** Minuscules, sans accents ni ponctuation, sans article au début : « L'Égypte ! » → « egypte ». */
 export function normaliser(texte: string): string {
@@ -51,4 +51,20 @@ export function estAcceptee(saisie: string, formes: string[]): boolean {
  */
 export function trouverReponse(saisie: string, reponses: string[][], dejaTrouvees: ReadonlySet<number> = new Set()): number {
   return reponses.findIndex((formes, i) => !dejaTrouvees.has(i) && estAcceptee(saisie, formes));
+}
+
+/**
+ * Pendant la frappe d'une liste : seule une saisie exacte (aux accents et majuscules près) compte,
+ * pour que « Chine » ne soit pas pris pour « Chili » avant la fin du mot. Renvoie l'index trouvé, ou -1.
+ */
+export function trouverExacte(saisie: string, reponses: string[][]): number {
+  const s = normaliser(saisie);
+  if (!s) return -1;
+  return reponses.findIndex((formes) => formes.some((f) => normaliser(f) === s));
+}
+
+/** Une question à taper est juste si l'on trouve la réponse (seule) ou assez de réponses de la liste. */
+export function saisieJuste(trouvees: number, attendues: number): boolean {
+  if (attendues <= 0) return false;
+  return attendues === 1 ? trouvees >= 1 : trouvees / attendues >= part_pour_juste;
 }

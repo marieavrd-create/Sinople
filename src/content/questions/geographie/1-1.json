@@ -111,6 +111,20 @@
       "juste": 3,
       "explication": "Ljubljana est la capitale de la Slovénie. Zagreb est celle de la Croatie, Bratislava celle de la Slovaquie, Skopje celle de la Macédoine du Nord.",
       "source": "The World Factbook (CIA), fiche « Slovenia », rubrique Government › Capital"
+    },
+    {
+      "id": "geo-cap-0015",
+      "type": "saisie",
+      "niveau": "facile",
+      "q": "Tape le nom de la capitale de l'Allemagne.",
+      "reponses": [
+        [
+          "Berlin"
+        ]
+      ],
+      "duree_s": 30,
+      "explication": "Berlin est la capitale de l'Allemagne réunifiée depuis 1990.",
+      "source": "The World Factbook (CIA), fiche « Germany », rubrique Government › Capital"
     }
   ]
 }

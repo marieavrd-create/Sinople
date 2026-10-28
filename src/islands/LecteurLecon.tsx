@@ -1,14 +1,19 @@
-// Lecteur de leçon (QCM) : une question à la fois, les vies en bûches, la barre d'avancement,
+// Lecteur de leçon : une question à la fois (QCM ou réponse à taper), les vies en bûches, la barre d'avancement,
 // l'explication et la source après chaque réponse, puis le bilan. À zéro vie, le feu s'éteint et la leçon s'arrête.
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import { lireEtat, ecrireEtat, stockageNavigateur } from '../lib/stockage/local';
 import { viesActuelles, perdreVie, prochaineVieDans } from '../lib/jeu/vies';
 import { construireChemin, leconAccessible, type LeconDuChemin } from '../lib/jeu/chemin';
 import { regles } from '../lib/jeu/regles';
-import type { Bilan } from '../lib/jeu/points';
+import { pointsQcm, pointsSaisie, type Bilan } from '../lib/jeu/points';
+import { estAcceptee, trouverExacte, trouverReponse, saisieJuste } from '../lib/jeu/reponses';
 import { enregistrerFin, enregistrerRevision } from '../scripts/fin-de-lecon';
 
-export type QuestionQcm = { id: string; q: string; choix: string[]; juste: number; niveau: string; explication: string; source: string };
+type Commun = { id: string; q: string; niveau: string; explication: string; source: string };
+export type QuestionQcm = Commun & { type: 'qcm'; choix: string[]; juste: number };
+/** Réponse à taper : une seule réponse attendue, ou une liste à compléter avant la fin du chrono. */
+export type QuestionSaisie = Commun & { type: 'saisie'; reponses: string[][]; duree_s: number };
+export type QuestionJeu = QuestionQcm | QuestionSaisie;
 
 type Props = {
   base: string;
@@ -17,7 +22,7 @@ type Props = {
   /** Pour la scène de passage de grade : « le bélier », et les noms des 6 grades du thème. */
   animal: string;
   grades: string[];
-  questions: QuestionQcm[];
+  questions: QuestionJeu[];
   chemin: LeconDuChemin[];
   /** Mode révision : pas de bûche perdue, pas de verrou ; la fin rend une bûche (5 questions minimum). */
   revision?: boolean;
@@ -68,6 +73,14 @@ export default function LecteurLecon({ base, nomTheme, lecon, questions, chemin,
   const [choisi, setChoisi] = useState(-1);
   const [corrige, setCorrige] = useState(false);
   const [reponses, setReponses] = useState<Record<string, boolean>>({});
+  const [points, setPoints] = useState<Record<string, number>>({});
+  // Réponse à taper : le texte en cours, les réponses de la liste déjà trouvées, le chrono.
+  const [texte, setTexte] = useState('');
+  const [trouvees, setTrouvees] = useState<number[]>([]);
+  // null tant que le chrono de la question n'est pas lancé (il ne doit pas valider une question qui commence)
+  const [reste, setReste] = useState<number | null>(null);
+  const [astuce, setAstuce] = useState('');
+  const champ = useRef<HTMLInputElement>(null);
   const [bilan, setBilan] = useState<Bilan | null>(null);
   const [promu, setPromu] = useState(0);
   const [rendue, setRendue] = useState(false);
@@ -94,9 +107,10 @@ export default function LecteurLecon({ base, nomTheme, lecon, questions, chemin,
 
   // Clavier : les touches 1 à 4 choisissent, les flèches passent d'une réponse à l'autre.
   useEffect(() => {
-    if (ecran !== 'question' || corrige) return;
+    const courante = questions[i];
+    if (ecran !== 'question' || corrige || courante?.type !== 'qcm') return;
     const auClavier = (e: KeyboardEvent) => {
-      const n = questions[i]?.choix.length ?? 0;
+      const n = courante.choix.length;
       let k = -1;
       if (/^[1-9]$/.test(e.key)) k = Number(e.key) - 1;
       else if (e.key === 'ArrowDown' || e.key === 'ArrowRight') k = (choisi + 1) % n;
@@ -111,17 +125,82 @@ export default function LecteurLecon({ base, nomTheme, lecon, questions, chemin,
   }, [ecran, corrige, choisi, i]);
 
   const q = questions[i];
-  const ok = choisi === q?.juste;
+  const liste = q?.type === 'saisie' && q.reponses.length > 1;
+  const ok = q?.type === 'saisie' ? saisieJuste(trouvees.length, q.reponses.length) : choisi === q?.juste;
+
+  // Nouvelle question à taper : curseur dans le champ, chrono lancé pour une liste
+  // (le champ est vidé dans continuer(), avant l'affichage, pour ne pas effacer une frappe rapide).
+  useEffect(() => {
+    if (ecran !== 'question' || q?.type !== 'saisie') return;
+    setReste(q.reponses.length > 1 ? q.duree_s : null);
+    champ.current?.focus();
+  }, [i, ecran]);
+
+  useEffect(() => {
+    if (!liste || corrige || ecran !== 'question' || reste === null) return;
+    if (reste <= 0) return valider();
+    const t = setTimeout(() => setReste((r) => (r === null ? r : r - 1)), 1000);
+    return () => clearTimeout(t);
+  }, [reste, liste, corrige, ecran]);
+
+  // Toute la liste trouvée avant la fin du chrono : on n'attend pas « J'ai fini ».
+  useEffect(() => {
+    if (liste && !corrige && q.type === 'saisie' && trouvees.length === q.reponses.length) valider();
+  }, [trouvees]);
+
+  /** Liste : chaque réponse exacte est prise dès qu'elle est tapée, et le champ se vide pour la suivante. */
+  function taper(valeur: string) {
+    setTexte(valeur);
+    if (!liste || q.type !== 'saisie') return;
+    const k = trouverExacte(valeur, q.reponses);
+    if (k < 0) return setAstuce('');
+    if (trouvees.includes(k)) return setAstuce('Déjà trouvée');
+    setTrouvees([...trouvees, k]);
+    setTexte('');
+    setAstuce('');
+  }
+
+  /** Entrée : pour une liste, on essaie la saisie avec une faute tolérée ; pour une réponse seule, on valide. */
+  function entree() {
+    if (corrige || q.type !== 'saisie') return;
+    if (!liste) return valider();
+    const saisie = champ.current?.value ?? texte;
+    const k = trouverReponse(saisie, q.reponses, new Set(trouvees));
+    if (k >= 0) {
+      setTrouvees([...trouvees, k]);
+      setTexte('');
+      setAstuce('');
+    } else if (saisie.trim()) setAstuce('Pas dans la liste');
+  }
   const fait = i + (corrige ? 1 : 0);
   const pourcent = useMemo(() => (questions.length ? (fait / questions.length) * 100 : 0), [fait, questions.length]);
 
   function valider() {
-    if (choisi < 0) return;
+    if (corrige) return;
+    let juste = ok;
+    let gagnes = 0;
+    if (q.type === 'qcm') {
+      if (choisi < 0) return;
+      gagnes = pointsQcm(juste);
+    } else {
+      let n = trouvees.length;
+      if (!liste) {
+        // Le champ lui-même fait foi : « Entrée » peut arriver avant que l'affichage ait suivi la frappe.
+        const saisie = champ.current?.value ?? texte;
+        if (!saisie.trim()) return;
+        n = estAcceptee(saisie, q.reponses[0]) ? 1 : 0;
+        setTrouvees(n ? [0] : []);
+      }
+      juste = saisieJuste(n, q.reponses.length);
+      gagnes = pointsSaisie(n, q.reponses.length);
+    }
+    setAstuce('');
     setCorrige(true);
     verrou.current = true;
     setTimeout(() => (verrou.current = false), 400);
-    setReponses((r) => ({ ...r, [q.id]: ok }));
-    if (!ok && !revision) {
+    setReponses((r) => ({ ...r, [q.id]: juste }));
+    setPoints((p) => ({ ...p, [q.id]: gagnes }));
+    if (!juste && !revision) {
       // La bûche brûle tout de suite : quitter la leçon ne la rend pas.
       const maintenant = Date.now();
       const stockage = stockageNavigateur();
@@ -138,6 +217,10 @@ export default function LecteurLecon({ base, nomTheme, lecon, questions, chemin,
     if (vies === 0 && !revision) return setEcran('eteint');
     if (i + 1 < questions.length) {
       setI(i + 1);
+      setReste(null);
+      setTexte('');
+      setTrouvees([]);
+      setAstuce('');
       setChoisi(-1);
       setCorrige(false);
       return;
@@ -149,7 +232,7 @@ export default function LecteurLecon({ base, nomTheme, lecon, questions, chemin,
       setEcran('fin-revision');
       return;
     }
-    const fin = enregistrerFin({ theme: lecon.theme, leconId: lecon.id, etape: lecon.etape, epreuve: lecon.epreuve, reponses });
+    const fin = enregistrerFin({ theme: lecon.theme, leconId: lecon.id, etape: lecon.etape, epreuve: lecon.epreuve, reponses, points });
     setBilan(fin.bilan);
     if (fin.gradeApres > fin.gradeAvant) setPromu(fin.gradeApres);
     setEcran('fin');
@@ -244,6 +327,9 @@ export default function LecteurLecon({ base, nomTheme, lecon, questions, chemin,
       <section class="ecran-question">
         <p class="theme">{nomTheme} · {lecon.titre} · {q.niveau}</p>
         <h1 class="question" id="question">{typo(q.q)}</h1>
+        {q.type === 'saisie' ? (
+          <Saisie q={q} liste={liste} texte={texte} trouvees={trouvees} reste={reste} astuce={astuce} corrige={corrige} ok={ok} champ={champ} taper={taper} entree={entree} />
+        ) : (
         <div class="choix" role="radiogroup" aria-labelledby="question">
           {q.choix.map((c, k) => (
             <button
@@ -260,21 +346,104 @@ export default function LecteurLecon({ base, nomTheme, lecon, questions, chemin,
             </button>
           ))}
         </div>
+        )}
       </section>
 
       <footer class={`verdict${corrige ? (ok ? ' ok' : ' rate') : ''}`}>
         <p class="message" aria-live="polite">
-          {corrige && typo(ok ? 'Bravo, rusé goupil !' : `La bonne réponse : ${q.choix[q.juste]}`)}
+          {corrige && typo(ok ? 'Bravo, rusé goupil !' : messageRate(q, trouvees.length))}
         </p>
         {corrige && (
           <p class="explication">
             {typo(q.explication)} <span class="source">({typo(`Source : ${q.source}`)})</span>
           </p>
         )}
-        <button type="button" class="bouton valider" disabled={!corrige && choisi < 0} onClick={corrige ? continuer : valider}>
-          {corrige ? 'Continuer' : 'Valider'}
+        <button
+          type="button"
+          class="bouton valider"
+          disabled={!corrige && (q.type === 'qcm' ? choisi < 0 : !liste && !texte.trim())}
+          onClick={corrige ? continuer : valider}
+        >
+          {corrige ? 'Continuer' : liste ? 'J’ai fini' : 'Valider'}
         </button>
       </footer>
+    </div>
+  );
+}
+
+function messageRate(q: QuestionJeu, trouvees: number) {
+  if (q.type === 'qcm') return `La bonne réponse : ${q.choix[q.juste]}`;
+  if (q.reponses.length === 1) return `La bonne réponse : ${q.reponses[0][0]}`;
+  return `${trouvees} sur ${q.reponses.length} : les réponses manquées sont en rouge`;
+}
+
+type ProprietesSaisie = {
+  q: QuestionSaisie;
+  liste: boolean;
+  texte: string;
+  trouvees: number[];
+  reste: number | null;
+  astuce: string;
+  corrige: boolean;
+  ok: boolean;
+  champ: { current: HTMLInputElement | null };
+  taper: (v: string) => void;
+  entree: () => void;
+};
+
+/** Champ de réponse, et pour une liste : le chrono, le compte et les cases à remplir. */
+function Saisie({ q, liste, texte, trouvees, reste: chrono, astuce, corrige, ok, champ, taper, entree }: ProprietesSaisie) {
+  const reste = chrono ?? q.duree_s;
+  return (
+    <div class="saisie">
+      {liste && (
+        <p class="compteur">
+          <span>
+            {trouvees.length} / {q.reponses.length}
+          </span>
+          <span class={`chrono${reste <= 10 && !corrige ? ' presse' : ''}`} role="timer" aria-label={`${reste} secondes restantes`}>
+            {Math.floor(reste / 60)}:{String(reste % 60).padStart(2, '0')}
+          </span>
+        </p>
+      )}
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          entree();
+        }}
+      >
+        <input
+          ref={champ}
+          class={`champ${corrige && !liste ? (ok ? ' juste' : ' faux') : ''}`}
+          type="text"
+          value={texte}
+          disabled={corrige}
+          onInput={(e) => taper((e.target as HTMLInputElement).value)}
+          aria-labelledby="question"
+          aria-describedby={liste ? 'astuce' : undefined}
+          placeholder={liste ? 'Tape une réponse…' : 'Ta réponse…'}
+          autocomplete="off"
+          autocapitalize="off"
+          spellcheck={false}
+          enterkeyhint={liste ? 'enter' : 'done'}
+        />
+      </form>
+      {liste && (
+        <>
+          <p class="astuce" id="astuce" aria-live="polite">{astuce}</p>
+          <ol class="cases">
+            {q.reponses.map((formes, k) => {
+              const trouvee = trouvees.includes(k);
+              return (
+                <li class={trouvee ? 'trouvee' : corrige ? 'manquee' : ''}>
+                  {trouvee || corrige ? formes[0] : ''}
+                  {corrige && !trouvee && <span class="invisible"> (manquée)</span>}
+                </li>
+              );
+            })}
+          </ol>
+        </>
+      )}
     </div>
   );
 }

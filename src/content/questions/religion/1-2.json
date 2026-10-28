@@ -111,6 +111,26 @@
       "juste": 3,
       "explication": "Pour le punir, Zeus fit enchaîner Prométhée à un rocher où un aigle lui dévorait le foie.",
       "source": "Encyclopædia Britannica, article « Prometheus »"
+    },
+    {
+      "id": "rel-gre-0008",
+      "type": "saisie",
+      "niveau": "moyen",
+      "q": "Cite les trois frères qui se partagent le monde : le ciel, la mer et les Enfers.",
+      "reponses": [
+        [
+          "Zeus"
+        ],
+        [
+          "Poséidon"
+        ],
+        [
+          "Hadès"
+        ]
+      ],
+      "duree_s": 45,
+      "explication": "Après leur victoire sur les Titans, Zeus reçoit le ciel, Poséidon la mer et Hadès le monde souterrain.",
+      "source": "Encyclopædia Britannica, article « Hades »"
     }
   ]
 }
