@@ -1,0 +1,176 @@
+{
+  "id": "religion-1-1",
+  "theme": "religion",
+  "etape": 1,
+  "lecon": 1,
+  "titre": "Les édifices chrétiens",
+  "intro": "Du simple oratoire à la basilique majeure : chaque édifice a son rôle dans la vie de l'Église.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "rel-edifices-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Dans quel édifice se trouve la cathèdre, le siège de l'évêque ?",
+      "choix": [
+        "La chapelle",
+        "La collégiale",
+        "La cathédrale",
+        "L'oratoire"
+      ],
+      "juste": 2,
+      "explication": "La cathédrale tire son nom de la cathèdre, le siège de l'évêque : c'est l'église principale du diocèse.",
+      "source": "Usage de l'Église ; Code de droit canonique (1983), canon 1214 pour la notion d'église"
+    },
+    {
+      "id": "rel-edifices-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel lieu de culte est, par définition, ouvert à tous les fidèles ?",
+      "choix": [
+        "L'église",
+        "L'oratoire",
+        "La chapelle privée",
+        "La sacristie"
+      ],
+      "juste": 0,
+      "explication": "Une église est un édifice sacré destiné au culte divin, où tous les fidèles ont le droit d'entrer pour y célébrer.",
+      "source": "Code de droit canonique (1983), canon 1214"
+    },
+    {
+      "id": "rel-edifices-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Qui accorde à une église le titre de basilique ?",
+      "choix": [
+        "L'évêque du lieu",
+        "Le curé de la paroisse",
+        "Le pape",
+        "Le maire de la commune"
+      ],
+      "juste": 2,
+      "explication": "Le titre de basilique mineure est un honneur accordé par le pape, par l'intermédiaire du Saint-Siège.",
+      "source": "Saint-Siège, Dicastère pour le culte divin"
+    },
+    {
+      "id": "rel-edifices-0004",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Comment appelle-t-on un lieu de culte réservé à une communauté ou à un groupe de fidèles, avec la permission de l'évêque ?",
+      "choix": [
+        "Une basilique",
+        "Un oratoire",
+        "Une collégiale",
+        "Une cathédrale"
+      ],
+      "juste": 1,
+      "explication": "L'oratoire sert à une communauté, par exemple un couvent ou une école. D'autres fidèles peuvent y entrer avec l'accord du responsable.",
+      "source": "Code de droit canonique (1983), canon 1223"
+    },
+    {
+      "id": "rel-edifices-0005",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel lieu de culte est destiné à une ou quelques personnes, par exemple une famille, avec la permission de l'évêque ?",
+      "choix": [
+        "La chapelle privée",
+        "L'église paroissiale",
+        "La basilique",
+        "La primatiale"
+      ],
+      "juste": 0,
+      "explication": "La chapelle privée sert à une ou plusieurs personnes physiques, comme une famille dans un château.",
+      "source": "Code de droit canonique (1983), canon 1226"
+    },
+    {
+      "id": "rel-edifices-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Comment s'appelle une église desservie par un chapitre de chanoines, sans être le siège d'un évêque ?",
+      "choix": [
+        "Une chapelle",
+        "Un oratoire",
+        "Une collégiale",
+        "Un sanctuaire"
+      ],
+      "juste": 2,
+      "explication": "La collégiale doit son nom au collège de chanoines qui y célèbrent l'office, comme dans une cathédrale, mais sans évêque.",
+      "source": "Usage de l'Église ; Code de droit canonique (1983), canons 503 à 510 sur les chapitres de chanoines"
+    },
+    {
+      "id": "rel-edifices-0007",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Combien y a-t-il de basiliques majeures ?",
+      "choix": [
+        "Deux",
+        "Quatre",
+        "Sept",
+        "Douze"
+      ],
+      "juste": 1,
+      "explication": "Il y en a quatre, toutes à Rome : Saint-Jean-de-Latran, Saint-Pierre, Sainte-Marie-Majeure et Saint-Paul-hors-les-Murs. Les autres basiliques sont dites mineures.",
+      "source": "Saint-Siège"
+    },
+    {
+      "id": "rel-edifices-0008",
+      "type": "qcm",
+      "niveau": "difficile",
+      "q": "Laquelle de ces basiliques est la cathédrale du pape, évêque de Rome ?",
+      "choix": [
+        "Saint-Pierre du Vatican",
+        "Saint-Jean-de-Latran",
+        "Sainte-Marie-Majeure",
+        "Saint-Paul-hors-les-Murs"
+      ],
+      "juste": 1,
+      "explication": "Ce n'est pas Saint-Pierre ! La cathédrale de Rome est Saint-Jean-de-Latran, « mère et tête de toutes les églises de la ville et du monde ».",
+      "source": "Saint-Siège"
+    },
+    {
+      "id": "rel-edifices-0009",
+      "type": "qcm",
+      "niveau": "difficile",
+      "q": "Laquelle de ces églises n'est pas une basilique majeure ?",
+      "choix": [
+        "Saint-Pierre du Vatican",
+        "Sainte-Marie-Majeure",
+        "Le Sacré-Cœur de Montmartre",
+        "Saint-Paul-hors-les-Murs"
+      ],
+      "juste": 2,
+      "explication": "Le Sacré-Cœur de Montmartre est une basilique mineure. Les quatre basiliques majeures sont toutes à Rome.",
+      "source": "Saint-Siège ; archidiocèse de Paris"
+    },
+    {
+      "id": "rel-edifices-0010",
+      "type": "qcm",
+      "niveau": "difficile",
+      "q": "Comment appelle-t-on l'église d'un archevêque qui porte le titre de primat, comme Saint-Jean de Lyon ?",
+      "choix": [
+        "Une primatiale",
+        "Une collégiale",
+        "Une abbatiale",
+        "Une prieurale"
+      ],
+      "juste": 0,
+      "explication": "La primatiale est la cathédrale d'un primat. L'archevêque de Lyon porte le titre de primat des Gaules.",
+      "source": "Diocèse de Lyon"
+    },
+    {
+      "id": "rel-edifices-0011",
+      "type": "qcm",
+      "niveau": "difficile",
+      "q": "Comment appelle-t-on une église où de nombreux fidèles viennent en pèlerinage, avec l'accord de l'évêque ?",
+      "choix": [
+        "Un oratoire",
+        "Un sanctuaire",
+        "Une chapelle privée",
+        "Une collégiale"
+      ],
+      "juste": 1,
+      "explication": "Un sanctuaire est une église ou un lieu sacré où les fidèles se rendent en pèlerinage, comme Lourdes.",
+      "source": "Code de droit canonique (1983), canon 1230"
+    }
+  ]
+}
