@@ -1,0 +1,116 @@
+{
+  "id": "generale-2-2",
+  "theme": "generale",
+  "etape": 2,
+  "lecon": 2,
+  "titre": "Les peintres",
+  "intro": "Le braconnier s'invite au château, où pendent les tableaux.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "gen-pei-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Qui a peint La Joconde ?",
+      "choix": [
+        "Michel-Ange",
+        "Raphaël",
+        "Botticelli",
+        "Léonard de Vinci"
+      ],
+      "juste": 3,
+      "explication": "La Joconde est exposée au musée du Louvre depuis la Révolution.",
+      "source": "Musée du Louvre, notice « Portrait de Lisa Gherardini, dite Monna Lisa »"
+    },
+    {
+      "id": "gen-pei-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel peintre s'est coupé une partie de l'oreille ?",
+      "choix": [
+        "Paul Gauguin",
+        "Claude Monet",
+        "Vincent van Gogh",
+        "Paul Cézanne"
+      ],
+      "juste": 2,
+      "explication": "Van Gogh s'est mutilé l'oreille à Arles en 1888, après une dispute avec Gauguin.",
+      "source": "Encyclopædia Britannica, article « Vincent van Gogh »"
+    },
+    {
+      "id": "gen-pei-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel peintre a réalisé la série des Nymphéas ?",
+      "choix": [
+        "Auguste Renoir",
+        "Édouard Manet",
+        "Claude Monet",
+        "Edgar Degas"
+      ],
+      "juste": 2,
+      "explication": "Monet a peint les nymphéas de son jardin de Giverny ; les grands panneaux sont au musée de l'Orangerie.",
+      "source": "Musée de l'Orangerie, page « Les Nymphéas »"
+    },
+    {
+      "id": "gen-pei-0004",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel artiste a peint Guernica ?",
+      "choix": [
+        "Salvador Dalí",
+        "Pablo Picasso",
+        "Joan Miró",
+        "Henri Matisse"
+      ],
+      "juste": 1,
+      "explication": "Picasso a peint Guernica en 1937 après le bombardement de cette ville basque.",
+      "source": "Encyclopædia Britannica, article « Guernica »"
+    },
+    {
+      "id": "gen-pei-0005",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Qui a peint le plafond de la chapelle Sixtine ?",
+      "choix": [
+        "Michel-Ange",
+        "Raphaël",
+        "Léonard de Vinci",
+        "Le Caravage"
+      ],
+      "juste": 0,
+      "explication": "Michel-Ange a peint la voûte de la Sixtine entre 1508 et 1512.",
+      "source": "Encyclopædia Britannica, article « Sistine Chapel »"
+    },
+    {
+      "id": "gen-pei-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel peintre surréaliste a peint des montres molles ?",
+      "choix": [
+        "René Magritte",
+        "Max Ernst",
+        "Joan Miró",
+        "Salvador Dalí"
+      ],
+      "juste": 3,
+      "explication": "Ce tableau de 1931 s'intitule La Persistance de la mémoire.",
+      "source": "Museum of Modern Art (moma.org), notice « The Persistence of Memory »"
+    },
+    {
+      "id": "gen-pei-0007",
+      "type": "qcm",
+      "niveau": "difficile",
+      "q": "Quel peintre néerlandais a peint La Jeune Fille à la perle ?",
+      "choix": [
+        "Rembrandt",
+        "Jan van Eyck",
+        "Frans Hals",
+        "Johannes Vermeer"
+      ],
+      "juste": 3,
+      "explication": "Ce tableau de Vermeer est conservé au Mauritshuis, à La Haye.",
+      "source": "Mauritshuis (mauritshuis.nl), notice « Girl with a Pearl Earring »"
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "id": "generale-1-1",
+  "theme": "generale",
+  "etape": 1,
+  "lecon": 1,
+  "titre": "Les bêtes des bois et d'ailleurs",
+  "intro": "Le gueux connaît les bêtes mieux que les livres.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "gen-ani-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel est le plus grand animal vivant sur Terre ?",
+      "choix": [
+        "La baleine bleue",
+        "L'éléphant d'Afrique",
+        "Le requin-baleine",
+        "La girafe"
+      ],
+      "juste": 0,
+      "explication": "La baleine bleue peut dépasser 25 mètres : c'est le plus grand animal ayant jamais existé.",
+      "source": "Encyclopædia Britannica, article « blue whale »"
+    },
+    {
+      "id": "gen-ani-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Comment s'appelle le petit de la biche ?",
+      "choix": [
+        "Le chevreau",
+        "Le poulain",
+        "Le marcassin",
+        "Le faon"
+      ],
+      "juste": 3,
+      "explication": "Le faon naît tacheté de blanc, ce qui le cache dans les sous-bois.",
+      "source": "Dictionnaire Larousse, entrée « faon »"
+    },
+    {
+      "id": "gen-ani-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel est l'animal terrestre le plus rapide ?",
+      "choix": [
+        "Le lion",
+        "L'antilope",
+        "Le guépard",
+        "Le lévrier"
+      ],
+      "juste": 2,
+      "explication": "Le guépard peut dépasser 100 km/h en pointe, sur de courtes distances.",
+      "source": "Encyclopædia Britannica, article « cheetah »"
+    },
+    {
+      "id": "gen-ani-0004",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel mammifère est capable de voler ?",
+      "choix": [
+        "La taupe",
+        "La chauve-souris",
+        "Le hérisson",
+        "Le loir"
+      ],
+      "juste": 1,
+      "explication": "Les chauves-souris sont les seuls mammifères capables d'un vrai vol battu.",
+      "source": "Encyclopædia Britannica, article « bat »"
+    },
+    {
+      "id": "gen-ani-0005",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel est le plus grand oiseau du monde ?",
+      "choix": [
+        "Le condor",
+        "L'autruche",
+        "L'albatros",
+        "L'émeu"
+      ],
+      "juste": 1,
+      "explication": "L'autruche peut mesurer plus de 2,5 mètres ; elle ne vole pas mais court très vite.",
+      "source": "Encyclopædia Britannica, article « ostrich »"
+    },
+    {
+      "id": "gen-ani-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Comment dit-on que crie le cerf ?",
+      "choix": [
+        "Il brame",
+        "Il barrit",
+        "Il glapit",
+        "Il hennit"
+      ],
+      "juste": 0,
+      "explication": "Le cerf brame à l'automne, pendant la saison des amours ; l'éléphant barrit et le renard glapit.",
+      "source": "Dictionnaire Larousse, entrée « bramer »"
+    },
+    {
+      "id": "gen-ani-0007",
+      "type": "qcm",
+      "niveau": "difficile",
+      "q": "Combien de cœurs a une pieuvre ?",
+      "choix": [
+        "Un",
+        "Deux",
+        "Huit",
+        "Trois"
+      ],
+      "juste": 3,
+      "explication": "La pieuvre a un cœur principal et deux cœurs qui irriguent ses branchies.",
+      "source": "Encyclopædia Britannica, article « octopus »"
+    }
+  ]
+}

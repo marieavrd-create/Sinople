@@ -1,0 +1,191 @@
+{
+  "id": "generale-2-6",
+  "theme": "generale",
+  "etape": 2,
+  "lecon": 6,
+  "titre": "Épreuve du Braconnier",
+  "intro": "Douze questions pour devenir Colporteur.",
+  "epreuve": true,
+  "questions": [
+    {
+      "id": "gen-ep2-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Qui a écrit Germinal ?",
+      "choix": [
+        "Victor Hugo",
+        "Honoré de Balzac",
+        "Émile Zola",
+        "Guy de Maupassant"
+      ],
+      "juste": 2,
+      "explication": "Germinal raconte une grève de mineurs dans le nord de la France.",
+      "source": "Encyclopædia Britannica, article « Germinal »"
+    },
+    {
+      "id": "gen-ep2-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Qui a écrit Candide ?",
+      "choix": [
+        "Jean-Jacques Rousseau",
+        "Voltaire",
+        "Denis Diderot",
+        "Montesquieu"
+      ],
+      "juste": 1,
+      "explication": "Dans ce conte de 1759, Voltaire se moque de l'optimisme à tout prix.",
+      "source": "Encyclopædia Britannica, article « Candide »"
+    },
+    {
+      "id": "gen-ep2-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel peintre norvégien a peint Le Cri ?",
+      "choix": [
+        "Gustav Klimt",
+        "Edvard Munch",
+        "Egon Schiele",
+        "Vassily Kandinsky"
+      ],
+      "juste": 1,
+      "explication": "Munch a réalisé plusieurs versions du Cri à partir de 1893.",
+      "source": "Encyclopædia Britannica, article « The Scream »"
+    },
+    {
+      "id": "gen-ep2-0004",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quels organes filtrent le sang pour produire l'urine ?",
+      "choix": [
+        "Les reins",
+        "Le foie",
+        "La rate",
+        "Le pancréas"
+      ],
+      "juste": 0,
+      "explication": "Les reins filtrent chaque jour environ 180 litres de sang.",
+      "source": "Encyclopædia Britannica, article « kidney »"
+    },
+    {
+      "id": "gen-ep2-0005",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Qui a peint Le Déjeuner sur l'herbe, qui fit scandale en 1863 ?",
+      "choix": [
+        "Claude Monet",
+        "Auguste Renoir",
+        "Gustave Courbet",
+        "Édouard Manet"
+      ],
+      "juste": 3,
+      "explication": "Refusé au Salon officiel, le tableau de Manet fut exposé au Salon des refusés.",
+      "source": "Musée d'Orsay, notice « Le Déjeuner sur l'herbe »"
+    },
+    {
+      "id": "gen-ep2-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel est le symbole chimique du fer ?",
+      "choix": [
+        "Fr",
+        "F",
+        "Fe",
+        "Ir"
+      ],
+      "juste": 2,
+      "explication": "Fe vient du latin ferrum ; F est le fluor et Fr le francium.",
+      "source": "Encyclopædia Britannica, article « iron »"
+    },
+    {
+      "id": "gen-ep2-0007",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel compositeur allemand a écrit les Concertos brandebourgeois ?",
+      "choix": [
+        "Georg Friedrich Haendel",
+        "Georg Philipp Telemann",
+        "Jean-Sébastien Bach",
+        "Ludwig van Beethoven"
+      ],
+      "juste": 2,
+      "explication": "Bach les dédia en 1721 au margrave de Brandebourg.",
+      "source": "Encyclopædia Britannica, article « Brandenburg Concertos »"
+    },
+    {
+      "id": "gen-ep2-0008",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel savant italien observa les lunes de Jupiter avec sa lunette, en 1610 ?",
+      "choix": [
+        "Copernic",
+        "Galilée",
+        "Johannes Kepler",
+        "Tycho Brahe"
+      ],
+      "juste": 1,
+      "explication": "Galilée découvrit quatre lunes de Jupiter, appelées depuis les satellites galiléens.",
+      "source": "Encyclopædia Britannica, article « Galileo »"
+    },
+    {
+      "id": "gen-ep2-0009",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle est, environ, la vitesse de la lumière dans le vide ?",
+      "choix": [
+        "300 000 km par seconde",
+        "30 000 km par seconde",
+        "3 000 km par seconde",
+        "3 millions de km par seconde"
+      ],
+      "juste": 0,
+      "explication": "Elle vaut exactement 299 792 458 mètres par seconde.",
+      "source": "Bureau international des poids et mesures, brochure sur le Système international d'unités"
+    },
+    {
+      "id": "gen-ep2-0010",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle particule d'un atome porte une charge négative ?",
+      "choix": [
+        "Le proton",
+        "Le neutron",
+        "Le photon",
+        "L'électron"
+      ],
+      "juste": 3,
+      "explication": "Les électrons tournent autour du noyau, fait de protons (positifs) et de neutrons (neutres).",
+      "source": "Encyclopædia Britannica, article « electron »"
+    },
+    {
+      "id": "gen-ep2-0011",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Qui a écrit À la recherche du temps perdu ?",
+      "choix": [
+        "André Gide",
+        "Louis-Ferdinand Céline",
+        "Colette",
+        "Marcel Proust"
+      ],
+      "juste": 3,
+      "explication": "Ce roman en sept volumes contient le célèbre épisode de la madeleine.",
+      "source": "Encyclopædia Britannica, article « In Search of Lost Time »"
+    },
+    {
+      "id": "gen-ep2-0012",
+      "type": "qcm",
+      "niveau": "difficile",
+      "q": "Combien de symphonies Beethoven a-t-il achevées ?",
+      "choix": [
+        "Cinq",
+        "Sept",
+        "Neuf",
+        "Douze"
+      ],
+      "juste": 2,
+      "explication": "Beethoven a achevé neuf symphonies ; la dernière se termine par l'Ode à la joie.",
+      "source": "Encyclopædia Britannica, article « Ludwig van Beethoven »"
+    }
+  ]
+}

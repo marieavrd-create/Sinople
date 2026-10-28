@@ -1,5 +1,5 @@
 [
-  {"id": "generale", "animal": "renard", "nom": "Culture générale", "matieres": "Un peu de tout : toutes les matières mélangées", "carriere": "Conjuré", "grades": ["Gueux", "Braconnier", "Colporteur", "Conteur", "Conseiller", "Conjuré"]},
+  {"id": "generale", "animal": "renard", "nom": "Culture générale", "matieres": "Un peu de tout : toutes les matières mélangées", "carriere": "Conjuré", "pret": true, "grades": ["Gueux", "Braconnier", "Colporteur", "Conteur", "Conseiller", "Conjuré"]},
   {"id": "geographie", "animal": "hibou", "nom": "Géographie", "matieres": "Pays, capitales, fleuves, reliefs", "carriere": "Ambassadeur", "pret": true, "grades": ["Vagabond", "Messager", "Cartographe", "Explorateur", "Navigateur", "Ambassadeur"]},
   {"id": "histoire", "animal": "cerf", "nom": "Histoire", "matieres": "Histoire, monarchie", "carriere": "Chroniqueur du roi", "grades": ["Écolier", "Copiste", "Archiviste", "Lettré", "Historiographe", "Chroniqueur du roi"]},
   {"id": "culture", "animal": "paon", "nom": "Culture", "matieres": "Art, histoire de l'art, musique, pop culture, tech", "carriere": "Mécène", "grades": ["Curieux", "Apprenti", "Ménestrel", "Artiste", "Amateur éclairé", "Mécène"]},

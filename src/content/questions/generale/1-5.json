@@ -1,0 +1,116 @@
+{
+  "id": "generale-1-5",
+  "theme": "generale",
+  "etape": 1,
+  "lecon": 5,
+  "titre": "À table !",
+  "intro": "Le ventre du gueux crie famine : parlons cuisine.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "gen-cui-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "De quel pays la pizza est-elle originaire ?",
+      "choix": [
+        "La Grèce",
+        "L'Espagne",
+        "Les États-Unis",
+        "L'Italie"
+      ],
+      "juste": 3,
+      "explication": "La pizza moderne est née à Naples.",
+      "source": "Encyclopædia Britannica, article « pizza »"
+    },
+    {
+      "id": "gen-cui-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "De quelle région française vient la choucroute ?",
+      "choix": [
+        "La Bretagne",
+        "La Normandie",
+        "L'Alsace",
+        "La Savoie"
+      ],
+      "juste": 2,
+      "explication": "La choucroute, du chou fermenté, est le grand plat de l'Alsace.",
+      "source": "Encyclopédie Larousse, article « choucroute »"
+    },
+    {
+      "id": "gen-cui-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Avec quelle céréale prépare-t-on le risotto ?",
+      "choix": [
+        "Le blé",
+        "Le riz",
+        "L'orge",
+        "Le maïs"
+      ],
+      "juste": 1,
+      "explication": "Le risotto italien se fait avec un riz rond qui libère son amidon à la cuisson.",
+      "source": "Encyclopædia Britannica, article « risotto »"
+    },
+    {
+      "id": "gen-cui-0004",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle ville a donné son nom à une célèbre moutarde ?",
+      "choix": [
+        "Dijon",
+        "Lyon",
+        "Reims",
+        "Nancy"
+      ],
+      "juste": 0,
+      "explication": "La moutarde de Dijon est une spécialité bourguignonne.",
+      "source": "Encyclopédie Larousse, article « Dijon »"
+    },
+    {
+      "id": "gen-cui-0005",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel fromage normand porte le nom d'un village ?",
+      "choix": [
+        "Le camembert",
+        "Le comté",
+        "Le roquefort",
+        "Le reblochon"
+      ],
+      "juste": 0,
+      "explication": "Camembert est un village de l'Orne ; le roquefort vient de l'Aveyron.",
+      "source": "Encyclopédie Larousse, article « camembert »"
+    },
+    {
+      "id": "gen-cui-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle soupe froide espagnole est faite surtout de tomates ?",
+      "choix": [
+        "Le bortsch",
+        "Le minestrone",
+        "La vichyssoise",
+        "Le gaspacho"
+      ],
+      "juste": 3,
+      "explication": "Le gaspacho vient d'Andalousie ; le bortsch est une soupe de betterave.",
+      "source": "Encyclopædia Britannica, article « gazpacho »"
+    },
+    {
+      "id": "gen-cui-0007",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel fruit sec est la base de la frangipane de la galette des rois ?",
+      "choix": [
+        "La noisette",
+        "La noix",
+        "L'amande",
+        "La pistache"
+      ],
+      "juste": 2,
+      "explication": "La frangipane est une crème à base d'amandes.",
+      "source": "Dictionnaire Larousse, entrée « frangipane »"
+    }
+  ]
+}
