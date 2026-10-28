@@ -1,0 +1,116 @@
+{
+  "id": "religion-2-5",
+  "theme": "religion",
+  "etape": 2,
+  "lecon": 5,
+  "titre": "Les lieux saints",
+  "intro": "Où vont les pèlerins du monde entier.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "rel-lie-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Dans quelle ville se trouve la basilique Saint-Pierre ?",
+      "choix": [
+        "Jérusalem",
+        "Rome",
+        "Assise",
+        "Avignon"
+      ],
+      "juste": 1,
+      "explication": "La basilique Saint-Pierre se dresse au Vatican, enclave au cœur de Rome.",
+      "source": "Encyclopædia Britannica, article « Saint Peter's Basilica »"
+    },
+    {
+      "id": "rel-lie-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel sanctuaire des Pyrénées est lié aux apparitions de la Vierge à Bernadette Soubirous ?",
+      "choix": [
+        "Lourdes",
+        "Lisieux",
+        "Rocamadour",
+        "Fatima"
+      ],
+      "juste": 0,
+      "explication": "En 1858, Bernadette Soubirous dit avoir vu la Vierge dans la grotte de Massabielle, à Lourdes.",
+      "source": "Encyclopædia Britannica, article « Lourdes »"
+    },
+    {
+      "id": "rel-lie-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Dans quelle ville espagnole s'achève le chemin de Saint-Jacques ?",
+      "choix": [
+        "Séville",
+        "Tolède",
+        "Burgos",
+        "Saint-Jacques-de-Compostelle"
+      ],
+      "juste": 3,
+      "explication": "Les pèlerins y viennent vénérer le tombeau de l'apôtre Jacques.",
+      "source": "Encyclopædia Britannica, article « Santiago de Compostela »"
+    },
+    {
+      "id": "rel-lie-0004",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Comment appelle-t-on le vestige du Temple de Jérusalem où prient les juifs ?",
+      "choix": [
+        "Le dôme du Rocher",
+        "Le Saint-Sépulcre",
+        "Le mur occidental",
+        "La porte de Jaffa"
+      ],
+      "juste": 2,
+      "explication": "Le mur occidental, ou mur des Lamentations, est le lieu de prière le plus saint du judaïsme.",
+      "source": "Encyclopædia Britannica, article « Western Wall »"
+    },
+    {
+      "id": "rel-lie-0005",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Au bord de quel fleuve se trouve Varanasi (Bénarès), ville sainte des hindous ?",
+      "choix": [
+        "L'Indus",
+        "Le Brahmapoutre",
+        "Le Gange",
+        "La Yamuna"
+      ],
+      "juste": 2,
+      "explication": "Les hindous viennent s'y baigner et y incinérer leurs morts, sur les ghats du Gange.",
+      "source": "Encyclopædia Britannica, article « Varanasi »"
+    },
+    {
+      "id": "rel-lie-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel immense temple cambodgien figure sur le drapeau du pays ?",
+      "choix": [
+        "Borobudur",
+        "Angkor Vat",
+        "Shwedagon",
+        "Wat Arun"
+      ],
+      "juste": 1,
+      "explication": "Angkor Vat, d'abord dédié à Vishnou, est devenu un temple bouddhique.",
+      "source": "Encyclopædia Britannica, article « Angkor Wat »"
+    },
+    {
+      "id": "rel-lie-0007",
+      "type": "qcm",
+      "niveau": "difficile",
+      "q": "Quelle montagne grecque abrite une vingtaine de monastères orthodoxes ?",
+      "choix": [
+        "Le mont Athos",
+        "Le mont Olympe",
+        "Le mont Parnasse",
+        "Le mont Ida"
+      ],
+      "juste": 0,
+      "explication": "Le mont Athos est une république monastique autonome, interdite aux femmes.",
+      "source": "Encyclopædia Britannica, article « Mount Athos »"
+    }
+  ]
+}

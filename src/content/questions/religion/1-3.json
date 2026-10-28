@@ -1,0 +1,116 @@
+{
+  "id": "religion-1-3",
+  "theme": "religion",
+  "etape": 1,
+  "lecon": 3,
+  "titre": "Les grands récits de la Bible",
+  "intro": "Les histoires que le pèlerin entend en chemin.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "rel-bib-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Qui construit une arche pour échapper au Déluge ?",
+      "choix": [
+        "Moïse",
+        "Abraham",
+        "Noé",
+        "Jonas"
+      ],
+      "juste": 2,
+      "explication": "Noé embarque sa famille et un couple de chaque espèce animale avant le Déluge.",
+      "source": "La Bible, Genèse, chapitres 6 à 9"
+    },
+    {
+      "id": "rel-bib-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Qui reçoit les Tables de la Loi sur le mont Sinaï ?",
+      "choix": [
+        "Aaron",
+        "Josué",
+        "Moïse",
+        "Élie"
+      ],
+      "juste": 2,
+      "explication": "Sur le Sinaï, Moïse reçoit les deux tables de pierre portant la Loi.",
+      "source": "La Bible, Exode, chapitres 19, 20 et 31"
+    },
+    {
+      "id": "rel-bib-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Dans quel jardin vivent Adam et Ève ?",
+      "choix": [
+        "Le jardin de Gethsémani",
+        "Le jardin d'Éden",
+        "Les jardins suspendus de Babylone",
+        "Le jardin des Hespérides"
+      ],
+      "juste": 1,
+      "explication": "Dieu place Adam et Ève dans le jardin d'Éden, d'où ils sont chassés après avoir mangé le fruit défendu.",
+      "source": "La Bible, Genèse, chapitres 2 et 3"
+    },
+    {
+      "id": "rel-bib-0004",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel jeune berger abat le géant Goliath avec sa fronde ?",
+      "choix": [
+        "David",
+        "Salomon",
+        "Samson",
+        "Saül"
+      ],
+      "juste": 0,
+      "explication": "David, futur roi d'Israël, vainc le Philistin Goliath d'une pierre lancée à la fronde.",
+      "source": "La Bible, Premier livre de Samuel, chapitre 17"
+    },
+    {
+      "id": "rel-bib-0005",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Qui passe trois jours dans le ventre d'un grand poisson ?",
+      "choix": [
+        "Job",
+        "Daniel",
+        "Élie",
+        "Jonas"
+      ],
+      "juste": 3,
+      "explication": "Jonas, qui fuyait la mission confiée par Dieu, est avalé par un grand poisson puis rejeté sur le rivage.",
+      "source": "La Bible, Livre de Jonas, chapitres 1 et 2"
+    },
+    {
+      "id": "rel-bib-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Dans quelle ville naît Jésus selon les Évangiles ?",
+      "choix": [
+        "Nazareth",
+        "Jérusalem",
+        "Capharnaüm",
+        "Bethléem"
+      ],
+      "juste": 3,
+      "explication": "Jésus naît à Bethléem, en Judée, mais grandit à Nazareth, en Galilée.",
+      "source": "La Bible, Évangile selon Matthieu, chapitre 2 ; Évangile selon Luc, chapitre 2"
+    },
+    {
+      "id": "rel-bib-0007",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Combien d'apôtres Jésus choisit-il ?",
+      "choix": [
+        "Sept",
+        "Dix",
+        "Douze",
+        "Quarante"
+      ],
+      "juste": 2,
+      "explication": "Jésus choisit douze apôtres, parmi lesquels Pierre, Jean et Judas.",
+      "source": "La Bible, Évangile selon Marc, chapitre 3"
+    }
+  ]
+}

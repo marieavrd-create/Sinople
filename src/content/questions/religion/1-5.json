@@ -1,0 +1,116 @@
+{
+  "id": "religion-1-5",
+  "theme": "religion",
+  "etape": 1,
+  "lecon": 5,
+  "titre": "Les dieux d'Égypte",
+  "intro": "Sur les bords du Nil, d'autres dieux veillent.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "rel-egy-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel dieu égyptien est le dieu du Soleil ?",
+      "choix": [
+        "Rê",
+        "Osiris",
+        "Anubis",
+        "Seth"
+      ],
+      "juste": 0,
+      "explication": "Rê traverse le ciel chaque jour dans sa barque solaire.",
+      "source": "Encyclopædia Britannica, article « Re »"
+    },
+    {
+      "id": "rel-egy-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel dieu égyptien à tête de chacal veille sur les morts et l'embaumement ?",
+      "choix": [
+        "Horus",
+        "Thot",
+        "Sobek",
+        "Anubis"
+      ],
+      "juste": 3,
+      "explication": "Anubis préside à la momification et guide les défunts.",
+      "source": "Encyclopædia Britannica, article « Anubis »"
+    },
+    {
+      "id": "rel-egy-0003",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel dieu égyptien, tué par son frère Seth, règne ensuite sur le royaume des morts ?",
+      "choix": [
+        "Horus",
+        "Rê",
+        "Osiris",
+        "Ptah"
+      ],
+      "juste": 2,
+      "explication": "Ramené à la vie par Isis, Osiris devient le souverain de l'au-delà.",
+      "source": "Encyclopædia Britannica, article « Osiris »"
+    },
+    {
+      "id": "rel-egy-0004",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel dieu égyptien a une tête de faucon ?",
+      "choix": [
+        "Anubis",
+        "Thot",
+        "Horus",
+        "Khnoum"
+      ],
+      "juste": 2,
+      "explication": "Horus, fils d'Isis et d'Osiris, est le protecteur du pharaon.",
+      "source": "Encyclopædia Britannica, article « Horus »"
+    },
+    {
+      "id": "rel-egy-0005",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle déesse égyptienne, épouse d'Osiris, est une grande magicienne ?",
+      "choix": [
+        "Hathor",
+        "Isis",
+        "Bastet",
+        "Nout"
+      ],
+      "juste": 1,
+      "explication": "Isis rassemble le corps d'Osiris et lui rend la vie par sa magie.",
+      "source": "Encyclopædia Britannica, article « Isis »"
+    },
+    {
+      "id": "rel-egy-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle déesse égyptienne est représentée sous la forme d'une chatte ?",
+      "choix": [
+        "Bastet",
+        "Sekhmet",
+        "Maât",
+        "Nephthys"
+      ],
+      "juste": 0,
+      "explication": "Bastet est une déesse à tête de chatte ; Sekhmet, elle, a une tête de lionne.",
+      "source": "Encyclopædia Britannica, article « Bastet »"
+    },
+    {
+      "id": "rel-egy-0007",
+      "type": "qcm",
+      "niveau": "difficile",
+      "q": "Quel dieu égyptien à tête d'ibis est le dieu de l'écriture ?",
+      "choix": [
+        "Ptah",
+        "Amon",
+        "Khonsou",
+        "Thot"
+      ],
+      "juste": 3,
+      "explication": "Thot, dieu du savoir, passait pour l'inventeur des hiéroglyphes.",
+      "source": "Encyclopædia Britannica, article « Thoth »"
+    }
+  ]
+}

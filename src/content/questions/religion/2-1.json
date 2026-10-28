@@ -1,0 +1,116 @@
+{
+  "id": "religion-2-1",
+  "theme": "religion",
+  "etape": 2,
+  "lecon": 1,
+  "titre": "Dieux romains et nordiques",
+  "intro": "Le novice découvre les dieux des autres peuples.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "rel-rom-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel est le nom romain de Zeus ?",
+      "choix": [
+        "Mars",
+        "Neptune",
+        "Jupiter",
+        "Saturne"
+      ],
+      "juste": 2,
+      "explication": "Les Romains ont assimilé leurs dieux à ceux des Grecs : Zeus est devenu Jupiter.",
+      "source": "Encyclopædia Britannica, article « Jupiter »"
+    },
+    {
+      "id": "rel-rom-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Dans la mythologie nordique, quel dieu manie un marteau ?",
+      "choix": [
+        "Odin",
+        "Thor",
+        "Loki",
+        "Freyr"
+      ],
+      "juste": 1,
+      "explication": "Thor, dieu du tonnerre, combat les géants avec son marteau Mjöllnir.",
+      "source": "Encyclopædia Britannica, article « Thor »"
+    },
+    {
+      "id": "rel-rom-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel dieu romain de la guerre a donné son nom à une planète ?",
+      "choix": [
+        "Mars",
+        "Vulcain",
+        "Janus",
+        "Quirinus"
+      ],
+      "juste": 0,
+      "explication": "Mars, équivalent de l'Arès grec, a donné son nom à la planète rouge et au mois de mars.",
+      "source": "Encyclopædia Britannica, article « Mars »"
+    },
+    {
+      "id": "rel-rom-0004",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel est le nom romain d'Aphrodite ?",
+      "choix": [
+        "Junon",
+        "Minerve",
+        "Diane",
+        "Vénus"
+      ],
+      "juste": 3,
+      "explication": "Vénus est la déesse romaine de l'amour ; Minerve correspond à Athéna.",
+      "source": "Encyclopædia Britannica, article « Venus »"
+    },
+    {
+      "id": "rel-rom-0005",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel dieu nordique, borgne, est le père des dieux ?",
+      "choix": [
+        "Thor",
+        "Baldr",
+        "Týr",
+        "Odin"
+      ],
+      "juste": 3,
+      "explication": "Odin a sacrifié un œil pour boire à la source de la sagesse.",
+      "source": "Encyclopædia Britannica, article « Odin »"
+    },
+    {
+      "id": "rel-rom-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Chez les Vikings, comment s'appelle la grande salle des guerriers morts au combat ?",
+      "choix": [
+        "Asgard",
+        "Midgard",
+        "Le Valhalla",
+        "Yggdrasil"
+      ],
+      "juste": 2,
+      "explication": "Les guerriers tombés au combat sont accueillis au Valhalla, la halle d'Odin.",
+      "source": "Encyclopædia Britannica, article « Valhalla »"
+    },
+    {
+      "id": "rel-rom-0007",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel dieu romain à deux visages a donné son nom au mois de janvier ?",
+      "choix": [
+        "Saturne",
+        "Janus",
+        "Jupiter",
+        "Mars"
+      ],
+      "juste": 1,
+      "explication": "Janus, dieu des portes et des commencements, regarde à la fois devant et derrière lui.",
+      "source": "Encyclopædia Britannica, article « Janus »"
+    }
+  ]
+}

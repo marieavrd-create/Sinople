@@ -1,0 +1,116 @@
+{
+  "id": "religion-2-2",
+  "theme": "religion",
+  "etape": 2,
+  "lecon": 2,
+  "titre": "Les religions du monde",
+  "intro": "Le novice apprend comment prient les autres.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "rel-rlg-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Qui est à l'origine du bouddhisme ?",
+      "choix": [
+        "Siddhartha Gautama, le Bouddha",
+        "Confucius",
+        "Lao-tseu",
+        "Zarathoustra"
+      ],
+      "juste": 0,
+      "explication": "Siddhartha Gautama, prince devenu ascète, a enseigné en Inde la voie vers l'Éveil.",
+      "source": "Encyclopædia Britannica, article « Buddha »"
+    },
+    {
+      "id": "rel-rlg-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Comment s'appelle le lieu de culte des juifs ?",
+      "choix": [
+        "La synagogue",
+        "La mosquée",
+        "La pagode",
+        "Le gurdwara"
+      ],
+      "juste": 0,
+      "explication": "La synagogue est le lieu de prière et d'étude de la communauté juive.",
+      "source": "Encyclopædia Britannica, article « synagogue »"
+    },
+    {
+      "id": "rel-rlg-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Comment s'appelle le chef de l'Église catholique ?",
+      "choix": [
+        "Le patriarche",
+        "Le dalaï-lama",
+        "Le métropolite",
+        "Le pape"
+      ],
+      "juste": 3,
+      "explication": "Le pape est l'évêque de Rome et le chef de l'Église catholique.",
+      "source": "Encyclopædia Britannica, article « pope »"
+    },
+    {
+      "id": "rel-rlg-0004",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Dans quelle ville se trouve la Kaaba, vers laquelle prient les musulmans ?",
+      "choix": [
+        "Médine",
+        "Jérusalem",
+        "La Mecque",
+        "Bagdad"
+      ],
+      "juste": 2,
+      "explication": "La Kaaba, au centre de la Grande Mosquée de La Mecque, donne la direction de la prière.",
+      "source": "Encyclopædia Britannica, article « Kaaba »"
+    },
+    {
+      "id": "rel-rlg-0005",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Comment s'appellent les cinq premiers livres de la Bible hébraïque ?",
+      "choix": [
+        "Le Talmud",
+        "La Torah",
+        "La Mishna",
+        "Le Zohar"
+      ],
+      "juste": 1,
+      "explication": "La Torah réunit la Genèse, l'Exode, le Lévitique, les Nombres et le Deutéronome.",
+      "source": "Encyclopædia Britannica, article « Torah »"
+    },
+    {
+      "id": "rel-rlg-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle religion a pour textes les plus anciens les Védas ?",
+      "choix": [
+        "Le bouddhisme",
+        "L'hindouisme",
+        "Le jaïnisme",
+        "Le shintoïsme"
+      ],
+      "juste": 1,
+      "explication": "Les Védas, composés en sanskrit, sont les plus anciens textes sacrés de l'hindouisme.",
+      "source": "Encyclopædia Britannica, article « Veda »"
+    },
+    {
+      "id": "rel-rlg-0007",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle religion traditionnelle du Japon honore les kami ?",
+      "choix": [
+        "Le shintoïsme",
+        "Le taoïsme",
+        "Le confucianisme",
+        "Le jaïnisme"
+      ],
+      "juste": 0,
+      "explication": "Le shintoïsme honore les kami, esprits présents dans la nature et les ancêtres.",
+      "source": "Encyclopædia Britannica, article « Shintō »"
+    }
+  ]
+}

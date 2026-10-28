@@ -1,0 +1,191 @@
+{
+  "id": "religion-1-6",
+  "theme": "religion",
+  "etape": 1,
+  "lecon": 6,
+  "titre": "Épreuve du Pèlerin",
+  "intro": "Douze questions pour devenir Novice.",
+  "epreuve": true,
+  "questions": [
+    {
+      "id": "rel-ep1-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel dieu grec est le dieu du vin et de la fête ?",
+      "choix": [
+        "Apollon",
+        "Arès",
+        "Hermès",
+        "Dionysos"
+      ],
+      "juste": 3,
+      "explication": "Dionysos, que les Romains appellent Bacchus, est le dieu de la vigne et de l'ivresse.",
+      "source": "Encyclopædia Britannica, article « Dionysus »"
+    },
+    {
+      "id": "rel-ep1-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle déesse grecque est la déesse de l'amour et de la beauté ?",
+      "choix": [
+        "Athéna",
+        "Héra",
+        "Aphrodite",
+        "Déméter"
+      ],
+      "juste": 2,
+      "explication": "Aphrodite serait née de l'écume de la mer.",
+      "source": "Encyclopædia Britannica, article « Aphrodite »"
+    },
+    {
+      "id": "rel-ep1-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Selon la Genèse, quel fils d'Adam et Ève tue son frère Abel ?",
+      "choix": [
+        "Seth",
+        "Caïn",
+        "Ésaü",
+        "Isaac"
+      ],
+      "juste": 1,
+      "explication": "Jaloux de son frère, Caïn tue Abel : c'est le premier meurtre raconté par la Bible.",
+      "source": "La Bible, Genèse, chapitre 4"
+    },
+    {
+      "id": "rel-ep1-0004",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Comment s'appelle le livre saint de l'islam ?",
+      "choix": [
+        "Le Coran",
+        "La Torah",
+        "Les Védas",
+        "Le Talmud"
+      ],
+      "juste": 0,
+      "explication": "Pour les musulmans, le Coran est la parole de Dieu révélée au prophète Mahomet.",
+      "source": "Encyclopædia Britannica, article « Qurʾān »"
+    },
+    {
+      "id": "rel-ep1-0005",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Selon la Genèse, en combien de jours Dieu crée-t-il le monde avant de se reposer ?",
+      "choix": [
+        "Six",
+        "Sept",
+        "Trois",
+        "Quarante"
+      ],
+      "juste": 0,
+      "explication": "Dieu crée le monde en six jours et se repose le septième.",
+      "source": "La Bible, Genèse, chapitres 1 et 2"
+    },
+    {
+      "id": "rel-ep1-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle ville est sainte à la fois pour les juifs, les chrétiens et les musulmans ?",
+      "choix": [
+        "La Mecque",
+        "Rome",
+        "Bethléem",
+        "Jérusalem"
+      ],
+      "juste": 3,
+      "explication": "Jérusalem abrite le mur occidental, le Saint-Sépulcre et le dôme du Rocher.",
+      "source": "Encyclopædia Britannica, article « Jerusalem »"
+    },
+    {
+      "id": "rel-ep1-0007",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel dieu égyptien est le frère et le meurtrier d'Osiris ?",
+      "choix": [
+        "Horus",
+        "Anubis",
+        "Seth",
+        "Rê"
+      ],
+      "juste": 2,
+      "explication": "Seth, dieu du désert et du désordre, tue Osiris ; Horus le venge ensuite.",
+      "source": "Encyclopædia Britannica, article « Seth »"
+    },
+    {
+      "id": "rel-ep1-0008",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle fête chrétienne célèbre la venue de l'Esprit saint sur les apôtres ?",
+      "choix": [
+        "L'Ascension",
+        "La Pentecôte",
+        "La Toussaint",
+        "L'Épiphanie"
+      ],
+      "juste": 1,
+      "explication": "La Pentecôte a lieu cinquante jours après Pâques.",
+      "source": "Encyclopédie Larousse, article « Pentecôte »"
+    },
+    {
+      "id": "rel-ep1-0009",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Vendu par ses frères, qui devient le ministre du pharaon ?",
+      "choix": [
+        "Benjamin",
+        "Joseph",
+        "Moïse",
+        "Jacob"
+      ],
+      "juste": 1,
+      "explication": "Joseph, fils de Jacob, est vendu comme esclave puis devient le premier ministre du pharaon grâce à ses dons d'interprète des rêves.",
+      "source": "La Bible, Genèse, chapitres 37 à 41"
+    },
+    {
+      "id": "rel-ep1-0010",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle fête juive est le jour du Grand Pardon ?",
+      "choix": [
+        "Yom Kippour",
+        "Roch Hachana",
+        "Souccot",
+        "Chavouot"
+      ],
+      "juste": 0,
+      "explication": "Yom Kippour est un jour de jeûne et de prière ; Roch Hachana est le Nouvel An juif.",
+      "source": "Encyclopædia Britannica, article « Yom Kippur »"
+    },
+    {
+      "id": "rel-ep1-0011",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel Titan, père de Zeus, dévorait ses enfants ?",
+      "choix": [
+        "Ouranos",
+        "Atlas",
+        "Prométhée",
+        "Cronos"
+      ],
+      "juste": 3,
+      "explication": "Cronos avalait ses enfants de peur d'être détrôné ; Zeus, caché par sa mère, lui échappa.",
+      "source": "Encyclopædia Britannica, article « Cronus »"
+    },
+    {
+      "id": "rel-ep1-0012",
+      "type": "qcm",
+      "niveau": "difficile",
+      "q": "Quelle déesse égyptienne, coiffée d'une plume d'autruche, incarne la vérité et l'ordre du monde ?",
+      "choix": [
+        "Isis",
+        "Hathor",
+        "Maât",
+        "Nout"
+      ],
+      "juste": 2,
+      "explication": "Lors du jugement des morts, le cœur du défunt est pesé contre la plume de Maât.",
+      "source": "Encyclopædia Britannica, article « Maat »"
+    }
+  ]
+}

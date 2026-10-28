@@ -1,0 +1,116 @@
+{
+  "id": "religion-1-4",
+  "theme": "religion",
+  "etape": 1,
+  "lecon": 4,
+  "titre": "Les fêtes religieuses",
+  "intro": "Le calendrier du pèlerin est rythmé par les fêtes.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "rel-fet-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle fête chrétienne célèbre la naissance de Jésus ?",
+      "choix": [
+        "Pâques",
+        "Noël",
+        "La Pentecôte",
+        "L'Ascension"
+      ],
+      "juste": 1,
+      "explication": "Noël, le 25 décembre, célèbre la naissance de Jésus.",
+      "source": "Encyclopédie Larousse, article « Noël »"
+    },
+    {
+      "id": "rel-fet-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle fête chrétienne célèbre la résurrection de Jésus ?",
+      "choix": [
+        "Pâques",
+        "Noël",
+        "La Toussaint",
+        "L'Épiphanie"
+      ],
+      "juste": 0,
+      "explication": "Pâques est la plus grande fête chrétienne : elle célèbre la résurrection du Christ.",
+      "source": "Encyclopédie Larousse, article « Pâques »"
+    },
+    {
+      "id": "rel-fet-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel mois du calendrier musulman est consacré au jeûne ?",
+      "choix": [
+        "Le ramadan",
+        "Le muharram",
+        "Le chawwal",
+        "Le rajab"
+      ],
+      "juste": 0,
+      "explication": "Pendant le ramadan, neuvième mois du calendrier musulman, les fidèles jeûnent de l'aube au coucher du soleil.",
+      "source": "Encyclopædia Britannica, article « Ramadan »"
+    },
+    {
+      "id": "rel-fet-0004",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle fête juive de huit jours est aussi appelée fête des Lumières ?",
+      "choix": [
+        "Pessah",
+        "Yom Kippour",
+        "Pourim",
+        "Hanoukka"
+      ],
+      "juste": 3,
+      "explication": "Pendant Hanoukka, on allume chaque soir une bougie de plus sur un chandelier à neuf branches.",
+      "source": "Encyclopædia Britannica, article « Hanukkah »"
+    },
+    {
+      "id": "rel-fet-0005",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle grande fête hindoue est appelée fête des lumières ?",
+      "choix": [
+        "Holi",
+        "Navaratri",
+        "Diwali",
+        "Pongal"
+      ],
+      "juste": 2,
+      "explication": "Pour Diwali, on allume des lampes à huile qui symbolisent la victoire de la lumière sur les ténèbres ; Holi est la fête des couleurs.",
+      "source": "Encyclopædia Britannica, article « Diwali »"
+    },
+    {
+      "id": "rel-fet-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle fête juive commémore la sortie d'Égypte ?",
+      "choix": [
+        "Hanoukka",
+        "Pessah",
+        "Souccot",
+        "Pourim"
+      ],
+      "juste": 1,
+      "explication": "Pessah, la Pâque juive, rappelle la libération des Hébreux esclaves en Égypte.",
+      "source": "Encyclopædia Britannica, article « Passover »"
+    },
+    {
+      "id": "rel-fet-0007",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle fête chrétienne, quarante jours après Pâques, célèbre la montée de Jésus au ciel ?",
+      "choix": [
+        "La Pentecôte",
+        "L'Ascension",
+        "L'Assomption",
+        "L'Épiphanie"
+      ],
+      "juste": 1,
+      "explication": "L'Ascension tombe toujours un jeudi, quarante jours après Pâques.",
+      "source": "Encyclopédie Larousse, article « Ascension »"
+    }
+  ]
+}

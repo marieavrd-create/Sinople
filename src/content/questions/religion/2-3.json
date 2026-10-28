@@ -1,0 +1,116 @@
+{
+  "id": "religion-2-3",
+  "theme": "religion",
+  "etape": 2,
+  "lecon": 3,
+  "titre": "Héros et créatures",
+  "intro": "Les monstres et ceux qui les ont vaincus.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "rel-her-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel héros grec a accompli douze travaux ?",
+      "choix": [
+        "Thésée",
+        "Persée",
+        "Achille",
+        "Héraclès"
+      ],
+      "juste": 3,
+      "explication": "Héraclès, appelé Hercule par les Romains, a notamment tué le lion de Némée et l'Hydre de Lerne.",
+      "source": "Encyclopædia Britannica, article « Heracles »"
+    },
+    {
+      "id": "rel-her-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle créature a des serpents pour cheveux et change en pierre ceux qui la regardent ?",
+      "choix": [
+        "La Sphinge",
+        "Circé",
+        "Méduse",
+        "La Chimère"
+      ],
+      "juste": 2,
+      "explication": "Méduse, l'une des trois Gorgones, fut décapitée par Persée.",
+      "source": "Encyclopædia Britannica, article « Medusa »"
+    },
+    {
+      "id": "rel-her-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel est le seul point faible d'Achille ?",
+      "choix": [
+        "Le genou",
+        "L'épaule",
+        "Le talon",
+        "Le cou"
+      ],
+      "juste": 2,
+      "explication": "Plongé enfant dans le Styx, Achille resta vulnérable au talon par lequel sa mère le tenait.",
+      "source": "Encyclopædia Britannica, article « Achilles »"
+    },
+    {
+      "id": "rel-her-0004",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel héros tue le Minotaure dans le Labyrinthe ?",
+      "choix": [
+        "Persée",
+        "Thésée",
+        "Jason",
+        "Ulysse"
+      ],
+      "juste": 1,
+      "explication": "Thésée retrouve la sortie du Labyrinthe grâce au fil d'Ariane.",
+      "source": "Encyclopædia Britannica, article « Theseus »"
+    },
+    {
+      "id": "rel-her-0005",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel héros part chercher la Toison d'or avec les Argonautes ?",
+      "choix": [
+        "Jason",
+        "Ulysse",
+        "Énée",
+        "Persée"
+      ],
+      "juste": 0,
+      "explication": "Jason navigue à bord de l'Argo jusqu'en Colchide, où Médée l'aide à s'emparer de la Toison.",
+      "source": "Encyclopædia Britannica, article « Jason »"
+    },
+    {
+      "id": "rel-her-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelles créatures attirent les marins par leur chant ?",
+      "choix": [
+        "Les harpies",
+        "Les Gorgones",
+        "Les Érinyes",
+        "Les sirènes"
+      ],
+      "juste": 3,
+      "explication": "Pour leur résister, Ulysse se fit attacher au mât et boucha de cire les oreilles de ses compagnons.",
+      "source": "Encyclopædia Britannica, article « Siren »"
+    },
+    {
+      "id": "rel-her-0007",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel cheval ailé naît du sang de Méduse ?",
+      "choix": [
+        "Bucéphale",
+        "Sleipnir",
+        "Arion",
+        "Pégase"
+      ],
+      "juste": 3,
+      "explication": "Pégase jaillit du cou de Méduse décapitée ; Sleipnir est le cheval à huit pattes d'Odin.",
+      "source": "Encyclopædia Britannica, article « Pegasus »"
+    }
+  ]
+}

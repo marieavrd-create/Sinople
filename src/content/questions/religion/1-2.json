@@ -1,0 +1,116 @@
+{
+  "id": "religion-1-2",
+  "theme": "religion",
+  "etape": 1,
+  "lecon": 2,
+  "titre": "Les dieux de l'Olympe",
+  "intro": "Le pèlerin lève les yeux vers la montagne des dieux grecs.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "rel-gre-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Qui est le roi des dieux de l'Olympe ?",
+      "choix": [
+        "Zeus",
+        "Poséidon",
+        "Hadès",
+        "Apollon"
+      ],
+      "juste": 0,
+      "explication": "Zeus, maître de la foudre, règne sur les dieux et les hommes depuis l'Olympe.",
+      "source": "Encyclopædia Britannica, article « Zeus »"
+    },
+    {
+      "id": "rel-gre-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel dieu grec règne sur la mer ?",
+      "choix": [
+        "Hermès",
+        "Arès",
+        "Héphaïstos",
+        "Poséidon"
+      ],
+      "juste": 3,
+      "explication": "Poséidon, frère de Zeus, commande aux flots avec son trident.",
+      "source": "Encyclopædia Britannica, article « Poseidon »"
+    },
+    {
+      "id": "rel-gre-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle déesse grecque de la sagesse protège la ville d'Athènes ?",
+      "choix": [
+        "Aphrodite",
+        "Héra",
+        "Athéna",
+        "Artémis"
+      ],
+      "juste": 2,
+      "explication": "Athéna, née tout armée de la tête de Zeus, a donné son nom à Athènes.",
+      "source": "Encyclopædia Britannica, article « Athena »"
+    },
+    {
+      "id": "rel-gre-0004",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel dieu grec aux sandales ailées sert de messager aux dieux ?",
+      "choix": [
+        "Apollon",
+        "Hermès",
+        "Dionysos",
+        "Arès"
+      ],
+      "juste": 1,
+      "explication": "Hermès, rapide et rusé, porte les messages de Zeus et guide les âmes des morts.",
+      "source": "Encyclopædia Britannica, article « Hermes »"
+    },
+    {
+      "id": "rel-gre-0005",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel dieu grec règne sur le monde des morts ?",
+      "choix": [
+        "Cronos",
+        "Hadès",
+        "Arès",
+        "Héphaïstos"
+      ],
+      "juste": 1,
+      "explication": "Hadès, autre frère de Zeus, a reçu en partage le monde souterrain.",
+      "source": "Encyclopædia Britannica, article « Hades »"
+    },
+    {
+      "id": "rel-gre-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel dieu grec forge les armes des dieux ?",
+      "choix": [
+        "Héphaïstos",
+        "Arès",
+        "Hermès",
+        "Apollon"
+      ],
+      "juste": 0,
+      "explication": "Héphaïstos, dieu boiteux du feu et de la forge, a fabriqué entre autres les armes d'Achille.",
+      "source": "Encyclopædia Britannica, article « Hephaestus »"
+    },
+    {
+      "id": "rel-gre-0007",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel Titan vola le feu aux dieux pour le donner aux hommes ?",
+      "choix": [
+        "Atlas",
+        "Cronos",
+        "Hypérion",
+        "Prométhée"
+      ],
+      "juste": 3,
+      "explication": "Pour le punir, Zeus fit enchaîner Prométhée à un rocher où un aigle lui dévorait le foie.",
+      "source": "Encyclopædia Britannica, article « Prometheus »"
+    }
+  ]
+}
