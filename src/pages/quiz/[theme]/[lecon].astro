@@ -1,301 +1,43 @@
 ---
 import Base from '../../../layouts/Base.astro';
-import Goupil from '../../../components/Goupil.astro';
-import Feu from '../../../components/Feu.astro';
+import LecteurLecon, { type QuestionQcm } from '../../../islands/LecteurLecon';
 import { getCollection } from 'astro:content';
 import themes from '../../../data/themes.json';
+import '../../../styles/lecteur.css';
 
 // Une page par leçon, lue dans src/content/questions/<thème>/<étape>-<leçon>.json.
 // Pour ajouter des questions, il suffit de modifier ou d'ajouter un de ces fichiers.
 export async function getStaticPaths() {
   const lecons = await getCollection('questions');
+  const chemins = (theme: string) =>
+    lecons.filter((l) => l.data.theme === theme).map(({ data: { id, etape, lecon, epreuve } }) => ({ id, etape, lecon, epreuve }));
   return lecons.map(({ data }) => ({
     params: { theme: data.theme, lecon: `${data.etape}-${data.lecon}` },
-    props: { theme: themes.find((t) => t.id === data.theme), partie: { nom: data.titre, questions: data.questions } },
+    props: { nomTheme: themes.find((t) => t.id === data.theme)?.nom ?? data.theme, partie: { nom: data.titre, questions: data.questions }, lecon: data, chemin: chemins(data.theme) },
   }));
 }
 
-const { theme, partie } = Astro.props;
-const nomTheme = theme?.nom ?? Astro.params.theme;
-// L'animal du thème, pour la scène de fin au coin du feu (« bélier » → « belier » dans Feu.astro).
-const animal = theme?.animal ?? 'renard';
-const idAnimal = animal.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-const leAnimal = (/^[aeéiou]/i.test(animal) ? "l'" : ['pie', 'grenouille'].includes(animal) ? 'la ' : 'le ') + animal;
+const { nomTheme, partie, lecon, chemin } = Astro.props;
+const infosTheme = themes.find((t) => t.id === lecon.theme)!;
+const article = (a: string) => (/^[aeéiou]/i.test(a) ? "l'" : ['pie', 'grenouille'].includes(a) ? 'la ' : 'le ') + a;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const ordre = { facile: 0, moyen: 1, difficile: 2 } as Record<string, number>;
-const questions = [...partie.questions].sort((a: any, b: any) => ordre[a.niveau] - ordre[b.niveau]);
+// Les QCM seulement pour l'instant (la carte et la saisie arrivent en version 3), du plus facile au plus difficile.
+const questions: QuestionQcm[] = partie.questions
+  .flatMap((q) => (q.type === 'qcm' ? [q] : []))
+  .sort((a, b) => ordre[a.niveau] - ordre[b.niveau]);
 ---
 <Base titre={`${nomTheme} · ${partie.nom}`} nav={false}>
-  <main class="page quiz" data-questions={JSON.stringify(questions)} data-theme={Astro.params.theme}>
-    <header class="haut">
-      <a class="fermer icone-bouton" href={`${base}/themes`} aria-label="Quitter le quiz">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
-      </a>
-      <div class="barre" role="progressbar" aria-valuemin="0" aria-valuemax={questions.length} aria-valuenow="0">
-        <div class="remplissage"></div>
-      </div>
-      <span class="compte">1/{questions.length}</span>
-    </header>
-
-    <section class="ecran-question">
-      <p class="theme">{nomTheme} · {partie.nom} · <span class="niveau"></span></p>
-      <h1 class="question" id="question"></h1>
-      <div class="goupil"><Goupil taille={90} /></div>
-      <div class="choix" role="radiogroup" aria-labelledby="question"></div>
-    </section>
-
-    <section class="ecran-fin" hidden data-animal={leAnimal}>
-      <div class="scene"><Feu actif={idAnimal} /></div>
-      <p class="arrivee"></p>
-      <h1 class="bravo" tabindex="-1"></h1>
-      <p class="gain"><span class="nombre">0</span> points de savoir</p>
-      <p class="score"></p>
-      <div class="actions">
-        <a class="bouton" href={`${base}/`}>Retour au feu</a>
-        <a class="bouton clair" href="">Rejouer la leçon</a>
-      </div>
-    </section>
-
-    <footer class="verdict">
-      <p class="message" aria-live="polite"></p>
-      <p class="explication"></p>
-      <button class="bouton valider" disabled>Valider</button>
-    </footer>
+  <main class="page">
+    <LecteurLecon
+      client:load
+      base={base}
+      nomTheme={nomTheme}
+      lecon={{ id: lecon.id, theme: lecon.theme, etape: lecon.etape, titre: lecon.titre, epreuve: lecon.epreuve }}
+      questions={questions}
+      chemin={chemin}
+      animal={article(infosTheme.animal)}
+      grades={infosTheme.grades}
+    />
   </main>
 </Base>
-
-<script>
-  import { noterQuiz, lireProgres } from '../../../scripts/progres';
-  import { pointsQcm } from '../../../lib/jeu/points';
-  type Q = { q: string; choix: string[]; juste: number; niveau: string; explication: string; source: string };
-  const racine = document.querySelector<HTMLElement>('.quiz')!;
-  const questions: Q[] = JSON.parse(racine.dataset.questions!);
-  const titre = racine.querySelector('.question')!;
-  const zoneChoix = racine.querySelector('.choix')!;
-  const bouton = racine.querySelector<HTMLButtonElement>('.valider')!;
-  const verdict = racine.querySelector<HTMLElement>('.verdict')!;
-  const message = racine.querySelector('.message')!;
-  const barre = racine.querySelector<HTMLElement>('.barre')!;
-  const remplissage = racine.querySelector<HTMLElement>('.remplissage')!;
-  const compte = racine.querySelector('.compte')!;
-  const niveau = racine.querySelector('.niveau')!;
-  const explication = racine.querySelector('.explication')!;
-
-  let i = 0, choisi = -1, corrige = false, bonnes = 0, verrou = false;
-
-  // Typographie française : espace fine insécable avant ? ! : ; (le signe ne part plus seul à la ligne)
-  const typo = (t: string) => t.replace(/\s+([?!:;])/g, '\u202f$1');
-
-  // Quitter en cours de partie : on demande avant de tout perdre.
-  racine.querySelector('.fermer')!.addEventListener('click', (e) => {
-    const commence = (i > 0 || corrige) && i < questions.length;
-    if (commence && !confirm('Quitter la partie ? Vos réponses ne seront pas gardées.')) e.preventDefault();
-  });
-
-  function afficher() {
-    const { q, choix } = questions[i];
-    titre.textContent = typo(q);
-    compte.textContent = `${i + 1}/${questions.length}`;
-    niveau.textContent = questions[i].niveau;
-    zoneChoix.innerHTML = '';
-    choix.forEach((texte, n) => {
-      const b = document.createElement('button');
-      b.className = 'reponse';
-      b.textContent = texte;
-      b.setAttribute('role', 'radio');
-      b.setAttribute('aria-checked', 'false');
-      b.addEventListener('click', () => {
-        if (corrige) return;
-        choisi = n;
-        zoneChoix.querySelectorAll('.reponse').forEach((x, k) => x.setAttribute('aria-checked', String(k === n)));
-        bouton.disabled = false;
-      });
-      zoneChoix.append(b);
-    });
-    choisi = -1; corrige = false;
-    bouton.disabled = true;
-    bouton.textContent = 'Valider';
-    verdict.className = 'verdict';
-    message.textContent = '';
-    explication.textContent = '';
-  }
-
-  // Clavier : les flèches passent d'une réponse à l'autre, les touches 1 à 4 choisissent directement.
-  addEventListener('keydown', (e) => {
-    if (corrige || i >= questions.length) return;
-    const boutons = [...zoneChoix.querySelectorAll<HTMLButtonElement>('.reponse')];
-    let n = -1;
-    if (/^[1-9]$/.test(e.key)) n = Number(e.key) - 1;
-    else if (e.key === 'ArrowDown' || e.key === 'ArrowRight') n = (Math.max(choisi, boutons.indexOf(document.activeElement as HTMLButtonElement)) + 1) % boutons.length;
-    else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') n = (Math.max(0, boutons.indexOf(document.activeElement as HTMLButtonElement), choisi) - 1 + boutons.length) % boutons.length;
-    if (n < 0 || n >= boutons.length) return;
-    e.preventDefault();
-    boutons[n].focus();
-    boutons[n].click();
-  });
-
-  bouton.addEventListener('click', () => {
-    if (verrou) return;
-    if (!corrige) {
-      const { juste, choix } = questions[i];
-      const ok = choisi === juste;
-      if (ok) bonnes++;
-      corrige = true;
-      const boutons = zoneChoix.querySelectorAll('.reponse');
-      boutons[juste].classList.add('juste');
-      boutons[juste].insertAdjacentHTML('beforeend', '<span class="invisible"> (bonne réponse)</span>');
-      if (!ok) {
-        boutons[choisi].classList.add('faux');
-        boutons[choisi].insertAdjacentHTML('beforeend', '<span class="invisible"> (votre réponse, fausse)</span>');
-      }
-      verdict.className = `verdict ${ok ? 'ok' : 'rate'}`;
-      message.textContent = ok ? 'Bravo, rusé goupil\u202f!' : `La bonne réponse\u202f: ${choix[juste]}`;
-      explication.textContent = `${questions[i].explication} (Source : ${questions[i].source})`;
-      bouton.textContent = 'Continuer';
-      // Un court temps avant « Continuer » : un double toucher ne saute plus l'explication.
-      verrou = true;
-      setTimeout(() => (verrou = false), 400);
-      const fait = i + 1;
-      remplissage.style.width = `${(fait / questions.length) * 100}%`;
-      barre.setAttribute('aria-valuenow', String(fait));
-      return;
-    }
-    i++;
-    if (i < questions.length) return afficher();
-    racine.querySelector<HTMLElement>('.ecran-question')!.hidden = true;
-    racine.querySelector<HTMLElement>('.ecran-fin')!.hidden = false;
-    verdict.hidden = true;
-    finir();
-  });
-
-  // Fin de leçon : l'animal du thème au coin du feu, les points gagnés et un mot selon le score.
-  function finir() {
-    const fin = racine.querySelector<HTMLElement>('.ecran-fin')!;
-    const leAnimal = fin.dataset.animal!;
-    const Animal = leAnimal[0].toUpperCase() + leAnimal.slice(1);
-    const premiereFois = !lireProgres()[racine.dataset.theme!];
-    noterQuiz(racine.dataset.theme!, bonnes);
-    const total = questions.length;
-    const taux = bonnes / total;
-    const [bravo, arrivee] =
-      taux === 1 ? ['Sans faute, goupil\u202f!', `${Animal} n'en revient pas\u202f: pas une seule erreur.`]
-      : taux >= 0.7 ? ['Bien joué, petit goupil\u202f!', premiereFois ? `${Animal} rejoint le feu des conjurés.` : `${Animal} se réchauffe au feu des conjurés.`]
-      : taux >= 0.4 ? ['Pas mal, petit goupil', `${Animal} vous écoute, mais garde ses distances.`]
-      : ['Le chemin sera long', `${Animal} attend de voir ce que vous savez vraiment.`];
-    fin.querySelector('.bravo')!.textContent = bravo;
-    fin.querySelector('.arrivee')!.textContent = arrivee;
-    fin.querySelector('.score')!.textContent = `${bonnes} bonne${bonnes > 1 ? 's' : ''} réponse${bonnes > 1 ? 's' : ''} sur ${total}`;
-    // Le compteur monte jusqu'aux points gagnés (direct si l'on préfère moins d'animations).
-    const points = Array.from({ length: bonnes }, () => pointsQcm(true)).reduce((a, b) => a + b, 0);
-    const nombre = fin.querySelector('.nombre')!;
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches || points === 0) nombre.textContent = `+${points}`;
-    else {
-      const debut = performance.now();
-      const monter = (t: number) => {
-        const k = Math.min(1, (t - debut) / 900);
-        nombre.textContent = `+${Math.round(points * (1 - (1 - k) ** 3))}`;
-        if (k < 1) requestAnimationFrame(monter);
-      };
-      requestAnimationFrame(monter);
-    }
-    fin.querySelector<HTMLElement>('.bravo')!.focus();
-  }
-
-  afficher();
-</script>
-
-<style>
-  /* La page prend tout l'écran ; le bandeau de réponse reste en bas sans jamais cacher les réponses. */
-  .quiz { min-height: 100dvh; display: flex; flex-direction: column; padding-bottom: 0; }
-  .haut { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
-  .fermer { margin-left: -10px; color: var(--encre-douce); }
-  .barre { flex: 1; height: 16px; border-radius: var(--arrondi-bouton); background: var(--sinople-clair); overflow: hidden; }
-  .remplissage { height: 100%; width: 0; background: var(--sinople); border-radius: inherit; transition: width .3s; }
-  .compte { font-weight: 600; color: var(--encre-douce); font-size: .9rem; }
-
-  .theme { margin: 0 0 8px; color: var(--sinople-fonce); font-weight: 600; font-size: .9rem; }
-  .question { font-size: 1.75rem; }
-  .goupil { display: flex; justify-content: center; margin: 12px 0 4px; }
-
-  .choix { display: grid; gap: 10px; }
-  .choix :global(.reponse) {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 20px;
-    border: 3px solid transparent;
-    border-radius: var(--arrondi);
-    background: var(--blanc);
-    font: 500 1.05rem var(--police-texte);
-    color: var(--encre);
-    text-align: left;
-    cursor: pointer;
-  }
-  .choix :global(.reponse)::before {
-    content: '';
-    width: 14px; height: 14px;
-    border-radius: 50%;
-    border: 2px solid var(--encre-douce);
-    flex-shrink: 0;
-  }
-  .choix :global(.reponse[aria-checked='true']) { border-color: var(--sinople); background: var(--sinople-clair); }
-  .choix :global(.reponse[aria-checked='true'])::before { background: var(--sinople); border-color: var(--sinople); }
-  .choix :global(.reponse.juste) { border-color: var(--juste); background: var(--sinople-clair); }
-  .choix :global(.reponse.faux) { border-color: var(--faux); background: color-mix(in srgb, var(--faux) 15%, var(--blanc)); }
-  .choix :global(.reponse.faux)::before { background: var(--faux); border-color: var(--faux); }
-  /* Une coche ou une croix en plus de la couleur */
-  .choix :global(.reponse.juste)::after, .choix :global(.reponse.faux)::after {
-    content: '';
-    width: 22px; height: 22px;
-    margin-left: auto;
-    flex-shrink: 0;
-    mask: var(--marque) center / contain no-repeat;
-  }
-  .choix :global(.reponse.juste)::after {
-    background: var(--juste);
-    --marque: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7'/%3E%3C/svg%3E");
-  }
-  .choix :global(.reponse.faux)::after {
-    background: var(--faux);
-    --marque: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6 6 18'/%3E%3C/svg%3E");
-  }
-
-  .ecran-fin { text-align: center; display: grid; justify-items: center; gap: 8px; padding-top: 8px; }
-  .scene {
-    width: calc(100% + 32px);
-    margin: 0 -16px 8px;
-    border-radius: 0 0 var(--arrondi) var(--arrondi);
-    overflow: hidden;
-    background: #191826;
-  }
-  .arrivee { margin: 0 0 4px; font: italic 1.15rem var(--police-recit); color: var(--sinople-fonce); max-width: 30ch; }
-  .bravo { font-size: 1.9rem; }
-  .gain { margin: 4px 0 0; color: var(--goupil-fonce); font-weight: 600; }
-  .nombre { font-size: 2.6rem; font-weight: 700; font-variant-numeric: tabular-nums; margin-right: 4px; }
-  .actions { display: grid; gap: 14px; width: 100%; max-width: 320px; margin-top: 12px; }
-  .ecran-fin[hidden] { display: none; }
-  .score { margin: 0; color: var(--encre-douce); }
-
-  .verdict {
-    position: sticky;
-    bottom: 0;
-    margin-top: auto;
-    padding: 16px 0 24px;
-    background: var(--fond-verdict, var(--creme));
-    /* le fond déborde sur toute la largeur de l'écran */
-    box-shadow: 0 0 0 100vmax var(--fond-verdict, var(--creme));
-    clip-path: inset(0 -100vmax);
-  }
-  .verdict .bouton { display: flex; }
-  .ecran-question { padding-bottom: 16px; }
-  .verdict > * { max-width: 448px; margin-left: auto; margin-right: auto; }
-  .message { margin: 0 auto 6px; font-weight: 700; min-height: 1.4em; }
-  .explication { margin: 0 auto 12px; font-size: .92rem; color: var(--encre); }
-  .explication:empty { display: none; }
-  .verdict.ok { --fond-verdict: var(--sinople-clair); }
-  .verdict.ok .message { color: var(--sinople-fonce); }
-  .verdict.rate { --fond-verdict: color-mix(in srgb, var(--faux) 15%, var(--creme)); }
-  .verdict.rate .message { color: var(--faux-fonce); }
-  .verdict.rate .bouton { background: var(--faux); box-shadow: 0 var(--epaisseur-ombre) 0 color-mix(in srgb, var(--faux) 70%, black); }
-  .verdict[hidden] { display: none; }
-</style>

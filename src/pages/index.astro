@@ -4,7 +4,7 @@ import Feu from '../components/Feu.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 // Valeurs d'exemple : elles viendront du compte du joueur à l'étape 2 (Supabase).
-const joueur = { jour: 1, points: 0, grade: 'Gueux', recit: 'Le renard rumine seul son complot contre le roi' };
+const joueur = { points: 0, grade: 'Gueux', recit: 'Le renard rumine seul son complot contre le roi' };
 ---
 <Base titre="Accueil" fond="#191826" nuit>
   <main class="accueil">
@@ -16,23 +16,49 @@ const joueur = { jour: 1, points: 0, grade: 'Gueux', recit: 'Le renard rumine se
     </div>
 
     <section class="compteurs">
-      <p class="jour">Jour {joueur.jour}</p>
+      <p class="serie" id="serie" aria-label="Série : 0 jour">
+        <svg class="flamme-serie" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 2c3 4 6 6.5 6 11a6 6 0 0 1-12 0c0-3 1.5-4.5 3-6 0 2 1 3 2 3 0-3 0-5 1-8z" /></svg>
+        <span id="jours">0</span>
+        <span id="gels" class="gels"></span>
+      </p>
       <p class="points" id="points">{joueur.points}</p>
       <p class="unite">points de savoir</p>
-      <p class="grade">{joueur.grade}</p>
+      <p class="grade" id="grade">{joueur.grade}</p>
       <p class="recit" id="recit">{joueur.recit}</p>
+      <a class="reviser" id="reviser" href={`${base}/revision`} hidden></a>
       <a class="bouton" href={`${base}/themes`}>Prendre la route</a>
     </section>
   </main>
 </Base>
 
 <script>
-  import { lireProgres } from '../scripts/progres';
-  import { pointsQcm } from '../lib/jeu/points';
-  // En attendant les comptes : points et conjurés lus dans le navigateur.
-  const p = Object.values(lireProgres());
-  document.getElementById('points')!.textContent = String(p.reduce((n, t) => n + t.bonnes * pointsQcm(true), 0));
-  const n = p.length;
+  import { lireEtat, stockageNavigateur } from '../lib/stockage/local';
+  // En attendant les comptes : points et conjurés lus sur l'appareil.
+  import themes from '../data/themes.json';
+  import { serieDuJour, jourParis } from '../lib/jeu/serie';
+  import { aReviser } from '../lib/jeu/revision';
+  const etat = lireEtat(stockageNavigateur());
+  const maintenant = Date.now();
+  // La flamme : jours de série (0 si un jour manqué n'a pas été couvert par un gel), et les gels en réserve.
+  const jours = serieDuJour(etat.profil.serie, maintenant);
+  const aJoueAujourdhui = etat.profil.serie.dernierJour === jourParis(maintenant);
+  const serie = document.getElementById('serie')!;
+  serie.classList.toggle('vive', jours > 0 && aJoueAujourdhui);
+  document.getElementById('jours')!.textContent = String(jours);
+  const gels = jours > 0 ? etat.profil.serie.gels : 0;
+  document.getElementById('gels')!.textContent = '❄'.repeat(gels);
+  serie.setAttribute('aria-label', `Série : ${jours} jour${jours > 1 ? 's' : ''}${gels ? `, ${gels} gel${gels > 1 ? 's' : ''} en réserve` : ''}`);
+  // Questions à revoir aujourd'hui.
+  const aRevoir = aReviser(etat.revision, jourParis(maintenant)).length;
+  if (aRevoir > 0) {
+    const lien = document.getElementById('reviser')!;
+    lien.textContent = `${aRevoir} question${aRevoir > 1 ? 's' : ''} à réviser`;
+    lien.hidden = false;
+  }
+  // Le grade affiché est celui du renard (culture générale).
+  document.getElementById('grade')!.textContent = themes.find((t) => t.id === 'generale')!.grades[(etat.grades.generale ?? 1) - 1];
+  document.getElementById('points')!.textContent = String(etat.profil.points);
+  const n = etat.conjures.length;
   if (n > 0) document.getElementById('recit')!.textContent =
     n === 1 ? 'Un conjuré écoute le renard au coin du feu' : `${n} conjurés écoutent le renard au coin du feu`;
 </script>
@@ -60,7 +86,12 @@ const joueur = { jour: 1, points: 0, grade: 'Gueux', recit: 'Le renard rumine se
     width: 100%;
   }
   .compteurs p { margin: 0; }
-  .jour { font: 1.25rem var(--police-recit); color: var(--creme); }
+  .serie { display: inline-flex; align-items: center; gap: 6px; font: 600 1.2rem var(--police-texte); color: var(--brume); }
+  .flamme-serie { fill: currentColor; }
+  .serie.vive { color: var(--goupil); }
+  .gels { color: #9fd3f0; letter-spacing: 2px; font-size: 1rem; }
+  .reviser { margin: -8px 0 12px; color: var(--or); font-size: .95rem; }
+  .reviser[hidden] { display: none; }
   .points {
     font: 700 3rem/1 var(--police-texte); /* chiffres de Fredoka : le 0 d'IM Fell se lisait comme un O */
     font-variant-numeric: tabular-nums;
