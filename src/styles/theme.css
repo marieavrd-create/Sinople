@@ -8,8 +8,9 @@
 
 :root {
   /* ---------- Couleurs principales ---------- */
-  --sinople:        #3fae68;  /* le vert du site : boutons, barres, accents */
-  --sinople-fonce:  #1f6b3a;  /* vert foncé : ombres des boutons, titres */
+  --sinople:        #2b8450;  /* le vert du site : boutons, barres, accents
+                                 (assez foncé pour que le texte blanc se lise : garder un contraste ≥ 4,5) */
+  --sinople-fonce:  #1a5a33;  /* vert foncé : ombres des boutons, titres */
   --sinople-clair:  #d8f0dd;  /* vert très pâle : fonds de cartes */
   --or:             #e3b448;  /* l'or héraldique : points, couronnes, étoiles */
   --creme:          #f6f1e3;  /* le fond des pages */
@@ -18,8 +19,9 @@
   --blanc:          #fffdf7;  /* cartes et boutons clairs */
 
   /* ---------- Réponses ---------- */
-  --juste:          #3fae68;  /* bonne réponse */
-  --faux:           #e0604f;  /* mauvaise réponse */
+  --juste:          #2b8450;  /* bonne réponse */
+  --faux:           #c2412f;  /* mauvaise réponse (fond des boutons, bordures) */
+  --faux-fonce:     #9a3324;  /* mauvaise réponse : texte sur fond rosé */
 
   /* ---------- Le goupil ---------- */
   --goupil:         #e07a2e;  /* pelage */
@@ -31,6 +33,7 @@
   --montagne-1:     #5d6663;  /* montagnes du fond (les plus claires) */
   --montagne-2:     #3b4240;  /* montagnes du milieu */
   --montagne-3:     #0d0f0e;  /* premier plan, où marche le goupil */
+  --brume:          #a3ada9;  /* petit texte gris posé sur la nuit (grade, voie) */
 
   /* ---------- Formes ---------- */
   --arrondi:        22px;     /* arrondi des cartes (0px = carré) */

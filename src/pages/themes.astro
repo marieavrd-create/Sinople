@@ -80,7 +80,8 @@ const voie = (c: string) => `Voie ${/^[AEÉIOU]/.test(c) ? "de l'" : 'du '}${c.t
   }
   .nom { font-weight: 700; font-size: 1.15rem; }
   .matieres { font-size: .8rem; line-height: 1.3; }
-  .carriere { font-size: .85rem; opacity: .75; }
+  .carriere { font-size: .85rem; color: var(--encre-douce); }
+  .theme.pret .carriere { color: var(--blanc); }
   .jouer, .bientot {
     margin-top: auto;
     align-self: flex-start;
