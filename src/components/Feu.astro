@@ -92,7 +92,7 @@ const pierres = Array.from({ length: 14 }, (_, i) => {
 
   <g class="bannieres">
     {[[262, -1], [338, 1]].map(([x, f]) => (
-      <g><line x1={x} y1="326" x2={x} y2="236" stroke="#3a2a22" stroke-width="3" /><path d={`M${x} 240h${22 * f}v32l${-11 * f}-8-${11 * f} 8z`} fill="#3fae68" /><circle cx={x + 11 * f} cy="252" r="4" fill="#e3b448" /></g>
+      <g><line x1={x} y1="326" x2={x} y2="236" stroke="#3a2a22" stroke-width="3" /><path d={`M${x} 240h${22 * f}v32l${-11 * f} -8 ${-11 * f} 8z`} fill="#3fae68" /><circle cx={x + 11 * f} cy="252" r="4" fill="#e3b448" /></g>
     ))}
   </g>  {animaux.map((a) => {
     const etat = !actif || actif === a.id ? 'allume' : 'eteint';

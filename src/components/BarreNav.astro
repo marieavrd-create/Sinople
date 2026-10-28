@@ -4,7 +4,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const chemin = Astro.url.pathname.replace(base, '') || '/';
 const liens = [
   { href: '/', nom: 'Accueil', icone: 'M4 11 12 4l8 7v9h-5v-6H9v6H4z' },
-  { href: '/themes', nom: 'Quiz', icone: 'M5 4h14v4H5zM5 10h14v4H5zM5 16h14v4H5z' },
+  { href: '/themes', nom: 'Quiz', icone: 'M3 5.5C6 4.3 9 4.5 11 6v13c-2-1.4-5-1.6-8-.5zM21 5.5C18 4.3 15 4.5 13 6v13c2-1.4 5-1.6 8-.5z' },
   { href: '/classement', nom: 'Classement', icone: 'M3 20V12h5v8zM9.5 20V6h5v14zM16 20v-6h5v6z' },
 ];
 ---
@@ -14,7 +14,7 @@ const liens = [
     return (
       <a href={base + l.href} class:list={['lien', { actif }]} aria-current={actif ? 'page' : undefined}>
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d={l.icone} /></svg>
-        <span>{l.nom}</span>
+        <span class="nom">{l.nom}</span>
       </a>
     );
   })}
@@ -38,7 +38,8 @@ const liens = [
     display: flex;
     align-items: center;
     gap: 6px;
-    padding: 10px 14px;
+    min-height: 44px;
+    padding: 0 14px;
     border-radius: var(--arrondi-bouton);
     color: var(--blanc);
     text-decoration: none;

@@ -6,8 +6,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 // Valeurs d'exemple : elles viendront du compte du joueur à l'étape 2 (Supabase).
 const joueur = { jour: 1, points: 0, grade: 'Gueux', recit: 'Le renard rumine seul son complot contre le roi' };
 ---
-<Base titre="Accueil" fond="#191826">
+<Base titre="Accueil" fond="#191826" nuit>
   <main class="accueil">
+    <h1 class="invisible">Sinople, le feu des conjurés</h1>
     <div class="ciel">
       <!-- Le feu des conjurés : le renard seul au début, puis un animal par thème joué.
            La vidéo du goupil conquérant reste dans public/accueil/ si on veut la remettre. -->
