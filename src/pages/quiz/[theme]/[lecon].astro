@@ -1,6 +1,7 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import Goupil from '../../../components/Goupil.astro';
+import Feu from '../../../components/Feu.astro';
 import { getCollection } from 'astro:content';
 import themes from '../../../data/themes.json';
 
@@ -10,11 +11,16 @@ export async function getStaticPaths() {
   const lecons = await getCollection('questions');
   return lecons.map(({ data }) => ({
     params: { theme: data.theme, lecon: `${data.etape}-${data.lecon}` },
-    props: { nomTheme: themes.find((t) => t.id === data.theme)?.nom ?? data.theme, partie: { nom: data.titre, questions: data.questions } },
+    props: { theme: themes.find((t) => t.id === data.theme), partie: { nom: data.titre, questions: data.questions } },
   }));
 }
 
-const { nomTheme, partie } = Astro.props;
+const { theme, partie } = Astro.props;
+const nomTheme = theme?.nom ?? Astro.params.theme;
+// L'animal du thème, pour la scène de fin au coin du feu (« bélier » → « belier » dans Feu.astro).
+const animal = theme?.animal ?? 'renard';
+const idAnimal = animal.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+const leAnimal = (/^[aeéiou]/i.test(animal) ? "l'" : ['pie', 'grenouille'].includes(animal) ? 'la ' : 'le ') + animal;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const ordre = { facile: 0, moyen: 1, difficile: 2 } as Record<string, number>;
 const questions = [...partie.questions].sort((a: any, b: any) => ordre[a.niveau] - ordre[b.niveau]);
@@ -38,11 +44,16 @@ const questions = [...partie.questions].sort((a: any, b: any) => ordre[a.niveau]
       <div class="choix" role="radiogroup" aria-labelledby="question"></div>
     </section>
 
-    <section class="ecran-fin" hidden>
-      <Goupil taille={130} />
-      <h1>Bien joué, petit goupil&#8239;!</h1>
+    <section class="ecran-fin" hidden data-animal={leAnimal}>
+      <div class="scene"><Feu actif={idAnimal} /></div>
+      <p class="arrivee"></p>
+      <h1 class="bravo" tabindex="-1"></h1>
+      <p class="gain"><span class="nombre">0</span> points de savoir</p>
       <p class="score"></p>
-      <a class="bouton" href={`${base}/`}>Retour au chemin</a>
+      <div class="actions">
+        <a class="bouton" href={`${base}/`}>Retour au feu</a>
+        <a class="bouton clair" href="">Rejouer la leçon</a>
+      </div>
     </section>
 
     <footer class="verdict">
@@ -54,7 +65,8 @@ const questions = [...partie.questions].sort((a: any, b: any) => ordre[a.niveau]
 </Base>
 
 <script>
-  import { noterQuiz } from '../../../scripts/progres';
+  import { noterQuiz, lireProgres } from '../../../scripts/progres';
+  import { pointsQcm } from '../../../lib/jeu/points';
   type Q = { q: string; choix: string[]; juste: number; niveau: string; explication: string; source: string };
   const racine = document.querySelector<HTMLElement>('.quiz')!;
   const questions: Q[] = JSON.parse(racine.dataset.questions!);
@@ -152,10 +164,42 @@ const questions = [...partie.questions].sort((a: any, b: any) => ordre[a.niveau]
     if (i < questions.length) return afficher();
     racine.querySelector<HTMLElement>('.ecran-question')!.hidden = true;
     racine.querySelector<HTMLElement>('.ecran-fin')!.hidden = false;
-    noterQuiz(racine.dataset.theme!, bonnes);
-    racine.querySelector('.score')!.textContent = `${bonnes} bonne${bonnes > 1 ? 's' : ''} réponse${bonnes > 1 ? 's' : ''} sur ${questions.length}`;
     verdict.hidden = true;
+    finir();
   });
+
+  // Fin de leçon : l'animal du thème au coin du feu, les points gagnés et un mot selon le score.
+  function finir() {
+    const fin = racine.querySelector<HTMLElement>('.ecran-fin')!;
+    const leAnimal = fin.dataset.animal!;
+    const Animal = leAnimal[0].toUpperCase() + leAnimal.slice(1);
+    const premiereFois = !lireProgres()[racine.dataset.theme!];
+    noterQuiz(racine.dataset.theme!, bonnes);
+    const total = questions.length;
+    const taux = bonnes / total;
+    const [bravo, arrivee] =
+      taux === 1 ? ['Sans faute, goupil\u202f!', `${Animal} n'en revient pas\u202f: pas une seule erreur.`]
+      : taux >= 0.7 ? ['Bien joué, petit goupil\u202f!', premiereFois ? `${Animal} rejoint le feu des conjurés.` : `${Animal} se réchauffe au feu des conjurés.`]
+      : taux >= 0.4 ? ['Pas mal, petit goupil', `${Animal} vous écoute, mais garde ses distances.`]
+      : ['Le chemin sera long', `${Animal} attend de voir ce que vous savez vraiment.`];
+    fin.querySelector('.bravo')!.textContent = bravo;
+    fin.querySelector('.arrivee')!.textContent = arrivee;
+    fin.querySelector('.score')!.textContent = `${bonnes} bonne${bonnes > 1 ? 's' : ''} réponse${bonnes > 1 ? 's' : ''} sur ${total}`;
+    // Le compteur monte jusqu'aux points gagnés (direct si l'on préfère moins d'animations).
+    const points = Array.from({ length: bonnes }, () => pointsQcm(true)).reduce((a, b) => a + b, 0);
+    const nombre = fin.querySelector('.nombre')!;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches || points === 0) nombre.textContent = `+${points}`;
+    else {
+      const debut = performance.now();
+      const monter = (t: number) => {
+        const k = Math.min(1, (t - debut) / 900);
+        nombre.textContent = `+${Math.round(points * (1 - (1 - k) ** 3))}`;
+        if (k < 1) requestAnimationFrame(monter);
+      };
+      requestAnimationFrame(monter);
+    }
+    fin.querySelector<HTMLElement>('.bravo')!.focus();
+  }
 
   afficher();
 </script>
@@ -216,9 +260,21 @@ const questions = [...partie.questions].sort((a: any, b: any) => ordre[a.niveau]
     --marque: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6 6 18'/%3E%3C/svg%3E");
   }
 
-  .ecran-fin { text-align: center; display: grid; justify-items: center; gap: 12px; padding-top: 40px; }
+  .ecran-fin { text-align: center; display: grid; justify-items: center; gap: 8px; padding-top: 8px; }
+  .scene {
+    width: calc(100% + 32px);
+    margin: 0 -16px 8px;
+    border-radius: 0 0 var(--arrondi) var(--arrondi);
+    overflow: hidden;
+    background: #191826;
+  }
+  .arrivee { margin: 0 0 4px; font: italic 1.15rem var(--police-recit); color: var(--sinople-fonce); max-width: 30ch; }
+  .bravo { font-size: 1.9rem; }
+  .gain { margin: 4px 0 0; color: var(--goupil-fonce); font-weight: 600; }
+  .nombre { font-size: 2.6rem; font-weight: 700; font-variant-numeric: tabular-nums; margin-right: 4px; }
+  .actions { display: grid; gap: 14px; width: 100%; max-width: 320px; margin-top: 12px; }
   .ecran-fin[hidden] { display: none; }
-  .score { margin: 0 0 16px; color: var(--encre-douce); font-size: 1.1rem; }
+  .score { margin: 0; color: var(--encre-douce); }
 
   .verdict {
     position: sticky;

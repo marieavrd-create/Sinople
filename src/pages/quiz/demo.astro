@@ -35,7 +35,10 @@ const questions = [
       <Goupil taille={130} />
       <h1>Bien joué, petit goupil&#8239;!</h1>
       <p class="score"></p>
-      <a class="bouton" href={`${base}/`}>Retour au chemin</a>
+      <div class="actions">
+        <a class="bouton" href={`${base}/`}>Retour au feu</a>
+        <a class="bouton clair" href="">Rejouer</a>
+      </div>
     </section>
 
     <footer class="verdict">
@@ -206,6 +209,7 @@ const questions = [
   .ecran-fin { text-align: center; display: grid; justify-items: center; gap: 12px; padding-top: 40px; }
   .ecran-fin[hidden] { display: none; }
   .score { margin: 0 0 16px; color: var(--encre-douce); font-size: 1.1rem; }
+  .actions { display: grid; gap: 14px; width: 100%; max-width: 320px; }
 
   .verdict {
     position: sticky;

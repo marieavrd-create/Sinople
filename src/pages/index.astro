@@ -28,9 +28,10 @@ const joueur = { jour: 1, points: 0, grade: 'Gueux', recit: 'Le renard rumine se
 
 <script>
   import { lireProgres } from '../scripts/progres';
+  import { pointsQcm } from '../lib/jeu/points';
   // En attendant les comptes : points et conjurés lus dans le navigateur.
   const p = Object.values(lireProgres());
-  document.getElementById('points')!.textContent = String(p.reduce((n, t) => n + t.bonnes, 0));
+  document.getElementById('points')!.textContent = String(p.reduce((n, t) => n + t.bonnes * pointsQcm(true), 0));
   const n = p.length;
   if (n > 0) document.getElementById('recit')!.textContent =
     n === 1 ? 'Un conjuré écoute le renard au coin du feu' : `${n} conjurés écoutent le renard au coin du feu`;
@@ -61,7 +62,8 @@ const joueur = { jour: 1, points: 0, grade: 'Gueux', recit: 'Le renard rumine se
   .compteurs p { margin: 0; }
   .jour { font: 1.25rem var(--police-recit); color: var(--creme); }
   .points {
-    font: 3.2rem/1 var(--police-recit);
+    font: 700 3rem/1 var(--police-texte); /* chiffres de Fredoka : le 0 d'IM Fell se lisait comme un O */
+    font-variant-numeric: tabular-nums;
     color: var(--or);
     margin-top: 4px !important;
   }
