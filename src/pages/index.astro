@@ -18,7 +18,7 @@ const joueur = { jour: 1, points: 0, grade: 'Gueux', recit: 'Le renard rumine se
       <p class="jour">Jour {joueur.jour}</p>
       <p class="points" id="points">{joueur.points}</p>
       <p class="unite">points de savoir</p>
-      <p class="grade">{joueur.grade}</p>
+      <p class="grade" id="grade">{joueur.grade}</p>
       <p class="recit" id="recit">{joueur.recit}</p>
       <a class="bouton" href={`${base}/themes`}>Prendre la route</a>
     </section>
@@ -28,7 +28,10 @@ const joueur = { jour: 1, points: 0, grade: 'Gueux', recit: 'Le renard rumine se
 <script>
   import { lireEtat, stockageNavigateur } from '../lib/stockage/local';
   // En attendant les comptes : points et conjurés lus sur l'appareil.
+  import themes from '../data/themes.json';
   const etat = lireEtat(stockageNavigateur());
+  // Le grade affiché est celui du renard (culture générale).
+  document.getElementById('grade')!.textContent = themes.find((t) => t.id === 'generale')!.grades[(etat.grades.generale ?? 1) - 1];
   document.getElementById('points')!.textContent = String(etat.profil.points);
   const n = etat.conjures.length;
   if (n > 0) document.getElementById('recit')!.textContent =

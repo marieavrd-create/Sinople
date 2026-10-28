@@ -17,6 +17,8 @@ export async function getStaticPaths() {
 }
 
 const { nomTheme, partie, lecon, chemin } = Astro.props;
+const infosTheme = themes.find((t) => t.id === lecon.theme)!;
+const article = (a: string) => (/^[aeéiou]/i.test(a) ? "l'" : ['pie', 'grenouille'].includes(a) ? 'la ' : 'le ') + a;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const ordre = { facile: 0, moyen: 1, difficile: 2 } as Record<string, number>;
 // Les QCM seulement pour l'instant (la carte et la saisie arrivent en version 3), du plus facile au plus difficile.
@@ -33,6 +35,8 @@ const questions: QuestionQcm[] = partie.questions
       lecon={{ id: lecon.id, theme: lecon.theme, etape: lecon.etape, titre: lecon.titre, epreuve: lecon.epreuve }}
       questions={questions}
       chemin={chemin}
+      animal={article(infosTheme.animal)}
+      grades={infosTheme.grades}
     />
   </main>
 </Base>
@@ -90,6 +94,7 @@ const questions: QuestionQcm[] = partie.questions
   .gains dt { color: var(--encre-douce); }
   .gains dd { margin: 0; font-weight: 700; color: var(--sinople-fonce); }
   .gains .total { background: var(--sinople-clair); }
+  .ecran-centre .promotion { margin: 0 0 4px; font: italic 1.3rem var(--police-recit); color: var(--sinople-fonce); }
   .gains .total dd { color: var(--or); font-size: 1.2rem; text-shadow: 0 1px 0 #7a5d1c; }
   .feu-eteint .fumee { fill: none; stroke: #b9b2a5; stroke-width: 6; stroke-linecap: round; opacity: .7; }
   @media (prefers-reduced-motion: no-preference) {

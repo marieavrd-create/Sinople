@@ -23,13 +23,14 @@ const etapes = depart.filter((e) => e.lecons.length > 0 || e.epreuve);
 const libelle: Record<string, string> = { faite: 'faite', suivante: 'à jouer', ouverte: 'ouverte', verrouillee: 'verrouillée', reussie: 'réussie' };
 ---
 <Base titre={t.nom} fond="#191826">
-  <main class="ecran" data-theme={t.id} data-chemin={JSON.stringify(chemin)}>
+  <main class="ecran" data-theme={t.id} data-chemin={JSON.stringify(chemin)} data-article={article(t.animal).replace(/^./, (c) => c.toUpperCase())}>
     <a class="retour" href={`${base}/themes`} aria-label="Revenir au choix des thèmes">←</a>
     <div class="scene"><Feu actif={t.animal === 'bélier' ? 'belier' : t.animal} /></div>
     <section class="texte">
       <p class="animal">{article(t.animal)} s'approche du feu</p>
       <h1>{t.nom}</h1>
       <p class="grade">Grade : <span id="grade">{t.grades[0]}</span></p>
+      <p class="annonce" id="annonce" role="status" hidden></p>
     </section>
 
     {etapes.length === 0 ? (
@@ -101,7 +102,18 @@ const libelle: Record<string, string> = { faite: 'faite', suivante: 'à jouer', 
       a.removeAttribute('aria-disabled');
     }
   }
-  racine.querySelector('.lecon.suivante')?.scrollIntoView({ block: 'center' });
+  // Retour d'une épreuve réussie : la scène de passage de grade au feu.
+  const promu = Number(new URLSearchParams(location.search).get('promu'));
+  if (promu > 1 && promu === grade) {
+    const animal = racine.querySelector<SVGGElement>('.feu .animal.allume');
+    animal?.classList.add('promotion');
+    const annonce = document.getElementById('annonce')!;
+    annonce.textContent = `${racine.dataset.article} devient ${noms[grade - 1]} !`;
+    annonce.hidden = false;
+    history.replaceState(null, '', location.pathname);
+  } else {
+    racine.querySelector('.lecon.suivante')?.scrollIntoView({ block: 'center' });
+  }
 </script>
 
 <style>
@@ -114,6 +126,9 @@ const libelle: Record<string, string> = { faite: 'faite', suivante: 'à jouer', 
   .animal { font: italic 1.1rem var(--police-recit); color: var(--or); }
   h1 { font-size: 2rem; margin: 0; }
   .grade { color: var(--or); }
+  .annonce { margin-top: 8px !important; padding: 10px 18px; border-radius: var(--arrondi-bouton); background: var(--or); color: var(--encre);
+             font: italic 1.25rem var(--police-recit); box-shadow: 0 0 24px rgb(227 180 72 / .6); }
+  .annonce[hidden] { display: none; }
   .vide { display: grid; justify-items: center; gap: 12px; padding: 16px; }
   .bouton { max-width: 320px; width: 100%; }
   .bientot { margin: 0; padding: 14px 20px; border-radius: var(--arrondi-bouton); background: rgb(255 255 255 / .08); }
