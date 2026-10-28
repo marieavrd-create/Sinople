@@ -1,0 +1,191 @@
+{
+  "id": "religion-2-6",
+  "theme": "religion",
+  "etape": 2,
+  "lecon": 6,
+  "titre": "Épreuve du Novice",
+  "intro": "Douze questions pour devenir Moine.",
+  "epreuve": true,
+  "questions": [
+    {
+      "id": "rel-ep2-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel est le nom romain de Poséidon ?",
+      "choix": [
+        "Pluton",
+        "Vulcain",
+        "Mercure",
+        "Neptune"
+      ],
+      "juste": 3,
+      "explication": "Neptune est le dieu romain de la mer ; Pluton correspond à Hadès.",
+      "source": "Encyclopædia Britannica, article « Neptune »"
+    },
+    {
+      "id": "rel-ep2-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel héros grec, roi d'Ithaque, met dix ans à rentrer chez lui après la guerre de Troie ?",
+      "choix": [
+        "Achille",
+        "Ajax",
+        "Hector",
+        "Ulysse"
+      ],
+      "juste": 3,
+      "explication": "Le retour d'Ulysse est raconté par l'Odyssée d'Homère.",
+      "source": "Encyclopædia Britannica, article « Odysseus »"
+    },
+    {
+      "id": "rel-ep2-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Qui ouvre la jarre qui libère les maux sur le monde ?",
+      "choix": [
+        "Psyché",
+        "Perséphone",
+        "Pandore",
+        "Ariane"
+      ],
+      "juste": 2,
+      "explication": "Pandore, la première femme, ouvre la jarre ; seule l'espérance reste au fond.",
+      "source": "Encyclopædia Britannica, article « Pandora »"
+    },
+    {
+      "id": "rel-ep2-0004",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel chien à trois têtes garde l'entrée des Enfers grecs ?",
+      "choix": [
+        "L'Hydre",
+        "Cerbère",
+        "La Chimère",
+        "Python"
+      ],
+      "juste": 1,
+      "explication": "Cerbère empêche les morts de sortir des Enfers ; Héraclès le ramena pourtant à la surface.",
+      "source": "Encyclopædia Britannica, article « Cerberus »"
+    },
+    {
+      "id": "rel-ep2-0005",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel arbre géant relie les mondes de la mythologie nordique ?",
+      "choix": [
+        "Yggdrasil",
+        "Le Valhalla",
+        "Bifröst",
+        "Asgard"
+      ],
+      "juste": 0,
+      "explication": "Le frêne Yggdrasil soutient les neuf mondes ; Bifröst est le pont arc-en-ciel.",
+      "source": "Encyclopædia Britannica, article « Yggdrasill »"
+    },
+    {
+      "id": "rel-ep2-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel dieu nordique est connu pour ses ruses et ses métamorphoses ?",
+      "choix": [
+        "Loki",
+        "Thor",
+        "Freyr",
+        "Heimdall"
+      ],
+      "juste": 0,
+      "explication": "Loki, à la fois allié et ennemi des dieux, provoque la mort de Baldr.",
+      "source": "Encyclopædia Britannica, article « Loki »"
+    },
+    {
+      "id": "rel-ep2-0007",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Comment s'appelle le pèlerinage à La Mecque, l'un des cinq piliers de l'islam ?",
+      "choix": [
+        "La zakat",
+        "La chahada",
+        "La salat",
+        "Le hajj"
+      ],
+      "juste": 3,
+      "explication": "Tout musulman qui le peut doit faire le hajj au moins une fois dans sa vie.",
+      "source": "Encyclopædia Britannica, article « hajj »"
+    },
+    {
+      "id": "rel-ep2-0008",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle est la langue sacrée de l'hindouisme ?",
+      "choix": [
+        "Le pali",
+        "L'hindi",
+        "Le sanskrit",
+        "Le tamoul"
+      ],
+      "juste": 2,
+      "explication": "Les Védas et les grandes épopées sont écrits en sanskrit ; le pali est la langue des textes bouddhiques anciens.",
+      "source": "Encyclopædia Britannica, article « Sanskrit language »"
+    },
+    {
+      "id": "rel-ep2-0009",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel apôtre renie Jésus trois fois ?",
+      "choix": [
+        "Judas",
+        "Pierre",
+        "Thomas",
+        "Jean"
+      ],
+      "juste": 1,
+      "explication": "Pierre renie Jésus trois fois avant le chant du coq ; Judas, lui, l'a trahi.",
+      "source": "La Bible, Évangile selon Matthieu, chapitre 26"
+    },
+    {
+      "id": "rel-ep2-0010",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle déesse romaine du foyer était servie par les vestales ?",
+      "choix": [
+        "Junon",
+        "Vesta",
+        "Cérès",
+        "Diane"
+      ],
+      "juste": 1,
+      "explication": "Les vestales entretenaient le feu sacré de Vesta, qui ne devait jamais s'éteindre.",
+      "source": "Encyclopædia Britannica, article « Vesta »"
+    },
+    {
+      "id": "rel-ep2-0011",
+      "type": "qcm",
+      "niveau": "difficile",
+      "q": "Quel animal symbolise l'évangéliste saint Jean ?",
+      "choix": [
+        "L'aigle",
+        "Le lion",
+        "Le taureau",
+        "Le cerf"
+      ],
+      "juste": 0,
+      "explication": "Les quatre évangélistes ont chacun un symbole : l'homme ailé pour Matthieu, le lion pour Marc, le taureau pour Luc et l'aigle pour Jean.",
+      "source": "Encyclopædia Britannica, article « Saint John the Apostle »"
+    },
+    {
+      "id": "rel-ep2-0012",
+      "type": "qcm",
+      "niveau": "difficile",
+      "q": "Quel fleuve des Enfers grecs fait oublier leur vie aux morts qui boivent son eau ?",
+      "choix": [
+        "Le Styx",
+        "L'Achéron",
+        "Le Cocyte",
+        "Le Léthé"
+      ],
+      "juste": 3,
+      "explication": "Le Léthé est le fleuve de l'oubli ; le Styx est celui par lequel jurent les dieux.",
+      "source": "Encyclopædia Britannica, article « Lethe »"
+    }
+  ]
+}

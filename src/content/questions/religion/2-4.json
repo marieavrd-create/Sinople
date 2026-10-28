@@ -1,0 +1,116 @@
+{
+  "id": "religion-2-4",
+  "theme": "religion",
+  "etape": 2,
+  "lecon": 4,
+  "titre": "Saints et symboles",
+  "intro": "Chaque saint a son attribut, chaque foi son symbole.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "rel-sai-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel symbole représente le christianisme ?",
+      "choix": [
+        "Le croissant",
+        "L'étoile de David",
+        "La croix",
+        "La roue du dharma"
+      ],
+      "juste": 2,
+      "explication": "La croix rappelle la crucifixion de Jésus.",
+      "source": "Encyclopædia Britannica, article « cross »"
+    },
+    {
+      "id": "rel-sai-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle étoile à six branches est associée au judaïsme ?",
+      "choix": [
+        "L'étoile du berger",
+        "L'étoile de David",
+        "L'étoile polaire",
+        "L'étoile de Bethléem"
+      ],
+      "juste": 1,
+      "explication": "L'étoile de David figure notamment sur le drapeau d'Israël.",
+      "source": "Encyclopædia Britannica, article « Star of David »"
+    },
+    {
+      "id": "rel-sai-0003",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel saint est souvent représenté à cheval, terrassant un dragon ?",
+      "choix": [
+        "Saint Georges",
+        "Saint Pierre",
+        "Saint Martin",
+        "Saint Paul"
+      ],
+      "juste": 0,
+      "explication": "Saint Georges, soldat martyr, est le patron de l'Angleterre.",
+      "source": "Encyclopædia Britannica, article « Saint George »"
+    },
+    {
+      "id": "rel-sai-0004",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel saint partage son manteau avec un pauvre, à Amiens ?",
+      "choix": [
+        "Saint Martin",
+        "Saint François d'Assise",
+        "Saint Nicolas",
+        "Saint Louis"
+      ],
+      "juste": 0,
+      "explication": "Soldat romain, Martin coupe son manteau en deux pour un mendiant ; il deviendra évêque de Tours.",
+      "source": "Encyclopædia Britannica, article « Saint Martin of Tours »"
+    },
+    {
+      "id": "rel-sai-0005",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel apôtre reçoit de Jésus les clés du royaume des cieux ?",
+      "choix": [
+        "Jean",
+        "Paul",
+        "Jacques",
+        "Pierre"
+      ],
+      "juste": 3,
+      "explication": "Les clés sont devenues l'attribut de saint Pierre et figurent sur les armoiries du Vatican.",
+      "source": "La Bible, Évangile selon Matthieu, chapitre 16"
+    },
+    {
+      "id": "rel-sai-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel saint, évêque de Myre, a inspiré le père Noël ?",
+      "choix": [
+        "Saint Martin",
+        "Saint Valentin",
+        "Saint Nicolas",
+        "Saint Christophe"
+      ],
+      "juste": 2,
+      "explication": "Saint Nicolas, connu pour sa générosité envers les enfants, a donné Santa Claus.",
+      "source": "Encyclopædia Britannica, article « Saint Nicholas »"
+    },
+    {
+      "id": "rel-sai-0007",
+      "type": "qcm",
+      "niveau": "difficile",
+      "q": "Quel animal symbolise l'évangéliste saint Marc ?",
+      "choix": [
+        "L'aigle",
+        "Le lion",
+        "Le taureau",
+        "Le cerf"
+      ],
+      "juste": 1,
+      "explication": "Le lion ailé de saint Marc est devenu l'emblème de Venise.",
+      "source": "Encyclopædia Britannica, article « Saint Mark »"
+    }
+  ]
+}
