@@ -22,7 +22,7 @@ h1, h2, h3 { line-height: 1.1; margin: 0; font-weight: 700; text-wrap: balance; 
 .page {
   max-width: 480px;
   margin: 0 auto;
-  padding: 24px 16px 112px;
+  padding: 24px 16px calc(96px + env(safe-area-inset-bottom));
 }
 
 /* Bouton façon Duolingo : pilule avec une ombre pleine dessous */

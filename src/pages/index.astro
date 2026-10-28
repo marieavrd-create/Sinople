@@ -80,7 +80,7 @@ const joueur = { points: 0, grade: 'Gueux', recit: 'Le renard rumine seul son co
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 8px 16px 96px;
+    padding: 8px 16px calc(84px + env(safe-area-inset-bottom));
     max-width: 480px;
     margin: 0 auto;
     width: 100%;
@@ -107,5 +107,6 @@ const joueur = { points: 0, grade: 'Gueux', recit: 'Le renard rumine seul son co
     color: var(--brume);
   }
   .recit { font: italic 1.15rem var(--police-recit); margin-bottom: 16px !important; }
-  .bouton { max-width: 320px; }
+  /* Bouton à la taille de son texte : il ne doit pas écraser la barre d'onglets. */
+  .bouton { width: auto; padding: 12px 36px; font-size: 1rem; }
 </style>
