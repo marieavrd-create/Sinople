@@ -1,0 +1,13 @@
+---
+// Révision : les questions ratées reviennent à intervalles croissants. Une séance de 5 questions ou plus rend une bûche.
+import Base from '../layouts/Base.astro';
+import Revision from '../islands/Revision';
+import '../styles/lecteur.css';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<Base titre="Révision" nav={false}>
+  <main class="page">
+    <Revision client:load base={base} />
+  </main>
+</Base>
