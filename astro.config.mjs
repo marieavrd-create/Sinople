@@ -1,8 +1,12 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-// Adresse du site sur GitHub Pages : https://marieavrd-create.github.io/sinople/
+import preact from '@astrojs/preact';
+
+// Le site est publié par GitHub Pages sous le domaine du portfolio de Marie-Ange :
+// https://marieangeviard.com/sinople/
 export default defineConfig({
-  site: 'https://marieavrd-create.github.io',
+  site: 'https://marieangeviard.com',
   base: '/sinople',
+  integrations: [preact()],
 });
