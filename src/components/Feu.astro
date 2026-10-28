@@ -68,7 +68,7 @@ const pierres = Array.from({ length: 14 }, (_, i) => {
   return [300 + 40 * Math.cos(a), 322 + 10 * Math.sin(a)];
 });
 ---
-<svg class:list={['feu', { accueil }]} viewBox="50 100 500 250" role="img" data-stade="1" data-animaux={JSON.stringify(animalDuTheme)}
+<svg class:list={['feu', { accueil }]} viewBox="50 100 500 250" preserveAspectRatio={accueil ? 'xMidYMax meet' : undefined} role="img" data-stade="1" data-animaux={JSON.stringify(animalDuTheme)}
   aria-label={actif ? `Le feu des conjurés : l'animal du thème s'avance dans la lumière` : 'Le renard et ses conjurés autour du feu'}>
   <defs>
     <linearGradient id="feu-ciel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d1f4a" /><stop offset="1" stop-color="#4b3a6e" /></linearGradient>
