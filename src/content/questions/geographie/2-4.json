@@ -1,0 +1,116 @@
+{
+  "id": "geographie-2-4",
+  "theme": "geographie",
+  "etape": 2,
+  "lecon": 4,
+  "titre": "Îles et archipels",
+  "intro": "Certains messages traversent la mer.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "geo-ile-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle est la plus grande île du monde ?",
+      "choix": [
+        "Le Groenland",
+        "Madagascar",
+        "Bornéo",
+        "La Nouvelle-Guinée"
+      ],
+      "juste": 0,
+      "explication": "Le Groenland est la plus grande île du monde (l'Australie étant comptée comme un continent).",
+      "source": "Encyclopædia Britannica, article « Greenland »"
+    },
+    {
+      "id": "geo-ile-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "À quel pays appartient la Sicile ?",
+      "choix": [
+        "La Grèce",
+        "Malte",
+        "L'Espagne",
+        "L'Italie"
+      ],
+      "juste": 3,
+      "explication": "La Sicile, au bout de la « botte », est une région autonome de l'Italie.",
+      "source": "Encyclopædia Britannica, article « Sicily »"
+    },
+    {
+      "id": "geo-ile-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Dans quel océan se trouve Madagascar ?",
+      "choix": [
+        "L'océan Atlantique",
+        "L'océan Pacifique",
+        "L'océan Indien",
+        "L'océan Austral"
+      ],
+      "juste": 2,
+      "explication": "Madagascar se trouve dans l'océan Indien, au large de la côte est de l'Afrique.",
+      "source": "The World Factbook (CIA), fiche « Madagascar », rubrique Geography › Location"
+    },
+    {
+      "id": "geo-ile-0004",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "À quel pays appartiennent Majorque, Minorque et Ibiza ?",
+      "choix": [
+        "L'Italie",
+        "La France",
+        "L'Espagne",
+        "Le Portugal"
+      ],
+      "juste": 2,
+      "explication": "Ces îles forment l'archipel espagnol des Baléares, en Méditerranée.",
+      "source": "Encyclopædia Britannica, article « Balearic Islands »"
+    },
+    {
+      "id": "geo-ile-0005",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Dans quel archipel se trouve Tenerife ?",
+      "choix": [
+        "Les Baléares",
+        "Les Canaries",
+        "Les Açores",
+        "Madère"
+      ],
+      "juste": 1,
+      "explication": "Tenerife est la plus grande île des Canaries, archipel espagnol au large du Maroc.",
+      "source": "Encyclopædia Britannica, article « Tenerife »"
+    },
+    {
+      "id": "geo-ile-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle est la plus grande île de la Méditerranée ?",
+      "choix": [
+        "La Sicile",
+        "La Sardaigne",
+        "Chypre",
+        "La Corse"
+      ],
+      "juste": 0,
+      "explication": "La Sicile devance la Sardaigne, Chypre et la Corse.",
+      "source": "Encyclopædia Britannica, article « Sicily »"
+    },
+    {
+      "id": "geo-ile-0007",
+      "type": "qcm",
+      "niveau": "difficile",
+      "q": "Quel détroit sépare la Corse de la Sardaigne ?",
+      "choix": [
+        "Le détroit de Messine",
+        "Le canal d'Otrante",
+        "Le pas de Calais",
+        "Les bouches de Bonifacio"
+      ],
+      "juste": 3,
+      "explication": "Les bouches de Bonifacio, larges d'une douzaine de kilomètres, séparent la Corse de la Sardaigne.",
+      "source": "Encyclopédie Larousse, article « Bonifacio (bouches de) »"
+    }
+  ]
+}

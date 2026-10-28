@@ -1,0 +1,116 @@
+{
+  "id": "geographie-2-5",
+  "theme": "geographie",
+  "etape": 2,
+  "lecon": 5,
+  "titre": "Lacs, mers et déserts",
+  "intro": "Le messager doit savoir où trouver de l'eau, et où il n'y en a pas.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "geo-eau-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Dans quelle mer est-il si facile de flotter, à cause du sel ?",
+      "choix": [
+        "La mer Rouge",
+        "La mer Noire",
+        "La mer Égée",
+        "La mer Morte"
+      ],
+      "juste": 3,
+      "explication": "La mer Morte est l'une des étendues d'eau les plus salées du monde : on y flotte sans effort.",
+      "source": "Encyclopædia Britannica, article « Dead Sea »"
+    },
+    {
+      "id": "geo-eau-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel lac est partagé entre la France et la Suisse ?",
+      "choix": [
+        "Le lac de Constance",
+        "Le lac Majeur",
+        "Le Léman",
+        "Le lac d'Annecy"
+      ],
+      "juste": 2,
+      "explication": "Le Léman, traversé par le Rhône, borde Genève, Lausanne et Évian.",
+      "source": "Encyclopédie Larousse, article « Léman (lac) »"
+    },
+    {
+      "id": "geo-eau-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle mer borde à la fois la Turquie, l'Ukraine et la Roumanie ?",
+      "choix": [
+        "La mer Caspienne",
+        "La mer Noire",
+        "La mer Égée",
+        "La mer Adriatique"
+      ],
+      "juste": 1,
+      "explication": "La mer Noire est reliée à la Méditerranée par le Bosphore.",
+      "source": "Encyclopædia Britannica, article « Black Sea »"
+    },
+    {
+      "id": "geo-eau-0004",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel est le plus grand lac d'Afrique ?",
+      "choix": [
+        "Le lac Victoria",
+        "Le lac Tanganyika",
+        "Le lac Malawi",
+        "Le lac Tchad"
+      ],
+      "juste": 0,
+      "explication": "Le lac Victoria, partagé entre l'Ouganda, le Kenya et la Tanzanie, est le plus grand lac d'Afrique.",
+      "source": "Encyclopædia Britannica, article « Lake Victoria »"
+    },
+    {
+      "id": "geo-eau-0005",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel est le lac le plus profond du monde ?",
+      "choix": [
+        "Le lac Baïkal",
+        "Le lac Tanganyika",
+        "Le lac Supérieur",
+        "Le lac Titicaca"
+      ],
+      "juste": 0,
+      "explication": "Le Baïkal, en Sibérie, dépasse 1 600 mètres de profondeur.",
+      "source": "Encyclopædia Britannica, article « Lake Baikal »"
+    },
+    {
+      "id": "geo-eau-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Dans quel pays se trouve le désert d'Atacama ?",
+      "choix": [
+        "Le Pérou",
+        "L'Argentine",
+        "La Bolivie",
+        "Le Chili"
+      ],
+      "juste": 3,
+      "explication": "L'Atacama, dans le nord du Chili, est l'un des endroits les plus secs de la planète.",
+      "source": "Encyclopædia Britannica, article « Atacama Desert »"
+    },
+    {
+      "id": "geo-eau-0007",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel désert s'étend sur la Mongolie et le nord de la Chine ?",
+      "choix": [
+        "Le Kalahari",
+        "Le désert du Thar",
+        "Le désert de Gobi",
+        "Le Namib"
+      ],
+      "juste": 2,
+      "explication": "Le Gobi couvre le sud de la Mongolie et le nord de la Chine.",
+      "source": "Encyclopædia Britannica, article « Gobi »"
+    }
+  ]
+}
