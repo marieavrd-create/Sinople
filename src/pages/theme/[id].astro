@@ -1,42 +1,141 @@
 ---
-// L'écran juste avant le quiz : le feu des conjurés, où l'animal du thème s'allume.
+// Le chemin d'un thème : le feu où l'animal du thème s'allume, puis les 6 étapes avec leurs leçons et leur épreuve.
+// L'état (faite, suivante, verrouillée) est recalculé dans le navigateur à partir de la progression enregistrée.
 import Base from '../../layouts/Base.astro';
 import Feu from '../../components/Feu.astro';
+import { getCollection } from 'astro:content';
 import themes from '../../data/themes.json';
+import { construireChemin, type LeconDuChemin } from '../../lib/jeu/chemin';
 
 export function getStaticPaths() {
   return themes.map((t) => ({ params: { id: t.id }, props: { t } }));
 }
-const { t } = Astro.props as { t: (typeof themes)[number] & { lien?: string; pret?: boolean } };
+const { t } = Astro.props as { t: (typeof themes)[number] & { pret?: boolean } };
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const voie = (c: string) => `Voie ${/^[AEÉIOU]/.test(c) ? "de l'" : 'du '}${c.toLowerCase()}`;
 const article = (a: string) => (/^[aeéiou]/i.test(a) ? "l'" : ['pie', 'grenouille'].includes(a) ? 'la ' : 'le ') + a;
+
+const lecons = (await getCollection('questions', (l) => l.data.theme === t.id)).map((l) => l.data);
+const chemin: LeconDuChemin[] = lecons.map(({ id, etape, lecon, epreuve }) => ({ id, etape, lecon, epreuve }));
+const infos = Object.fromEntries(lecons.map((l) => [l.id, { titre: l.titre, href: `${base}/quiz/${t.id}/${l.etape}-${l.lecon}` }]));
+// Sans JavaScript, on affiche le chemin d'un joueur qui commence.
+const depart = construireChemin(chemin, new Set(), 1);
+const etapes = depart.filter((e) => e.lecons.length > 0 || e.epreuve);
+const libelle: Record<string, string> = { faite: 'faite', suivante: 'à jouer', ouverte: 'ouverte', verrouillee: 'verrouillée', reussie: 'réussie' };
 ---
 <Base titre={t.nom} fond="#191826">
-  <main class="ecran">
-    <a class="retour" href={`${base}/themes`} aria-label="Revenir au choix des quiz">←</a>
-    <Feu actif={t.animal === 'bélier' ? 'belier' : t.animal} />
+  <main class="ecran" data-theme={t.id} data-chemin={JSON.stringify(chemin)}>
+    <a class="retour" href={`${base}/themes`} aria-label="Revenir au choix des thèmes">←</a>
+    <div class="scene"><Feu actif={t.animal === 'bélier' ? 'belier' : t.animal} /></div>
     <section class="texte">
       <p class="animal">{article(t.animal)} s'approche du feu</p>
       <h1>{t.nom}</h1>
-      <p class="matieres">{t.matieres}</p>
-      <p class="voie">{voie(t.carriere)}</p>
-      {t.pret
-        ? <a class="bouton" href={`${base}/${t.lien ?? 'quiz/demo'}`}>Commencer le quiz</a>
-        : <p class="bientot">Ce quiz arrive bientôt</p>}
+      <p class="grade">Grade : <span id="grade">{t.grades[0]}</span></p>
     </section>
+
+    {etapes.length === 0 ? (
+      <section class="vide">
+        <p class="bientot">Ce chemin arrive bientôt</p>
+        {t.pret && <a class="bouton" href={`${base}/quiz/demo`}>Essayer un quiz d'exemple</a>}
+      </section>
+    ) : (
+      <ol class="chemin">
+        {etapes.map((e) => (
+          <li class="etape" data-etape={e.etape}>
+            <h2>Étape {e.etape} · {t.grades[e.etape - 1]}</h2>
+            <ol class="lecons">
+              {e.lecons.map((l, i) => (
+                <li class="noeud" style={`--decalage: ${[0, 1, 0, -1][i % 4]}`}>
+                  <a class={`lecon ${l.etat}`} data-id={l.id} data-href={infos[l.id].href}
+                     href={l.etat === 'verrouillee' ? undefined : infos[l.id].href} aria-disabled={l.etat === 'verrouillee' ? 'true' : undefined}>
+                    <span class="rond" aria-hidden="true">{i + 1}</span>
+                    <span class="titre">{infos[l.id].titre}<span class="etat"> · {libelle[l.etat]}</span></span>
+                  </a>
+                </li>
+              ))}
+              {e.epreuve && (
+                <li class="noeud">
+                  <a class={`lecon epreuve ${e.epreuve.etat}`} data-id={e.epreuve.id} data-href={infos[e.epreuve.id].href}
+                     href={e.epreuve.etat === 'verrouillee' ? undefined : infos[e.epreuve.id].href} aria-disabled={e.epreuve.etat === 'verrouillee' ? 'true' : undefined}>
+                    <span class="rond" aria-hidden="true">♛</span>
+                    <span class="titre">
+                      {e.etape < t.grades.length ? `Épreuve : devenir ${t.grades[e.etape]}` : 'Épreuve finale'}
+                      <span class="etat"> · {libelle[e.epreuve.etat]}</span>
+                    </span>
+                  </a>
+                </li>
+              )}
+            </ol>
+          </li>
+        ))}
+      </ol>
+    )}
   </main>
 </Base>
 
+<script>
+  import { lireEtat, stockageNavigateur } from '../../lib/stockage/local';
+  import { construireChemin } from '../../lib/jeu/chemin';
+  import themes from '../../data/themes.json';
+
+  const racine = document.querySelector<HTMLElement>('.ecran')!;
+  const theme = racine.dataset.theme!;
+  const etat = lireEtat(stockageNavigateur());
+  const grade = etat.grades[theme] ?? 1;
+  const noms = themes.find((t) => t.id === theme)!.grades;
+  document.getElementById('grade')!.textContent = noms[grade - 1];
+
+  const libelle: Record<string, string> = { faite: 'faite', suivante: 'à jouer', ouverte: 'ouverte', verrouillee: 'verrouillée', reussie: 'réussie' };
+  const chemin = construireChemin(JSON.parse(racine.dataset.chemin!), new Set(Object.keys(etat.leconsFaites)), grade);
+  const etats = new Map(chemin.flatMap((e) => [...e.lecons, ...(e.epreuve ? [e.epreuve] : [])].map((l) => [l.id, l.etat] as const)));
+
+  for (const a of racine.querySelectorAll<HTMLAnchorElement>('.lecon')) {
+    const e = etats.get(a.dataset.id!) ?? 'verrouillee';
+    a.classList.remove('faite', 'suivante', 'ouverte', 'verrouillee', 'reussie');
+    a.classList.add(e);
+    a.querySelector('.etat')!.textContent = ` · ${libelle[e]}`;
+    if (e === 'verrouillee') {
+      a.removeAttribute('href');
+      a.setAttribute('aria-disabled', 'true');
+    } else {
+      a.href = a.dataset.href!;
+      a.removeAttribute('aria-disabled');
+    }
+  }
+  racine.querySelector('.lecon.suivante')?.scrollIntoView({ block: 'center' });
+</script>
+
 <style>
-  .ecran { min-height: 100dvh; color: var(--creme); text-align: center; position: relative; padding-bottom: 120px; }
+  .ecran { min-height: 100dvh; color: var(--creme); text-align: center; position: relative; padding-bottom: 120px; overflow-x: clip; }
   .retour { position: absolute; top: 12px; left: 16px; z-index: 1; color: var(--creme); text-decoration: none; font-size: 1.5rem; }
-  .texte { max-width: 448px; margin: 0 auto; padding: 8px 16px; display: grid; justify-items: center; gap: 6px; }
+  .scene { height: min(42dvh, 340px); overflow: hidden; }
+  .scene :global(.feu) { height: 100%; }
+  .texte { max-width: 448px; margin: 0 auto; padding: 8px 16px; display: grid; justify-items: center; gap: 4px; }
   .texte p { margin: 0; }
   .animal { font: italic 1.1rem var(--police-recit); color: var(--or); }
   h1 { font-size: 2rem; margin: 0; }
-  .matieres { opacity: .85; }
-  .voie { font-size: .9rem; color: var(--montagne-1); margin-bottom: 18px !important; }
+  .grade { color: var(--or); }
+  .vide { display: grid; justify-items: center; gap: 12px; padding: 16px; }
   .bouton { max-width: 320px; width: 100%; }
-  .bientot { padding: 14px 20px; border-radius: var(--arrondi-bouton); background: rgb(255 255 255 / .08); }
+  .bientot { margin: 0; padding: 14px 20px; border-radius: var(--arrondi-bouton); background: rgb(255 255 255 / .08); }
+
+  .chemin, .lecons { list-style: none; margin: 0; padding: 0; }
+  .chemin { max-width: 448px; margin: 0 auto; padding: 8px 16px; display: grid; gap: 28px; }
+  h2 { font: 1.05rem var(--police-texte); letter-spacing: .04em; margin: 8px 0 14px; padding: 8px 12px;
+       border-radius: var(--arrondi); background: rgb(255 255 255 / .06); }
+  .lecons { display: grid; gap: 14px; }
+  .noeud { transform: translateX(calc(var(--decalage, 0) * 40px)); }
+  .lecon { display: inline-flex; flex-direction: column; align-items: center; gap: 6px; color: var(--creme); text-decoration: none; }
+  .rond { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; font-size: 1.5rem; font-weight: 600;
+          background: var(--sinople); box-shadow: 0 var(--epaisseur-ombre) 0 var(--sinople-fonce); }
+  .titre { font-size: .95rem; max-width: 200px; }
+  .etat { opacity: .7; }
+  .faite .rond, .reussie .rond { background: var(--or); box-shadow: 0 var(--epaisseur-ombre) 0 #a5802c; color: var(--encre); }
+  .suivante .rond { outline: 4px solid rgb(255 255 255 / .85); outline-offset: 4px; }
+  .verrouillee { cursor: not-allowed; }
+  .verrouillee .rond { background: #3a3950; box-shadow: 0 var(--epaisseur-ombre) 0 #24233a; color: #8d8ba8; }
+  .verrouillee .titre { opacity: .55; }
+  .epreuve .rond { width: 76px; height: 76px; border-radius: 22px; }
+  a.lecon:not(.verrouillee):active .rond { transform: translateY(var(--epaisseur-ombre)); box-shadow: none; }
+  @media (prefers-reduced-motion: no-preference) { .suivante .rond { animation: appel 1.4s ease-in-out infinite alternate; } }
+  @keyframes appel { to { transform: scale(1.06); } }
 </style>
