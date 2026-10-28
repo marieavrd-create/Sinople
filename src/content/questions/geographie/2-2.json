@@ -1,0 +1,116 @@
+{
+  "id": "geographie-2-2",
+  "theme": "geographie",
+  "etape": 2,
+  "lecon": 2,
+  "titre": "Les villes de France",
+  "intro": "Porter un message, c'est d'abord connaître les villes.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "geo-vil-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle ville est surnommée la « Ville rose » ?",
+      "choix": [
+        "Lyon",
+        "Bordeaux",
+        "Toulouse",
+        "Montpellier"
+      ],
+      "juste": 2,
+      "explication": "Toulouse doit ce surnom à la brique rose de ses maisons et monuments.",
+      "source": "Encyclopédie Larousse, article « Toulouse »"
+    },
+    {
+      "id": "geo-vil-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle est la deuxième commune de France par sa population ?",
+      "choix": [
+        "Lyon",
+        "Toulouse",
+        "Marseille",
+        "Nice"
+      ],
+      "juste": 2,
+      "explication": "Après Paris, Marseille est la commune la plus peuplée de France, devant Lyon.",
+      "source": "INSEE, populations légales des communes (recensement)"
+    },
+    {
+      "id": "geo-vil-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle ville est le chef-lieu de la région Bretagne ?",
+      "choix": [
+        "Brest",
+        "Rennes",
+        "Nantes",
+        "Quimper"
+      ],
+      "juste": 1,
+      "explication": "Rennes est la préfecture de la région Bretagne ; Nantes est en Pays de la Loire.",
+      "source": "Encyclopédie Larousse, article « Bretagne (région) »"
+    },
+    {
+      "id": "geo-vil-0004",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle ville française accueille les sessions plénières du Parlement européen ?",
+      "choix": [
+        "Strasbourg",
+        "Lille",
+        "Metz",
+        "Lyon"
+      ],
+      "juste": 0,
+      "explication": "Le Parlement européen siège officiellement à Strasbourg, où se tiennent ses sessions plénières.",
+      "source": "Parlement européen, page « Lieux de travail » (europarl.europa.eu)"
+    },
+    {
+      "id": "geo-vil-0005",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Sur quel fleuve se trouve la ville de Nantes ?",
+      "choix": [
+        "La Garonne",
+        "La Seine",
+        "La Vilaine",
+        "La Loire"
+      ],
+      "juste": 3,
+      "explication": "Nantes est bâtie sur la Loire, à une cinquantaine de kilomètres de son embouchure.",
+      "source": "Encyclopédie Larousse, article « Nantes »"
+    },
+    {
+      "id": "geo-vil-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle ville est le chef-lieu de la région Hauts-de-France ?",
+      "choix": [
+        "Amiens",
+        "Arras",
+        "Calais",
+        "Lille"
+      ],
+      "juste": 3,
+      "explication": "Lille est la préfecture de la région Hauts-de-France, née en 2016 de la fusion du Nord-Pas-de-Calais et de la Picardie.",
+      "source": "Encyclopédie Larousse, article « Hauts-de-France »"
+    },
+    {
+      "id": "geo-vil-0007",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle ville est le chef-lieu de la Corse ?",
+      "choix": [
+        "Bastia",
+        "Corte",
+        "Ajaccio",
+        "Calvi"
+      ],
+      "juste": 2,
+      "explication": "Ajaccio, ville natale de Napoléon, est le chef-lieu de la collectivité de Corse.",
+      "source": "Encyclopédie Larousse, article « Ajaccio »"
+    }
+  ]
+}

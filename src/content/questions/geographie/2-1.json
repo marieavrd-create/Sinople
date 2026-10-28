@@ -1,0 +1,116 @@
+{
+  "id": "geographie-2-1",
+  "theme": "geographie",
+  "etape": 2,
+  "lecon": 1,
+  "titre": "Frontières et voisins",
+  "intro": "Le messager doit savoir quelles frontières il franchit.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "geo-fro-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Lequel de ces pays n'a pas de frontière terrestre avec la France métropolitaine ?",
+      "choix": [
+        "Les Pays-Bas",
+        "La Belgique",
+        "Le Luxembourg",
+        "L'Andorre"
+      ],
+      "juste": 0,
+      "explication": "La France métropolitaine touche la Belgique, le Luxembourg, l'Allemagne, la Suisse, l'Italie, Monaco, l'Andorre et l'Espagne, mais pas les Pays-Bas.",
+      "source": "The World Factbook (CIA), fiche « France », rubrique Geography › Land boundaries"
+    },
+    {
+      "id": "geo-fro-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Avec quel pays le Portugal partage-t-il sa seule frontière terrestre ?",
+      "choix": [
+        "La France",
+        "Le Maroc",
+        "L'Andorre",
+        "L'Espagne"
+      ],
+      "juste": 3,
+      "explication": "Le Portugal n'a qu'un voisin terrestre : l'Espagne, à l'est et au nord.",
+      "source": "The World Factbook (CIA), fiche « Portugal », rubrique Geography › Land boundaries"
+    },
+    {
+      "id": "geo-fro-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel est le plus petit État du monde ?",
+      "choix": [
+        "Monaco",
+        "Saint-Marin",
+        "Le Vatican",
+        "Le Liechtenstein"
+      ],
+      "juste": 2,
+      "explication": "Le Vatican (Saint-Siège) couvre moins d'un demi-kilomètre carré, au cœur de Rome.",
+      "source": "The World Factbook (CIA), fiche « Holy See (Vatican City) », rubrique Geography › Area"
+    },
+    {
+      "id": "geo-fro-0004",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Lequel de ces pays est entièrement entouré par l'Italie ?",
+      "choix": [
+        "Monaco",
+        "Saint-Marin",
+        "L'Andorre",
+        "Le Luxembourg"
+      ],
+      "juste": 1,
+      "explication": "Saint-Marin est une enclave dans le centre de l'Italie, comme le Vatican à Rome.",
+      "source": "The World Factbook (CIA), fiche « San Marino », rubrique Geography › Location"
+    },
+    {
+      "id": "geo-fro-0005",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Le Luxembourg est bordé par la France, l'Allemagne et quel autre pays ?",
+      "choix": [
+        "Les Pays-Bas",
+        "La Belgique",
+        "La Suisse",
+        "L'Autriche"
+      ],
+      "juste": 1,
+      "explication": "Le Luxembourg a trois voisins : la Belgique à l'ouest, l'Allemagne à l'est et la France au sud.",
+      "source": "The World Factbook (CIA), fiche « Luxembourg », rubrique Geography › Land boundaries"
+    },
+    {
+      "id": "geo-fro-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Le Liechtenstein se trouve entre la Suisse et quel pays ?",
+      "choix": [
+        "L'Autriche",
+        "L'Allemagne",
+        "L'Italie",
+        "La France"
+      ],
+      "juste": 0,
+      "explication": "Ce petit pays alpin est coincé entre la Suisse à l'ouest et l'Autriche à l'est.",
+      "source": "The World Factbook (CIA), fiche « Liechtenstein », rubrique Geography › Location"
+    },
+    {
+      "id": "geo-fro-0007",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel pays est formé d'îles de la Méditerranée, au sud de la Sicile ?",
+      "choix": [
+        "Chypre",
+        "Monaco",
+        "Saint-Marin",
+        "Malte"
+      ],
+      "juste": 3,
+      "explication": "Malte est un archipel situé au sud de la Sicile ; Chypre est bien plus à l'est.",
+      "source": "The World Factbook (CIA), fiche « Malta », rubrique Geography › Location"
+    }
+  ]
+}

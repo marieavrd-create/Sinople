@@ -1,0 +1,116 @@
+{
+  "id": "geographie-2-3",
+  "theme": "geographie",
+  "etape": 2,
+  "lecon": 3,
+  "titre": "Les fleuves du monde",
+  "intro": "Les messages voyagent aussi par bateau.",
+  "epreuve": false,
+  "questions": [
+    {
+      "id": "geo-flm-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel fleuve traverse Londres ?",
+      "choix": [
+        "La Severn",
+        "La Tamise",
+        "La Mersey",
+        "La Clyde"
+      ],
+      "juste": 1,
+      "explication": "La Tamise traverse Londres avant de se jeter dans la mer du Nord.",
+      "source": "Encyclopædia Britannica, article « River Thames »"
+    },
+    {
+      "id": "geo-flm-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel fleuve a le plus grand débit du monde ?",
+      "choix": [
+        "L'Amazone",
+        "Le Nil",
+        "Le Congo",
+        "Le Mississippi"
+      ],
+      "juste": 0,
+      "explication": "L'Amazone déverse dans l'Atlantique bien plus d'eau que n'importe quel autre fleuve.",
+      "source": "Encyclopædia Britannica, article « Amazon River »"
+    },
+    {
+      "id": "geo-flm-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel fleuve traverse Rome ?",
+      "choix": [
+        "Le Tibre",
+        "Le Pô",
+        "L'Arno",
+        "L'Adige"
+      ],
+      "juste": 0,
+      "explication": "Rome est née sur les rives du Tibre ; l'Arno, lui, traverse Florence.",
+      "source": "Encyclopædia Britannica, article « Tiber River »"
+    },
+    {
+      "id": "geo-flm-0004",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel fleuve est sacré pour les hindous ?",
+      "choix": [
+        "L'Indus",
+        "Le Mékong",
+        "Le Yangzi",
+        "Le Gange"
+      ],
+      "juste": 3,
+      "explication": "Le Gange est le fleuve le plus sacré de l'hindouisme ; on s'y baigne pour se purifier.",
+      "source": "Encyclopædia Britannica, article « Ganges River »"
+    },
+    {
+      "id": "geo-flm-0005",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel est le plus long fleuve d'Asie ?",
+      "choix": [
+        "Le Mékong",
+        "Le Gange",
+        "Le Yangzi",
+        "Le fleuve Jaune"
+      ],
+      "juste": 2,
+      "explication": "Le Yangzi (ou Yangtsé), en Chine, est le plus long fleuve d'Asie et le troisième du monde.",
+      "source": "Encyclopædia Britannica, article « Yangtze River »"
+    },
+    {
+      "id": "geo-flm-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel fleuve marque une grande partie de la frontière entre les États-Unis et le Mexique ?",
+      "choix": [
+        "Le Colorado",
+        "Le Rio Grande",
+        "Le Mississippi",
+        "Le Missouri"
+      ],
+      "juste": 1,
+      "explication": "Le Rio Grande sépare le Texas du Mexique sur une grande longueur.",
+      "source": "Encyclopædia Britannica, article « Rio Grande »"
+    },
+    {
+      "id": "geo-flm-0007",
+      "type": "qcm",
+      "niveau": "difficile",
+      "q": "Quelle rivière traverse le centre de Berlin ?",
+      "choix": [
+        "L'Elbe",
+        "La Spree",
+        "Le Rhin",
+        "L'Oder"
+      ],
+      "juste": 1,
+      "explication": "La Spree traverse Berlin, où se trouve l'île aux Musées ; l'Oder marque la frontière avec la Pologne.",
+      "source": "Encyclopædia Britannica, article « Spree River »"
+    }
+  ]
+}

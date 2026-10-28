@@ -1,0 +1,191 @@
+{
+  "id": "geographie-2-6",
+  "theme": "geographie",
+  "etape": 2,
+  "lecon": 6,
+  "titre": "Épreuve du Messager",
+  "intro": "Douze questions pour devenir Cartographe.",
+  "epreuve": true,
+  "questions": [
+    {
+      "id": "geo-ep2-0001",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle est la capitale de l'Irlande ?",
+      "choix": [
+        "Cork",
+        "Dublin",
+        "Galway",
+        "Belfast"
+      ],
+      "juste": 1,
+      "explication": "Dublin est la capitale de l'Irlande ; Belfast est celle de l'Irlande du Nord, au Royaume-Uni.",
+      "source": "The World Factbook (CIA), fiche « Ireland », rubrique Government › Capital"
+    },
+    {
+      "id": "geo-ep2-0002",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quelle est la capitale de la Norvège ?",
+      "choix": [
+        "Bergen",
+        "Oslo",
+        "Stockholm",
+        "Trondheim"
+      ],
+      "juste": 1,
+      "explication": "Oslo est la capitale de la Norvège ; Stockholm est celle de la Suède.",
+      "source": "The World Factbook (CIA), fiche « Norway », rubrique Government › Capital"
+    },
+    {
+      "id": "geo-ep2-0003",
+      "type": "qcm",
+      "niveau": "facile",
+      "q": "Quel volcan domine la baie de Naples ?",
+      "choix": [
+        "Le Vésuve",
+        "L'Etna",
+        "Le Stromboli",
+        "Le Fuji"
+      ],
+      "juste": 0,
+      "explication": "Le Vésuve a enseveli Pompéi en 79 ; l'Etna, lui, est en Sicile.",
+      "source": "Encyclopædia Britannica, article « Mount Vesuvius »"
+    },
+    {
+      "id": "geo-ep2-0004",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel est le plus long fleuve d'Europe ?",
+      "choix": [
+        "Le Danube",
+        "Le Rhin",
+        "Le Dniepr",
+        "La Volga"
+      ],
+      "juste": 3,
+      "explication": "La Volga coule entièrement en Russie et se jette dans la mer Caspienne.",
+      "source": "Encyclopædia Britannica, article « Volga River »"
+    },
+    {
+      "id": "geo-ep2-0005",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle chaîne de montagnes marque, en Russie, la limite entre l'Europe et l'Asie ?",
+      "choix": [
+        "Le Caucase",
+        "Les Carpates",
+        "L'Oural",
+        "L'Altaï"
+      ],
+      "juste": 2,
+      "explication": "L'Oural s'étire du nord au sud de la Russie et sert traditionnellement de limite entre les deux continents.",
+      "source": "Encyclopædia Britannica, article « Ural Mountains »"
+    },
+    {
+      "id": "geo-ep2-0006",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel est le pays le plus peuplé d'Afrique ?",
+      "choix": [
+        "L'Éthiopie",
+        "L'Égypte",
+        "Le Nigeria",
+        "La République démocratique du Congo"
+      ],
+      "juste": 2,
+      "explication": "Le Nigeria compte plus de 200 millions d'habitants, loin devant les autres pays africains.",
+      "source": "The World Factbook (CIA), fiche « Nigeria », rubrique People and Society › Population"
+    },
+    {
+      "id": "geo-ep2-0007",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Avec quel pays le Pérou partage-t-il le lac Titicaca ?",
+      "choix": [
+        "Le Chili",
+        "La Bolivie",
+        "L'Équateur",
+        "L'Argentine"
+      ],
+      "juste": 1,
+      "explication": "Le Titicaca, perché à plus de 3 800 mètres, est partagé entre le Pérou et la Bolivie.",
+      "source": "Encyclopædia Britannica, article « Lake Titicaca »"
+    },
+    {
+      "id": "geo-ep2-0008",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel océan baigne la côte ouest de l'Australie ?",
+      "choix": [
+        "L'océan Indien",
+        "L'océan Pacifique",
+        "L'océan Atlantique",
+        "L'océan Arctique"
+      ],
+      "juste": 0,
+      "explication": "Perth et toute la côte ouest de l'Australie font face à l'océan Indien.",
+      "source": "Encyclopædia Britannica, article « Indian Ocean »"
+    },
+    {
+      "id": "geo-ep2-0009",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quelle est la capitale de la Suède ?",
+      "choix": [
+        "Göteborg",
+        "Oslo",
+        "Malmö",
+        "Stockholm"
+      ],
+      "juste": 3,
+      "explication": "Stockholm est bâtie sur une quinzaine d'îles, entre le lac Mälar et la mer Baltique.",
+      "source": "The World Factbook (CIA), fiche « Sweden », rubrique Government › Capital"
+    },
+    {
+      "id": "geo-ep2-0010",
+      "type": "qcm",
+      "niveau": "moyen",
+      "q": "Quel est le point culminant de la France métropolitaine ?",
+      "choix": [
+        "La barre des Écrins",
+        "Le Vignemale",
+        "Le pic du Midi",
+        "Le mont Blanc"
+      ],
+      "juste": 3,
+      "explication": "Le mont Blanc, dans les Alpes, culmine à environ 4 800 mètres.",
+      "source": "Encyclopédie Larousse, article « Blanc (mont) »"
+    },
+    {
+      "id": "geo-ep2-0011",
+      "type": "qcm",
+      "niveau": "difficile",
+      "q": "Quelle rivière traverse Prague ?",
+      "choix": [
+        "L'Elbe",
+        "Le Danube",
+        "La Vltava",
+        "L'Oder"
+      ],
+      "juste": 2,
+      "explication": "La Vltava (Moldau en allemand) traverse Prague avant de rejoindre l'Elbe.",
+      "source": "Encyclopædia Britannica, article « Vltava River »"
+    },
+    {
+      "id": "geo-ep2-0012",
+      "type": "qcm",
+      "niveau": "difficile",
+      "q": "Quel détroit relie la mer Noire à la mer de Marmara, à Istanbul ?",
+      "choix": [
+        "Les Dardanelles",
+        "Le Bosphore",
+        "Le détroit d'Ormuz",
+        "Le détroit de Gibraltar"
+      ],
+      "juste": 1,
+      "explication": "Le Bosphore traverse Istanbul ; les Dardanelles relient ensuite la mer de Marmara à la mer Égée.",
+      "source": "Encyclopædia Britannica, article « Bosporus »"
+    }
+  ]
+}
