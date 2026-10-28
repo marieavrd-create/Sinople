@@ -1,0 +1,45 @@
+{
+  "vies": {
+    "max": 5,
+    "recharge_minutes": 30,
+    "regagnee_par_revision": 1,
+    "questions_min_revision": 5
+  },
+  "points": {
+    "qcm_juste": 10,
+    "carte_max": 10,
+    "saisie_max": 10,
+    "bonus_sans_faute_par_question": 5,
+    "bonus_serie_pourcent": 10,
+    "bonus_serie_plafond_pourcent": 50
+  },
+  "reussite": {
+    "lecon": 0.7,
+    "epreuve": 0.8
+  },
+  "serie": {
+    "fuseau": "Europe/Paris",
+    "jours_par_gel": 7,
+    "gels_max": 2
+  },
+  "revision": {
+    "delais_jours": [1, 2, 4, 8, 16]
+  },
+  "grades": {
+    "max": 6
+  },
+  "saisie": {
+    "fautes_tolerees": 1,
+    "lettres_min_pour_tolerance": 5,
+    "articles_ignores": ["le", "la", "les", "l'"]
+  },
+  "garde_fous": {
+    "secondes_min_par_question": 1.5,
+    "parties_max_par_heure": 60
+  },
+  "ligues": {
+    "taille_groupe": 30,
+    "montent": 7,
+    "descendent": 5
+  }
+}

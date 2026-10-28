@@ -44,4 +44,14 @@ Puis ouvrir http://localhost:4321/sinople/ dans le navigateur.
 ## Mise en ligne
 
 Le site se met en ligne tout seul sur GitHub Pages à chaque envoi sur la branche `main`
-(fichier `.github/workflows/deploy.yml`), à l'adresse https://marieavrd-create.github.io/sinople/.
+(fichier `.github/workflows/deploy.yml`), à l'adresse https://marieangeviard.com/sinople/.
+
+## Vérifications
+
+Chaque PR est vérifiée automatiquement (fichier `.github/workflows/verifier.yml`) :
+types (`npm run check`), tests (`npm test`) et construction du site (`npm run build`).
+Pour tout lancer d'un coup sur son ordinateur : `npm run verifier`.
+
+- Les réglages du jeu (vies, points, seuils de réussite, série, révision) sont dans `src/data/regles.json`.
+- Les règles du jeu en code sont dans `src/lib/jeu/`, leurs tests dans `tests/`.
+- Les îles Preact (écrans interactifs) vont dans `src/islands/`.
