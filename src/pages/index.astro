@@ -26,11 +26,11 @@ const joueur = { jour: 1, points: 0, grade: 'Gueux', recit: 'Le renard rumine se
 </Base>
 
 <script>
-  import { lireProgres } from '../scripts/progres';
-  // En attendant les comptes : points et conjurés lus dans le navigateur.
-  const p = Object.values(lireProgres());
-  document.getElementById('points')!.textContent = String(p.reduce((n, t) => n + t.bonnes, 0));
-  const n = p.length;
+  import { lireEtat, stockageNavigateur } from '../lib/stockage/local';
+  // En attendant les comptes : points et conjurés lus sur l'appareil.
+  const etat = lireEtat(stockageNavigateur());
+  document.getElementById('points')!.textContent = String(etat.profil.points);
+  const n = etat.conjures.length;
   if (n > 0) document.getElementById('recit')!.textContent =
     n === 1 ? 'Un conjuré écoute le renard au coin du feu' : `${n} conjurés écoutent le renard au coin du feu`;
 </script>

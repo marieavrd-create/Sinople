@@ -44,7 +44,7 @@ const questions = [
 </Base>
 
 <script>
-  import { noterQuiz } from '../../scripts/progres';
+  import { enregistrerFin } from '../../scripts/fin-de-lecon';
   type Q = { q: string; choix: string[]; juste: number };
   const racine = document.querySelector<HTMLElement>('.quiz')!;
   const questions: Q[] = JSON.parse(racine.dataset.questions!);
@@ -58,6 +58,7 @@ const questions = [
   const compte = racine.querySelector('.compte')!;
 
   let i = 0, choisi = -1, corrige = false, bonnes = 0;
+  const reponses: Record<string, boolean> = {};
 
   function afficher() {
     const { q, choix } = questions[i];
@@ -90,6 +91,7 @@ const questions = [
       const { juste, choix } = questions[i];
       const ok = choisi === juste;
       if (ok) bonnes++;
+      reponses[`demo-${i}`] = ok;
       corrige = true;
       const boutons = zoneChoix.querySelectorAll('.reponse');
       boutons[juste].classList.add('juste');
@@ -106,7 +108,7 @@ const questions = [
     if (i < questions.length) return afficher();
     racine.querySelector<HTMLElement>('.ecran-question')!.hidden = true;
     racine.querySelector<HTMLElement>('.ecran-fin')!.hidden = false;
-    noterQuiz('geographie', bonnes);
+    enregistrerFin({ theme: 'geographie', leconId: 'geographie-demo', etape: 1, epreuve: false, reponses, reviser: false });
     racine.querySelector('.score')!.textContent = `${bonnes} bonne${bonnes > 1 ? 's' : ''} réponse${bonnes > 1 ? 's' : ''} sur ${questions.length}`;
     verdict.hidden = true;
   });
