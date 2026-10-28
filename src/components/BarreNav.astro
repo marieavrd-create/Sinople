@@ -1,5 +1,5 @@
 ---
-// Barre de navigation du bas, comme dans la maquette.
+// Barre d'onglets du bas, façon appli : Accueil, Quiz, Révision, Classement.
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const chemin = Astro.url.pathname.replace(base, '') || '/';
 const liens = [
@@ -22,33 +22,43 @@ const liens = [
 </nav>
 
 <style>
+  /* Barre d'onglets façon appli : collée en bas, pleine largeur, icône au-dessus du nom. */
   .nav {
     position: fixed;
-    left: 50%;
-    bottom: 16px;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 4px;
-    padding: 6px;
-    background: var(--sinople);
-    border-radius: var(--arrondi-bouton);
-    box-shadow: 0 var(--epaisseur-ombre) 0 var(--sinople-fonce);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 6px max(8px, env(safe-area-inset-left)) max(6px, env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-right));
+    background: var(--blanc);
+    border-top: 1px solid color-mix(in srgb, var(--encre) 12%, transparent);
     z-index: 10;
   }
   .lien {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 6px;
-    min-height: 44px;
-    padding: 0 14px;
-    border-radius: var(--arrondi-bouton);
-    color: var(--blanc);
+    justify-content: center;
+    gap: 2px;
+    min-height: 52px;
+    color: var(--encre-douce);
     text-decoration: none;
-    font-weight: 600;
-    font-size: .9rem;
+    font: 500 .75rem var(--police-texte);
+    -webkit-tap-highlight-color: transparent;
   }
-  .lien svg { width: 22px; height: 22px; fill: currentColor; }
-  .lien span { display: none; }
-  .lien.actif { background: var(--blanc); color: var(--sinople-fonce); }
-  .lien.actif span { display: inline; }
+  .lien svg { width: 24px; height: 24px; fill: currentColor; padding: 3px 16px; box-sizing: content-box; border-radius: 999px; }
+  .lien.actif { color: var(--sinople-fonce); font-weight: 600; }
+  .lien.actif svg { background: var(--sinople-clair); }
+  .lien:focus-visible { outline: 3px solid var(--sinople); outline-offset: -3px; border-radius: 12px; }
+  @media (min-width: 640px) {
+    .nav { left: 50%; right: auto; transform: translateX(-50%); width: 420px; bottom: 16px; border: 1px solid color-mix(in srgb, var(--encre) 12%, transparent); border-radius: 20px; padding: 6px; }
+  }
+
+  /* Pages de nuit (accueil) : la barre se fond dans la nuit. */
+  :global(body.nuit) .nav { background: #12131f; border-color: color-mix(in srgb, var(--creme) 12%, transparent); }
+  :global(body.nuit) .lien { color: var(--brume); }
+  :global(body.nuit) .lien.actif { color: var(--or); }
+  :global(body.nuit) .lien.actif svg { background: color-mix(in srgb, var(--or) 18%, transparent); }
+  :global(body.nuit) .lien:focus-visible { outline-color: var(--or); }
 </style>
