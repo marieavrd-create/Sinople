@@ -1,6 +1,6 @@
 ---
 import Base from '../../../layouts/Base.astro';
-import Goupil from '../../../components/Goupil.astro';
+import LecteurLecon, { type QuestionQcm } from '../../../islands/LecteurLecon';
 import { getCollection } from 'astro:content';
 import themes from '../../../data/themes.json';
 
@@ -19,188 +19,81 @@ export async function getStaticPaths() {
 const { nomTheme, partie, lecon, chemin } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const ordre = { facile: 0, moyen: 1, difficile: 2 } as Record<string, number>;
-const questions = [...partie.questions].sort((a: any, b: any) => ordre[a.niveau] - ordre[b.niveau]);
+// Les QCM seulement pour l'instant (la carte et la saisie arrivent en version 3), du plus facile au plus difficile.
+const questions: QuestionQcm[] = partie.questions
+  .flatMap((q) => (q.type === 'qcm' ? [q] : []))
+  .sort((a, b) => ordre[a.niveau] - ordre[b.niveau]);
 ---
 <Base titre={`${nomTheme} · ${partie.nom}`} nav={false}>
-  <main class="page quiz" data-questions={JSON.stringify(questions)} data-theme={lecon.theme} data-lecon={lecon.id} data-etape={lecon.etape} data-epreuve={String(lecon.epreuve)} data-chemin={JSON.stringify(chemin)}>
-    <header class="haut">
-      <a class="fermer" href={`${base}/theme/${lecon.theme}`} aria-label="Quitter la leçon">✕</a>
-      <div class="barre" role="progressbar" aria-valuemin="0" aria-valuemax={questions.length} aria-valuenow="0">
-        <div class="remplissage"></div>
-      </div>
-      <span class="compte">1/{questions.length}</span>
-    </header>
-
-    <section class="ecran-question">
-      <p class="theme">{nomTheme} · {partie.nom} · <span class="niveau"></span></p>
-      <h1 class="question"></h1>
-      <div class="goupil"><Goupil taille={90} /></div>
-      <div class="choix" role="radiogroup"></div>
-    </section>
-
-    <section class="ecran-fin" hidden>
-      <Goupil taille={130} />
-      <h1>Bien joué, petit goupil !</h1>
-      <p class="score"></p>
-      <a class="bouton" href={`${base}/theme/${lecon.theme}`}>Retour au chemin</a>
-    </section>
-
-    <footer class="verdict">
-      <p class="message" aria-live="polite"></p>
-      <p class="explication"></p>
-      <button class="bouton valider" disabled>Valider</button>
-    </footer>
+  <main class="page">
+    <LecteurLecon
+      client:load
+      base={base}
+      nomTheme={nomTheme}
+      lecon={{ id: lecon.id, theme: lecon.theme, etape: lecon.etape, titre: lecon.titre, epreuve: lecon.epreuve }}
+      questions={questions}
+      chemin={chemin}
+    />
   </main>
 </Base>
 
-<script>
-  import { enregistrerFin } from '../../../scripts/fin-de-lecon';
-  import { lireEtat, stockageNavigateur } from '../../../lib/stockage/local';
-  import { construireChemin, leconAccessible } from '../../../lib/jeu/chemin';
-  type Q = { id: string; q: string; choix: string[]; juste: number; niveau: string; explication: string; source: string };
-  const racine = document.querySelector<HTMLElement>('.quiz')!;
-  // Une leçon encore verrouillée renvoie au chemin du thème.
-  {
-    const etat = lireEtat(stockageNavigateur());
-    const chemin = construireChemin(JSON.parse(racine.dataset.chemin!), new Set(Object.keys(etat.leconsFaites)), etat.grades[racine.dataset.theme!] ?? 1);
-    if (!leconAccessible(chemin, racine.dataset.lecon!)) location.replace(`${import.meta.env.BASE_URL.replace(/\/$/, '')}/theme/${racine.dataset.theme}`);
+<style is:global>
+  /* Le lecteur de leçon (src/islands/LecteurLecon.tsx). */
+  .lecteur { padding-bottom: 260px; }
+  .lecteur .haut { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+  .lecteur .fermer { text-decoration: none; font-size: 1.3rem; color: var(--encre-douce); }
+  .lecteur .barre { flex: 1; height: 16px; border-radius: var(--arrondi-bouton); background: var(--sinople-clair); overflow: hidden; }
+  .lecteur .remplissage { height: 100%; background: var(--sinople); border-radius: inherit; transition: width .3s; }
+
+  .buches { display: inline-flex; gap: 1px; flex: none; }
+  .buche .bois { fill: #8a5a35; }
+  .buche .cerne { fill: #c9955f; }
+  .buche .flammeche { fill: var(--goupil); }
+  .buche.brulee .bois { fill: #b9b2a5; }
+  .buche.brulee .cerne { fill: #d6d0c4; }
+  .buche.brulee .flammeche { fill: none; }
+
+  .lecteur .theme { margin: 0 0 8px; color: var(--sinople-fonce); font-weight: 600; font-size: .9rem; }
+  .lecteur .question { font-size: 1.6rem; margin: 0 0 20px; }
+  .lecteur .choix { display: grid; gap: 10px; }
+  .lecteur .reponse {
+    display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 14px 18px;
+    border: 3px solid transparent; border-radius: var(--arrondi); background: var(--blanc);
+    font: 500 1.05rem var(--police-texte); color: var(--encre); text-align: left; cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
   }
-  const questions: Q[] = JSON.parse(racine.dataset.questions!);
-  const titre = racine.querySelector('.question')!;
-  const zoneChoix = racine.querySelector('.choix')!;
-  const bouton = racine.querySelector<HTMLButtonElement>('.valider')!;
-  const verdict = racine.querySelector<HTMLElement>('.verdict')!;
-  const message = racine.querySelector('.message')!;
-  const barre = racine.querySelector<HTMLElement>('.barre')!;
-  const remplissage = racine.querySelector<HTMLElement>('.remplissage')!;
-  const compte = racine.querySelector('.compte')!;
-  const niveau = racine.querySelector('.niveau')!;
-  const explication = racine.querySelector('.explication')!;
+  .lecteur .reponse::before { content: ''; width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--encre-douce); flex-shrink: 0; }
+  .lecteur .reponse:disabled { cursor: default; }
+  .lecteur .reponse[aria-checked='true'] { border-color: var(--sinople); background: var(--sinople-clair); }
+  .lecteur .reponse[aria-checked='true']::before { background: var(--sinople); border-color: var(--sinople); }
+  .lecteur .reponse.juste { border-color: var(--juste); background: var(--sinople-clair); }
+  .lecteur .reponse.faux { border-color: var(--faux); background: color-mix(in srgb, var(--faux) 15%, var(--blanc)); }
 
-  let i = 0, choisi = -1, corrige = false, bonnes = 0;
-  const reponses: Record<string, boolean> = {};
+  .lecteur .verdict { position: fixed; left: 0; right: 0; bottom: 0; padding: 16px 16px 24px; background: var(--creme); }
+  .lecteur .verdict > * { max-width: 448px; margin-left: auto; margin-right: auto; }
+  .lecteur .message { margin: 0 auto 6px; font-weight: 700; min-height: 1.4em; }
+  .lecteur .explication { margin: 0 auto 12px; font-size: .92rem; color: var(--encre); }
+  .lecteur .source { color: var(--encre-douce); }
+  .lecteur .verdict .bouton { width: 100%; }
+  .lecteur .verdict.ok { background: var(--sinople-clair); }
+  .lecteur .verdict.ok .message { color: var(--sinople-fonce); }
+  .lecteur .verdict.rate { background: color-mix(in srgb, var(--faux) 15%, var(--creme)); }
+  .lecteur .verdict.rate .message { color: var(--faux); }
+  .lecteur .verdict.rate .bouton { background: var(--faux); box-shadow: 0 var(--epaisseur-ombre) 0 color-mix(in srgb, var(--faux) 70%, black); }
 
-  function afficher() {
-    const { q, choix } = questions[i];
-    titre.textContent = q;
-    compte.textContent = `${i + 1}/${questions.length}`;
-    niveau.textContent = questions[i].niveau;
-    zoneChoix.innerHTML = '';
-    choix.forEach((texte, n) => {
-      const b = document.createElement('button');
-      b.className = 'reponse';
-      b.textContent = texte;
-      b.setAttribute('role', 'radio');
-      b.setAttribute('aria-checked', 'false');
-      b.addEventListener('click', () => {
-        if (corrige) return;
-        choisi = n;
-        zoneChoix.querySelectorAll('.reponse').forEach((x, k) => x.setAttribute('aria-checked', String(k === n)));
-        bouton.disabled = false;
-      });
-      zoneChoix.append(b);
-    });
-    choisi = -1; corrige = false;
-    bouton.disabled = true;
-    bouton.textContent = 'Valider';
-    verdict.className = 'verdict';
-    message.textContent = '';
-    explication.textContent = '';
+  .lecteur.ecran-centre { text-align: center; display: grid; justify-items: center; gap: 12px; padding-top: 40px; }
+  .ecran-centre h1 { margin: 0; }
+  .ecran-centre .sous-titre { margin: 0 0 8px; color: var(--encre-douce); font-size: 1.05rem; max-width: 34ch; }
+  .ecran-centre .bouton { width: 100%; max-width: 320px; }
+  .gains { margin: 0 0 16px; width: 100%; max-width: 320px; display: grid; gap: 6px; }
+  .gains div { display: flex; justify-content: space-between; padding: 8px 14px; border-radius: 14px; background: var(--blanc); }
+  .gains dt { color: var(--encre-douce); }
+  .gains dd { margin: 0; font-weight: 700; color: var(--sinople-fonce); }
+  .gains .total { background: var(--sinople-clair); }
+  .gains .total dd { color: var(--or); font-size: 1.2rem; text-shadow: 0 1px 0 #7a5d1c; }
+  .feu-eteint .fumee { fill: none; stroke: #b9b2a5; stroke-width: 6; stroke-linecap: round; opacity: .7; }
+  @media (prefers-reduced-motion: no-preference) {
+    .feu-eteint .fumee { animation: fumee 3s ease-in-out infinite; }
+    @keyframes fumee { 50% { opacity: .3; transform: translateY(-4px); } }
   }
-
-  bouton.addEventListener('click', () => {
-    if (!corrige) {
-      const { juste, choix } = questions[i];
-      const ok = choisi === juste;
-      if (ok) bonnes++;
-      reponses[questions[i].id] = ok;
-      corrige = true;
-      const boutons = zoneChoix.querySelectorAll('.reponse');
-      boutons[juste].classList.add('juste');
-      if (!ok) boutons[choisi].classList.add('faux');
-      verdict.className = `verdict ${ok ? 'ok' : 'rate'}`;
-      message.textContent = ok ? 'Bravo, rusé goupil !' : `La bonne réponse : ${choix[juste]}`;
-      explication.textContent = `${questions[i].explication} (Source : ${questions[i].source})`;
-      bouton.textContent = 'Continuer';
-      const fait = i + 1;
-      remplissage.style.width = `${(fait / questions.length) * 100}%`;
-      barre.setAttribute('aria-valuenow', String(fait));
-      return;
-    }
-    i++;
-    if (i < questions.length) return afficher();
-    racine.querySelector<HTMLElement>('.ecran-question')!.hidden = true;
-    racine.querySelector<HTMLElement>('.ecran-fin')!.hidden = false;
-    enregistrerFin({
-      theme: racine.dataset.theme!,
-      leconId: racine.dataset.lecon!,
-      etape: Number(racine.dataset.etape),
-      epreuve: racine.dataset.epreuve === 'true',
-      reponses,
-    });
-    racine.querySelector('.score')!.textContent = `${bonnes} bonne${bonnes > 1 ? 's' : ''} réponse${bonnes > 1 ? 's' : ''} sur ${questions.length}`;
-    verdict.hidden = true;
-  });
-
-  afficher();
-</script>
-
-<style>
-  .quiz { padding-bottom: 260px; }
-  .haut { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
-  .fermer { text-decoration: none; font-size: 1.3rem; color: var(--encre-douce); }
-  .barre { flex: 1; height: 16px; border-radius: var(--arrondi-bouton); background: var(--sinople-clair); overflow: hidden; }
-  .remplissage { height: 100%; width: 0; background: var(--sinople); border-radius: inherit; transition: width .3s; }
-  .compte { font-weight: 600; color: var(--encre-douce); font-size: .9rem; }
-
-  .theme { margin: 0 0 8px; color: var(--sinople-fonce); font-weight: 600; font-size: .9rem; }
-  .question { font-size: 1.75rem; }
-  .goupil { display: flex; justify-content: center; margin: 12px 0 4px; }
-
-  .choix { display: grid; gap: 10px; }
-  .choix :global(.reponse) {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 20px;
-    border: 3px solid transparent;
-    border-radius: var(--arrondi);
-    background: var(--blanc);
-    font: 500 1.05rem var(--police-texte);
-    color: var(--encre);
-    text-align: left;
-    cursor: pointer;
-  }
-  .choix :global(.reponse)::before {
-    content: '';
-    width: 14px; height: 14px;
-    border-radius: 50%;
-    border: 2px solid var(--encre-douce);
-    flex-shrink: 0;
-  }
-  .choix :global(.reponse[aria-checked='true']) { border-color: var(--sinople); background: var(--sinople-clair); }
-  .choix :global(.reponse[aria-checked='true'])::before { background: var(--sinople); border-color: var(--sinople); }
-  .choix :global(.reponse.juste) { border-color: var(--juste); background: var(--sinople-clair); }
-  .choix :global(.reponse.faux) { border-color: var(--faux); background: color-mix(in srgb, var(--faux) 15%, var(--blanc)); }
-
-  .ecran-fin { text-align: center; display: grid; justify-items: center; gap: 12px; padding-top: 40px; }
-  .ecran-fin[hidden] { display: none; }
-  .score { margin: 0 0 16px; color: var(--encre-douce); font-size: 1.1rem; }
-
-  .verdict {
-    position: fixed;
-    left: 0; right: 0; bottom: 0;
-    padding: 16px 16px 24px;
-    background: var(--creme);
-  }
-  .verdict > * { max-width: 448px; margin-left: auto; margin-right: auto; }
-  .message { margin: 0 auto 6px; font-weight: 700; min-height: 1.4em; }
-  .explication { margin: 0 auto 12px; font-size: .92rem; color: var(--encre); }
-  .explication:empty { display: none; }
-  .verdict.ok { background: var(--sinople-clair); }
-  .verdict.ok .message { color: var(--sinople-fonce); }
-  .verdict.rate { background: color-mix(in srgb, var(--faux) 15%, var(--creme)); }
-  .verdict.rate .message { color: var(--faux); }
-  .verdict.rate .bouton { background: var(--faux); box-shadow: 0 var(--epaisseur-ombre) 0 color-mix(in srgb, var(--faux) 70%, black); }
-  .verdict[hidden] { display: none; }
 </style>

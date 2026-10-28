@@ -42,6 +42,7 @@ h1, h2, h3 { line-height: 1.1; margin: 0; font-weight: 700; }
   cursor: pointer;
   box-shadow: 0 var(--epaisseur-ombre) 0 var(--sinople-fonce);
   transition: transform .08s, box-shadow .08s;
+  -webkit-tap-highlight-color: transparent;
 }
 .bouton:active {
   transform: translateY(var(--epaisseur-ombre));
