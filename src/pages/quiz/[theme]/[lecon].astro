@@ -8,21 +8,23 @@ import themes from '../../../data/themes.json';
 // Pour ajouter des questions, il suffit de modifier ou d'ajouter un de ces fichiers.
 export async function getStaticPaths() {
   const lecons = await getCollection('questions');
+  const chemins = (theme: string) =>
+    lecons.filter((l) => l.data.theme === theme).map(({ data: { id, etape, lecon, epreuve } }) => ({ id, etape, lecon, epreuve }));
   return lecons.map(({ data }) => ({
     params: { theme: data.theme, lecon: `${data.etape}-${data.lecon}` },
-    props: { nomTheme: themes.find((t) => t.id === data.theme)?.nom ?? data.theme, partie: { nom: data.titre, questions: data.questions }, lecon: data },
+    props: { nomTheme: themes.find((t) => t.id === data.theme)?.nom ?? data.theme, partie: { nom: data.titre, questions: data.questions }, lecon: data, chemin: chemins(data.theme) },
   }));
 }
 
-const { nomTheme, partie, lecon } = Astro.props;
+const { nomTheme, partie, lecon, chemin } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const ordre = { facile: 0, moyen: 1, difficile: 2 } as Record<string, number>;
 const questions = [...partie.questions].sort((a: any, b: any) => ordre[a.niveau] - ordre[b.niveau]);
 ---
 <Base titre={`${nomTheme} · ${partie.nom}`} nav={false}>
-  <main class="page quiz" data-questions={JSON.stringify(questions)} data-theme={lecon.theme} data-lecon={lecon.id} data-etape={lecon.etape} data-epreuve={String(lecon.epreuve)}>
+  <main class="page quiz" data-questions={JSON.stringify(questions)} data-theme={lecon.theme} data-lecon={lecon.id} data-etape={lecon.etape} data-epreuve={String(lecon.epreuve)} data-chemin={JSON.stringify(chemin)}>
     <header class="haut">
-      <a class="fermer" href={`${base}/themes`} aria-label="Quitter le quiz">✕</a>
+      <a class="fermer" href={`${base}/theme/${lecon.theme}`} aria-label="Quitter la leçon">✕</a>
       <div class="barre" role="progressbar" aria-valuemin="0" aria-valuemax={questions.length} aria-valuenow="0">
         <div class="remplissage"></div>
       </div>
@@ -40,7 +42,7 @@ const questions = [...partie.questions].sort((a: any, b: any) => ordre[a.niveau]
       <Goupil taille={130} />
       <h1>Bien joué, petit goupil !</h1>
       <p class="score"></p>
-      <a class="bouton" href={`${base}/`}>Retour au chemin</a>
+      <a class="bouton" href={`${base}/theme/${lecon.theme}`}>Retour au chemin</a>
     </section>
 
     <footer class="verdict">
@@ -53,8 +55,16 @@ const questions = [...partie.questions].sort((a: any, b: any) => ordre[a.niveau]
 
 <script>
   import { enregistrerFin } from '../../../scripts/fin-de-lecon';
+  import { lireEtat, stockageNavigateur } from '../../../lib/stockage/local';
+  import { construireChemin, leconAccessible } from '../../../lib/jeu/chemin';
   type Q = { id: string; q: string; choix: string[]; juste: number; niveau: string; explication: string; source: string };
   const racine = document.querySelector<HTMLElement>('.quiz')!;
+  // Une leçon encore verrouillée renvoie au chemin du thème.
+  {
+    const etat = lireEtat(stockageNavigateur());
+    const chemin = construireChemin(JSON.parse(racine.dataset.chemin!), new Set(Object.keys(etat.leconsFaites)), etat.grades[racine.dataset.theme!] ?? 1);
+    if (!leconAccessible(chemin, racine.dataset.lecon!)) location.replace(`${import.meta.env.BASE_URL.replace(/\/$/, '')}/theme/${racine.dataset.theme}`);
+  }
   const questions: Q[] = JSON.parse(racine.dataset.questions!);
   const titre = racine.querySelector('.question')!;
   const zoneChoix = racine.querySelector('.choix')!;
