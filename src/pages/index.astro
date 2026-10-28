@@ -6,8 +6,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 // Valeurs d'exemple : elles viendront du compte du joueur à l'étape 2 (Supabase).
 const joueur = { points: 0, grade: 'Gueux', recit: 'Le renard rumine seul son complot contre le roi' };
 ---
-<Base titre="Accueil" fond="#191826">
+<Base titre="Accueil" fond="#191826" nuit>
   <main class="accueil">
+    <h1 class="invisible">Sinople, le feu des conjurés</h1>
     <div class="ciel">
       <!-- Le feu des conjurés : le renard seul au début, puis un animal par thème joué.
            La vidéo du goupil conquérant reste dans public/accueil/ si on veut la remettre. -->
@@ -85,14 +86,15 @@ const joueur = { points: 0, grade: 'Gueux', recit: 'Le renard rumine seul son co
     width: 100%;
   }
   .compteurs p { margin: 0; }
-  .serie { display: inline-flex; align-items: center; gap: 6px; font: 600 1.2rem var(--police-texte); color: var(--montagne-1); }
+  .serie { display: inline-flex; align-items: center; gap: 6px; font: 600 1.2rem var(--police-texte); color: var(--brume); }
   .flamme-serie { fill: currentColor; }
   .serie.vive { color: var(--goupil); }
   .gels { color: #9fd3f0; letter-spacing: 2px; font-size: 1rem; }
   .reviser { margin: -8px 0 12px; color: var(--or); font-size: .95rem; }
   .reviser[hidden] { display: none; }
   .points {
-    font: 3.2rem/1 var(--police-recit);
+    font: 700 3rem/1 var(--police-texte); /* chiffres de Fredoka : le 0 d'IM Fell se lisait comme un O */
+    font-variant-numeric: tabular-nums;
     color: var(--or);
     margin-top: 4px !important;
   }
@@ -102,7 +104,7 @@ const joueur = { points: 0, grade: 'Gueux', recit: 'Le renard rumine seul son co
     font-size: .85rem;
     letter-spacing: .12em;
     text-transform: uppercase;
-    color: var(--montagne-1);
+    color: var(--brume);
   }
   .recit { font: italic 1.15rem var(--police-recit); margin-bottom: 16px !important; }
   .bouton { max-width: 320px; }

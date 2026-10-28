@@ -4,7 +4,8 @@ import Goupil from '../../components/Goupil.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
-// Trois questions d'exemple pour tester l'écran. Les vrais quiz de géographie,
+// Trois questions d'exemple pour tester l'écran. Elles ne comptent pas dans la progression
+// (le hibou ne vient pas au feu pour un essai). Les vrais quiz de géographie,
 // avec sources et niveaux, arrivent à l'étape 3.
 const questions = [
   { q: "Quelle est la capitale de l'Australie ?", choix: ['Sydney', 'Canberra', 'Melbourne', 'Perth'], juste: 1 },
@@ -15,7 +16,9 @@ const questions = [
 <Base titre="Quiz de géographie" nav={false}>
   <main class="page quiz" data-questions={JSON.stringify(questions)}>
     <header class="haut">
-      <a class="fermer" href={`${base}/themes`} aria-label="Quitter le quiz">✕</a>
+      <a class="fermer icone-bouton" href={`${base}/themes`} aria-label="Quitter le quiz">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
+      </a>
       <div class="barre" role="progressbar" aria-valuemin="0" aria-valuemax={questions.length} aria-valuenow="0">
         <div class="remplissage"></div>
       </div>
@@ -24,16 +27,19 @@ const questions = [
 
     <section class="ecran-question">
       <p class="theme">Géographie · exemple</p>
-      <h1 class="question"></h1>
+      <h1 class="question" id="question"></h1>
       <div class="goupil"><Goupil taille={90} /></div>
-      <div class="choix" role="radiogroup"></div>
+      <div class="choix" role="radiogroup" aria-labelledby="question"></div>
     </section>
 
     <section class="ecran-fin" hidden>
       <Goupil taille={130} />
-      <h1>Bien joué, petit goupil !</h1>
+      <h1>Bien joué, petit goupil&#8239;!</h1>
       <p class="score"></p>
-      <a class="bouton" href={`${base}/`}>Retour au chemin</a>
+      <div class="actions">
+        <a class="bouton" href={`${base}/`}>Retour au feu</a>
+        <a class="bouton clair" href="">Rejouer</a>
+      </div>
     </section>
 
     <footer class="verdict">
@@ -44,7 +50,6 @@ const questions = [
 </Base>
 
 <script>
-  import { enregistrerFin } from '../../scripts/fin-de-lecon';
   type Q = { q: string; choix: string[]; juste: number };
   const racine = document.querySelector<HTMLElement>('.quiz')!;
   const questions: Q[] = JSON.parse(racine.dataset.questions!);
@@ -57,12 +62,20 @@ const questions = [
   const remplissage = racine.querySelector<HTMLElement>('.remplissage')!;
   const compte = racine.querySelector('.compte')!;
 
-  let i = 0, choisi = -1, corrige = false, bonnes = 0;
-  const reponses: Record<string, boolean> = {};
+  let i = 0, choisi = -1, corrige = false, bonnes = 0, verrou = false;
+
+  // Typographie française : espace fine insécable avant ? ! : ; (le signe ne part plus seul à la ligne)
+  const typo = (t: string) => t.replace(/\s+([?!:;])/g, '\u202f$1');
+
+  // Quitter en cours de partie : on demande avant de tout perdre.
+  racine.querySelector('.fermer')!.addEventListener('click', (e) => {
+    const commence = (i > 0 || corrige) && i < questions.length;
+    if (commence && !confirm('Quitter la partie ? Vos réponses ne seront pas gardées.')) e.preventDefault();
+  });
 
   function afficher() {
     const { q, choix } = questions[i];
-    titre.textContent = q;
+    titre.textContent = typo(q);
     compte.textContent = `${i + 1}/${questions.length}`;
     zoneChoix.innerHTML = '';
     choix.forEach((texte, n) => {
@@ -86,19 +99,40 @@ const questions = [
     message.textContent = '';
   }
 
+  // Clavier : les flèches passent d'une réponse à l'autre, les touches 1 à 4 choisissent directement.
+  addEventListener('keydown', (e) => {
+    if (corrige || i >= questions.length) return;
+    const boutons = [...zoneChoix.querySelectorAll<HTMLButtonElement>('.reponse')];
+    let n = -1;
+    if (/^[1-9]$/.test(e.key)) n = Number(e.key) - 1;
+    else if (e.key === 'ArrowDown' || e.key === 'ArrowRight') n = (Math.max(choisi, boutons.indexOf(document.activeElement as HTMLButtonElement)) + 1) % boutons.length;
+    else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') n = (Math.max(0, boutons.indexOf(document.activeElement as HTMLButtonElement), choisi) - 1 + boutons.length) % boutons.length;
+    if (n < 0 || n >= boutons.length) return;
+    e.preventDefault();
+    boutons[n].focus();
+    boutons[n].click();
+  });
+
   bouton.addEventListener('click', () => {
+    if (verrou) return;
     if (!corrige) {
       const { juste, choix } = questions[i];
       const ok = choisi === juste;
       if (ok) bonnes++;
-      reponses[`demo-${i}`] = ok;
       corrige = true;
       const boutons = zoneChoix.querySelectorAll('.reponse');
       boutons[juste].classList.add('juste');
-      if (!ok) boutons[choisi].classList.add('faux');
+      boutons[juste].insertAdjacentHTML('beforeend', '<span class="invisible"> (bonne réponse)</span>');
+      if (!ok) {
+        boutons[choisi].classList.add('faux');
+        boutons[choisi].insertAdjacentHTML('beforeend', '<span class="invisible"> (votre réponse, fausse)</span>');
+      }
       verdict.className = `verdict ${ok ? 'ok' : 'rate'}`;
-      message.textContent = ok ? 'Bravo, rusé goupil !' : `La bonne réponse : ${choix[juste]}`;
+      message.textContent = ok ? 'Bravo, rusé goupil\u202f!' : `La bonne réponse\u202f: ${choix[juste]}`;
       bouton.textContent = 'Continuer';
+      // Un court temps avant « Continuer » : un double toucher ne saute plus l'explication.
+      verrou = true;
+      setTimeout(() => (verrou = false), 400);
       const fait = i + 1;
       remplissage.style.width = `${(fait / questions.length) * 100}%`;
       barre.setAttribute('aria-valuenow', String(fait));
@@ -108,7 +142,6 @@ const questions = [
     if (i < questions.length) return afficher();
     racine.querySelector<HTMLElement>('.ecran-question')!.hidden = true;
     racine.querySelector<HTMLElement>('.ecran-fin')!.hidden = false;
-    enregistrerFin({ theme: 'geographie', leconId: 'geographie-demo', etape: 1, epreuve: false, reponses, reviser: false });
     racine.querySelector('.score')!.textContent = `${bonnes} bonne${bonnes > 1 ? 's' : ''} réponse${bonnes > 1 ? 's' : ''} sur ${questions.length}`;
     verdict.hidden = true;
   });
@@ -117,9 +150,10 @@ const questions = [
 </script>
 
 <style>
-  .quiz { padding-bottom: 180px; }
+  /* La page prend tout l'écran ; le bandeau de réponse reste en bas sans jamais cacher les réponses. */
+  .quiz { min-height: 100dvh; display: flex; flex-direction: column; padding-bottom: 0; }
   .haut { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
-  .fermer { text-decoration: none; font-size: 1.3rem; color: var(--encre-douce); }
+  .fermer { margin-left: -10px; color: var(--encre-douce); }
   .barre { flex: 1; height: 16px; border-radius: var(--arrondi-bouton); background: var(--sinople-clair); overflow: hidden; }
   .remplissage { height: 100%; width: 0; background: var(--sinople); border-radius: inherit; transition: width .3s; }
   .compte { font-weight: 600; color: var(--encre-douce); font-size: .9rem; }
@@ -153,23 +187,47 @@ const questions = [
   .choix :global(.reponse[aria-checked='true'])::before { background: var(--sinople); border-color: var(--sinople); }
   .choix :global(.reponse.juste) { border-color: var(--juste); background: var(--sinople-clair); }
   .choix :global(.reponse.faux) { border-color: var(--faux); background: color-mix(in srgb, var(--faux) 15%, var(--blanc)); }
+  .choix :global(.reponse.faux)::before { background: var(--faux); border-color: var(--faux); }
+  /* Une coche ou une croix en plus de la couleur */
+  .choix :global(.reponse.juste)::after, .choix :global(.reponse.faux)::after {
+    content: '';
+    width: 22px; height: 22px;
+    margin-left: auto;
+    flex-shrink: 0;
+    mask: var(--marque) center / contain no-repeat;
+  }
+  .choix :global(.reponse.juste)::after {
+    background: var(--juste);
+    --marque: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7'/%3E%3C/svg%3E");
+  }
+  .choix :global(.reponse.faux)::after {
+    background: var(--faux);
+    --marque: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6 6 18'/%3E%3C/svg%3E");
+  }
 
   .ecran-fin { text-align: center; display: grid; justify-items: center; gap: 12px; padding-top: 40px; }
   .ecran-fin[hidden] { display: none; }
   .score { margin: 0 0 16px; color: var(--encre-douce); font-size: 1.1rem; }
+  .actions { display: grid; gap: 14px; width: 100%; max-width: 320px; }
 
   .verdict {
-    position: fixed;
-    left: 0; right: 0; bottom: 0;
-    padding: 16px 16px 24px;
-    background: var(--creme);
+    position: sticky;
+    bottom: 0;
+    margin-top: auto;
+    padding: 16px 0 24px;
+    background: var(--fond-verdict, var(--creme));
+    /* le fond déborde sur toute la largeur de l'écran */
+    box-shadow: 0 0 0 100vmax var(--fond-verdict, var(--creme));
+    clip-path: inset(0 -100vmax);
   }
+  .verdict .bouton { display: flex; }
+  .ecran-question { padding-bottom: 16px; }
   .verdict > * { max-width: 448px; margin-left: auto; margin-right: auto; }
   .message { margin: 0 auto 12px; font-weight: 700; min-height: 1.4em; }
-  .verdict.ok { background: var(--sinople-clair); }
+  .verdict.ok { --fond-verdict: var(--sinople-clair); }
   .verdict.ok .message { color: var(--sinople-fonce); }
-  .verdict.rate { background: color-mix(in srgb, var(--faux) 15%, var(--creme)); }
-  .verdict.rate .message { color: var(--faux); }
+  .verdict.rate { --fond-verdict: color-mix(in srgb, var(--faux) 15%, var(--creme)); }
+  .verdict.rate .message { color: var(--faux-fonce); }
   .verdict.rate .bouton { background: var(--faux); box-shadow: 0 var(--epaisseur-ombre) 0 color-mix(in srgb, var(--faux) 70%, black); }
   .verdict[hidden] { display: none; }
 </style>

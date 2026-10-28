@@ -20,12 +20,13 @@ const animaux = [
       <path d="M-30 0-28-30C-28-40-20-44 0-44L10-46 14-66 20-68 22-60 26-58 24-52C28-52 32-50 35-46L22-44 18-34 16 0H12L11-28H-19L-22 0Z" fill="#9a6a3e"/>
       <path d="M-26-32C-20-30-6-30 8-32L12-36C0-38-16-38-26-36Z" fill="#e8d2b0"/><path d="M33-47 35-46 33-44Z" fill="#2b1a22"/>
       <circle cx="25" cy="-53" r="1.6" fill="#2b1a22"/>` },
-  { id: 'belier', cou: [16, -21], tete: [25, -32], x: 196, y: 272, s: 1.2, miroir: false, yeux: [[28, -27]],
-    corps: `<path d="M-24-10C-28-20-20-28-12-26-8-34 4-34 8-28 16-30 22-22 20-14L20 0H15L14-8H-14L-15 0H-20L-20-8Z" fill="#efe6d2"/>
-      <path d="M-14-14C-8-18 0-18 6-14" fill="none" stroke="#d6cab0" stroke-width="2"/>
-      <path d="M16-30C22-36 32-34 34-26 34-20 28-16 22-18Z" fill="#5a4a3e"/>
-      <path d="M20-31a6 6 0 1 1-1 9" fill="none" stroke="#c9a66b" stroke-width="3.2" stroke-linecap="round"/>
-      <circle cx="28" cy="-27" r="1.4" fill="#f6f1e3"/>` },
+  { id: 'belier', cou: [17, -22], tete: [26, -35], x: 170, y: 270, s: 1.2, miroir: false, yeux: [[29, -27]],
+    corps: `<path d="M-15-9V0M-8-9V0M9-9V0M15-9V0" stroke="#3a2e28" stroke-width="3.4" stroke-linecap="round"/>
+      <path d="M-22-12C-28-16-26-24-19-24-18-31-10-33-5-29-1-35 8-34 10-28 17-30 22-24 20-17 24-12 19-6 13-8 9-4 1-4-4-8-10-4-17-6-22-12Z" fill="#efe6d2" stroke="#b8a788" stroke-width="1.4"/>
+      <path d="M-14-19c2-2 5-2 6 0M0-23c2-2 5-2 6 0M-6-13c2-2 5-2 6 0M8-15c2-2 5-2 6 0" fill="none" stroke="#c9b994" stroke-width="1.3" stroke-linecap="round"/>
+      <path d="M15-29C21-37 33-35 36-27 38-20 31-15 24-17 19-19 15-24 15-29Z" fill="#4a3c32"/>
+      <path d="M18-32a7 7 0 1 1-2 10" fill="none" stroke="#d9b56f" stroke-width="3.6" stroke-linecap="round"/>
+      <circle cx="29" cy="-27" r="1.5" fill="#f6f1e3"/>` },
   { id: 'pie', cou: [5, -21], tete: [8, -33], x: 400, y: 262, s: 1.25, miroir: true, yeux: [[10, -29]],
     corps: `<path d="M-8-8-36-3-34 1-6-4Z" fill="#1e3a5a"/>
       <path d="M-20-4-8-10C-8-22-2-30 6-32 10-34 14-32 16-30L24-28 16-26C16-18 12-10 4-6L3 0H0V-5Z" fill="#1e1e28"/>
@@ -73,46 +74,52 @@ function tenue([cx, cy]: number[], [tx, ty]: number[]) {
     <path class="acc g5" d="M${tx + 3} ${ty - 4}q5-6 2-11" stroke="#e3b448" stroke-width="1.6" fill="none" stroke-linecap="round"/>
     <path class="acc g6" d="M${tx - 6} ${ty}h12l1-7-3.5 3.5-3.5-4.5-3.5 4.5-3.5-3.5z" fill="#e3b448" stroke="#a5802c" stroke-width=".5"/>`;
 }
+// Écran avant quiz et fin de leçon : l'animal du thème vient s'asseoir au premier plan,
+// face au renard, de l'autre côté du feu.
+const placeDevant = { x: 372, y: 338, s: 1.15 };
 const pierres = Array.from({ length: 14 }, (_, i) => {
   const a = (Math.PI * 2 * i) / 14;
   return [300 + 40 * Math.cos(a), 322 + 10 * Math.sin(a)];
 });
 ---
-<svg class:list={['feu', { accueil }]} viewBox="50 100 500 250" preserveAspectRatio={accueil ? 'xMidYMax meet' : undefined} role="img" data-stade="1" data-animaux={JSON.stringify(animalDuTheme)}
+<svg class:list={['feu', { accueil, 'gros-plan': actif }]}
+  viewBox={actif ? '160 130 280 220' : '50 100 500 250'}
+  preserveAspectRatio={accueil ? 'xMidYMax meet' : actif ? 'xMidYMax slice' : undefined} role="img" data-stade="1" data-animaux={JSON.stringify(animalDuTheme)}
   aria-label={actif ? `Le feu des conjurés : l'animal du thème s'avance dans la lumière` : 'Le renard et ses conjurés autour du feu'}>
   <defs>
     <linearGradient id="feu-ciel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d1f4a" /><stop offset="1" stop-color="#4b3a6e" /></linearGradient>
     <radialGradient id="feu-lueur"><stop offset="0" stop-color="#ffb04a" stop-opacity=".6" /><stop offset="1" stop-color="#ffb04a" stop-opacity="0" /></radialGradient>
     <radialGradient id="feu-halo"><stop offset="0" stop-color="#ffe2a0" stop-opacity=".55" /><stop offset="1" stop-color="#ffe2a0" stop-opacity="0" /></radialGradient>
   </defs>
-  <rect width="600" height="360" fill="url(#feu-ciel)" />
+  <rect x="-1000" width="2600" height="360" fill="url(#feu-ciel)" />
   <g class="loin">
   <g fill="#fff" opacity=".7"><circle cx="80" cy="115" r="1.2" /><circle cx="200" cy="130" r="1" /><circle cx="520" cy="110" r="1.3" /><circle cx="300" cy="112" r="1" /></g>
   <circle cx="220" cy="135" r="18" fill="#f6edd0" opacity=".9" />
   <!-- le château du roi lion, au loin -->
-  <path d="M0 210 120 160 230 190 340 140 450 170 600 130V360H0Z" fill="#3a2f5e" />
+  <path d="M-1000 190 0 210 120 160 230 190 340 140 450 170 600 130 1600 170V360H-1000Z" fill="#3a2f5e" />
   <g transform="translate(0 50)">
   <g fill="#2a2248"><rect x="430" y="96" width="44" height="50" /><rect x="420" y="80" width="12" height="66" /><rect x="472" y="80" width="12" height="66" /><path d="M420 80l6-12 6 12zM472 80l6-12 6 12zM444 96l8-18 8 18z" /></g>
   <path d="M452 78v-12l12 4-12 4" fill="#e3b448" />
   </g>
   </g>
-  <g class="milieu"><path d="M0 260 150 236 300 250 450 232 600 250V360H0Z" fill="#2a2a44" /></g>
-  <path d="M0 300Q300 280 600 300V360H0Z" fill="#191826" />
+  <g class="milieu"><path d="M-1000 250 0 260 150 236 300 250 450 232 600 250 1600 240V360H-1000Z" fill="#2a2a44" /></g>
+  <path d="M-1000 300H0Q300 280 600 300H1600V360H-1000Z" fill="#191826" />
   <ellipse cx="300" cy="320" rx="260" ry="70" fill="url(#feu-lueur)" />
 
   <g class="bannieres">
     {[[262, -1], [338, 1]].map(([x, f]) => (
       <g><line x1={x} y1="326" x2={x} y2="236" stroke="#3a2a22" stroke-width="3" /><path d={`M${x} 240h${22 * f}v32l${-11 * f} -8 ${-11 * f} 8z`} fill="#3fae68" /><circle cx={x + 11 * f} cy="252" r="4" fill="#e3b448" /></g>
     ))}
-  </g>
-  {/* L'animal du thème passe devant les autres, pour qu'on le voie en entier. */}
-  {[...animaux].sort((a, b) => Number(a.id === actif) - Number(b.id === actif)).map((a) => {
-    const etat = !actif || actif === a.id ? 'allume' : 'eteint';
-    const absent = accueil && a.id !== 'renard';
+  </g>  {[...animaux.filter((a) => a.id !== actif), ...animaux.filter((a) => a.id === actif)].map((b) => {
+    // le renard, héros de l'histoire, reste toujours éclairé
+    const etat = !actif || actif === b.id || b.id === 'renard' ? 'allume' : 'eteint';
+    const absent = accueil && b.id !== 'renard';
+    const devant = actif === b.id && b.id !== 'renard';
+    const a = devant ? { ...b, x: placeDevant.x, y: placeDevant.y, s: b.s * placeDevant.s, miroir: true } : b;
     const t = `translate(${a.x} ${a.y}) scale(${a.miroir ? -a.s : a.s} ${a.s})`;
     return (
       <g class:list={['animal', etat, { absent }]} data-animal={a.id}>
-        {etat === 'allume' && actif && <ellipse cx={a.x} cy={a.y - 30 * a.s} rx={52 * a.s} ry={50 * a.s} fill="url(#feu-halo)" />}
+        {devant && <ellipse cx={a.x} cy={a.y - 30 * a.s} rx={52 * a.s} ry={50 * a.s} fill="url(#feu-halo)" />}
         <g transform={t}>
           <g class="corps" set:html={a.corps + tenue(a.cou, a.tete)} />
           {etat === 'eteint' && <g class="yeux">{a.yeux.map(([x, y]) => <circle cx={x} cy={y} r="1.9" />)}</g>}
@@ -132,6 +139,11 @@ const pierres = Array.from({ length: 14 }, (_, i) => {
 
 <style>
   .feu { display: block; width: 100%; height: auto; }
+  /* accueil sur écran large : le ciel, les montagnes et le sol continuent sur les côtés */
+  .feu.accueil { overflow: visible; }
+  /* gros plan sur le renard et l'animal du thème : une hauteur fixe, la scène est recadrée */
+  .feu.gros-plan { height: clamp(240px, 44dvh, 440px); max-width: 680px; margin-inline: auto; }
+  @media (min-width: 700px) { .feu.gros-plan { border-radius: var(--arrondi); } }
   /* écran d'accueil : les animaux arrivent, le feu grandit */
   .absent { opacity: 0; }
   .animal { transition: opacity .8s; }

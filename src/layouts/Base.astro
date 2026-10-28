@@ -6,9 +6,10 @@ import BarreNav from '../components/BarreNav.astro';
 interface Props {
   titre: string;
   fond?: string;      // couleur de fond de la page, par défaut la crème du thème
+  nuit?: boolean;     // page sombre (accueil, écran avant quiz) : contour clavier doré
   nav?: boolean;      // afficher la barre de navigation du bas
 }
-const { titre, fond, nav = true } = Astro.props;
+const { titre, fond, nuit = false, nav = true } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <!doctype html>
@@ -28,7 +29,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       rel="stylesheet"
     />
   </head>
-  <body style={fond ? `background:${fond}` : undefined}>
+  <body class:list={{ nuit }} style={fond ? `background:${fond}` : undefined}>
     <slot />
     {nav && <BarreNav />}
     {import.meta.env.PROD && (

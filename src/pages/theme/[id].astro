@@ -22,9 +22,11 @@ const depart = construireChemin(chemin, new Set(), 1);
 const etapes = depart.filter((e) => e.lecons.length > 0 || e.epreuve);
 const libelle: Record<string, string> = { faite: 'faite', suivante: 'à jouer', ouverte: 'ouverte', verrouillee: 'verrouillée', reussie: 'réussie' };
 ---
-<Base titre={t.nom} fond="#191826">
+<Base titre={t.nom} fond="#191826" nuit>
   <main class="ecran" data-theme={t.id} data-chemin={JSON.stringify(chemin)} data-article={article(t.animal).replace(/^./, (c) => c.toUpperCase())}>
-    <a class="retour" href={`${base}/themes`} aria-label="Revenir au choix des thèmes">←</a>
+    <a class="retour icone-bouton" href={`${base}/themes`} aria-label="Revenir au choix des thèmes">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" /></svg>
+    </a>
     <div class="scene"><Feu actif={t.animal === 'bélier' ? 'belier' : t.animal} /></div>
     <section class="texte">
       <p class="animal">{article(t.animal)} s'approche du feu</p>
@@ -118,9 +120,9 @@ const libelle: Record<string, string> = { faite: 'faite', suivante: 'à jouer', 
 
 <style>
   .ecran { min-height: 100dvh; color: var(--creme); text-align: center; position: relative; padding-bottom: 120px; overflow-x: clip; }
-  .retour { position: absolute; top: 12px; left: 16px; z-index: 1; color: var(--creme); text-decoration: none; font-size: 1.5rem; }
+  .retour { position: absolute; top: 8px; left: 8px; z-index: 1; color: var(--creme); background: rgb(25 24 38 / .6); }
   .scene { height: min(42dvh, 340px); overflow: hidden; }
-  .scene :global(.feu) { height: 100%; }
+  .scene :global(.feu), .scene :global(.feu.gros-plan) { height: 100%; }
   .texte { max-width: 448px; margin: 0 auto; padding: 8px 16px; display: grid; justify-items: center; gap: 4px; }
   .texte p { margin: 0; }
   .animal { font: italic 1.1rem var(--police-recit); color: var(--or); }
