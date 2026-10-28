@@ -32,7 +32,9 @@ const article = (a: string) => (/^[aeéiou]/i.test(a) ? "l'" : ['pie', 'grenouil
 
 <style>
   .ecran { min-height: 100dvh; color: var(--creme); text-align: center; position: relative; padding-bottom: 120px; }
-  .retour { position: absolute; top: 8px; left: 8px; z-index: 1; color: var(--creme); }
+  .retour { position: absolute; top: 8px; left: 8px; z-index: 1; color: var(--creme); background: rgb(25 24 38 / .6); }
+  .ecran :global(.feu.gros-plan) { height: clamp(260px, 54dvh, 480px); }
+  @media (min-width: 700px) { .ecran { padding-top: 56px; } }
   .texte { max-width: 448px; margin: 0 auto; padding: 8px 16px; display: grid; justify-items: center; gap: 6px; }
   .texte p { margin: 0; }
   .animal { font: italic 1.1rem var(--police-recit); color: var(--or); }
