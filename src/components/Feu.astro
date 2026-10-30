@@ -75,8 +75,11 @@ function tenue([cx, cy]: number[], [tx, ty]: number[]) {
     <path class="acc g6" d="M${tx - 6} ${ty}h12l1-7-3.5 3.5-3.5-4.5-3.5 4.5-3.5-3.5z" fill="#e3b448" stroke="#a5802c" stroke-width=".5"/>`;
 }
 // Écran avant quiz et fin de leçon : l'animal du thème vient s'asseoir au premier plan,
-// face au renard, de l'autre côté du feu.
-const placeDevant = { x: 372, y: 338, s: 1.15 };
+// face au renard, de l'autre côté du feu. Les petits animaux (bélier, grenouille…) sont agrandis
+// pour paraître au moins aussi grands que le renard : c'est leur thème, ils sont au premier plan.
+const placeDevant = { x: 368, y: 338, s: 1.15, hauteur: 80, agrandiMax: 1.6 };
+const echelleDevant = (b: { s: number; tete: number[] }) =>
+  Math.max(b.s * placeDevant.s, Math.min(placeDevant.agrandiMax, placeDevant.hauteur / (10 - b.tete[1])));
 const pierres = Array.from({ length: 14 }, (_, i) => {
   const a = (Math.PI * 2 * i) / 14;
   return [300 + 40 * Math.cos(a), 322 + 10 * Math.sin(a)];
@@ -110,12 +113,24 @@ const pierres = Array.from({ length: 14 }, (_, i) => {
     {[[262, -1], [338, 1]].map(([x, f]) => (
       <g><line x1={x} y1="326" x2={x} y2="236" stroke="#3a2a22" stroke-width="3" /><path d={`M${x} 240h${22 * f}v32l${-11 * f} -8 ${-11 * f} 8z`} fill="#3fae68" /><circle cx={x + 11 * f} cy="252" r="4" fill="#e3b448" /></g>
     ))}
-  </g>  {[...animaux.filter((a) => a.id !== actif), ...animaux.filter((a) => a.id === actif)].map((b) => {
+  </g>
+  {/* l'animal du thème est dessiné après le feu, pour passer devant les pierres */}
+  {[...animaux.filter((a) => a.id !== actif || a.id === 'renard'), 'feu' as const, ...animaux.filter((a) => a.id === actif && a.id !== 'renard')].map((b) => {
+    if (b === 'feu') return (
+      <Fragment>
+        <g class="pierres">{pierres.map(([x, y]) => <ellipse cx={x} cy={y} rx="8" ry="5" fill="#6b6170" />)}</g>
+        <g stroke="#4a2c1c" stroke-width="8" stroke-linecap="round"><line x1="282" y1="326" x2="318" y2="314" /><line x1="282" y1="314" x2="318" y2="326" /></g>
+        <g class="flamme">
+          <path d="M276 322C276 296 292 280 300 250 308 280 324 296 324 322Z" fill="#f28a2e" />
+          <path d="M288 322C288 306 298 298 300 284 304 298 312 306 312 322Z" fill="#ffd36b" />
+        </g>
+      </Fragment>
+    );
     // le renard, héros de l'histoire, reste toujours éclairé
     const etat = !actif || actif === b.id || b.id === 'renard' ? 'allume' : 'eteint';
     const absent = accueil && b.id !== 'renard';
     const devant = actif === b.id && b.id !== 'renard';
-    const a = devant ? { ...b, x: placeDevant.x, y: placeDevant.y, s: b.s * placeDevant.s, miroir: true } : b;
+    const a = devant ? { ...b, x: placeDevant.x, y: placeDevant.y, s: echelleDevant(b), miroir: true } : b;
     const t = `translate(${a.x} ${a.y}) scale(${a.miroir ? -a.s : a.s} ${a.s})`;
     return (
       <g class:list={['animal', etat, { absent }]} data-animal={a.id}>
@@ -127,14 +142,6 @@ const pierres = Array.from({ length: 14 }, (_, i) => {
       </g>
     );
   })}
-
-  <g class="pierres">{pierres.map(([x, y]) => <ellipse cx={x} cy={y} rx="8" ry="5" fill="#6b6170" />)}</g>
-
-  <g stroke="#4a2c1c" stroke-width="8" stroke-linecap="round"><line x1="282" y1="326" x2="318" y2="314" /><line x1="282" y1="314" x2="318" y2="326" /></g>
-  <g class="flamme">
-    <path d="M276 322C276 296 292 280 300 250 308 280 324 296 324 322Z" fill="#f28a2e" />
-    <path d="M288 322C288 306 298 298 300 284 304 298 312 306 312 322Z" fill="#ffd36b" />
-  </g>
 </svg>
 
 <style>
