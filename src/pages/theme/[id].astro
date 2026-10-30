@@ -59,7 +59,7 @@ const libelle: Record<string, string> = { faite: 'faite', suivante: 'à jouer', 
                 <li class="noeud">
                   <a class={`lecon epreuve ${e.epreuve.etat}`} data-id={e.epreuve.id} data-href={infos[e.epreuve.id].href}
                      href={e.epreuve.etat === 'verrouillee' ? undefined : infos[e.epreuve.id].href} aria-disabled={e.epreuve.etat === 'verrouillee' ? 'true' : undefined}>
-                    <span class="rond" aria-hidden="true">♛</span>
+                    <span class="rond" aria-hidden="true"><span class="picto">{t.pictos[Math.min(e.etape, t.pictos.length - 1)]}</span></span>
                     <span class="titre">
                       {e.etape < t.grades.length ? `Épreuve : devenir ${t.grades[e.etape]}` : 'Épreuve finale'}
                       <span class="etat"> · {libelle[e.epreuve.etat]}</span>
@@ -151,7 +151,8 @@ const libelle: Record<string, string> = { faite: 'faite', suivante: 'à jouer', 
   .verrouillee { cursor: not-allowed; }
   .verrouillee .rond { background: #3a3950; box-shadow: 0 var(--epaisseur-ombre) 0 #24233a; color: #8d8ba8; }
   .verrouillee .titre { opacity: .55; }
-  .epreuve .rond { width: 76px; height: 76px; border-radius: 22px; }
+  .epreuve .rond { width: 76px; height: 76px; border-radius: 22px; font-size: 2.1rem; }
+  .verrouillee .picto { filter: grayscale(1); opacity: .55; }
   a.lecon:not(.verrouillee):active .rond { transform: translateY(var(--epaisseur-ombre)); box-shadow: none; }
   @media (prefers-reduced-motion: no-preference) { .suivante .rond { animation: appel 1.4s ease-in-out infinite alternate; } }
   @keyframes appel { to { transform: scale(1.06); } }
